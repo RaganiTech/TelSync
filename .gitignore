@@ -1,0 +1,26 @@
+# Git ignore for contact_bridge
+
+# Flutter / Dart
+.dart_tool/
+.packages
+build/
+.pub-cache/
+.pub/
+
+# Secrets & Environment
+env/*.json
+!env/*.example.json
+
+# IDEs
+.idea/
+.vscode/
+*.iml
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Temporary and test outputs
+*.log
+coverage/
+test-results/

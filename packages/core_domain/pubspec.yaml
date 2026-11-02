@@ -1,0 +1,14 @@
+name: core_domain
+description: Pure Dart core domain layer for contact_bridge (entities, value objects, ports, state machine).
+version: 0.1.0
+publish_to: none
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  meta: ^1.11.0
+  collection: ^1.18.0
+
+dev_dependencies:
+  test: ^1.24.0
