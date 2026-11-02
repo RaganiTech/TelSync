@@ -1,0 +1,10 @@
+name: l10n
+description: Localization resources (fa, en) for contact_bridge.
+version: 0.1.0
+publish_to: none
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  meta: ^1.11.0

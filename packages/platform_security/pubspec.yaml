@@ -1,0 +1,15 @@
+name: platform_security
+description: Hardware-backed keystore/keychain vault, screen guard, and session cleanup for contact_bridge.
+version: 0.1.0
+publish_to: none
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  core_domain:
+    path: ../core_domain
+  meta: ^1.11.0
+
+dev_dependencies:
+  test: ^1.24.0

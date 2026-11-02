@@ -1,0 +1,12 @@
+name: ads_noop
+description: No-op ad provider adapter for contact_bridge (ads disabled in MVP).
+version: 0.1.0
+publish_to: none
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  core_domain:
+    path: ../core_domain
+  meta: ^1.11.0

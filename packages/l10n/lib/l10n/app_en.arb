@@ -1,0 +1,74 @@
+{
+  "@@locale": "en",
+  "welcome_title": "Bring your Telegram contacts to your phone",
+  "welcome_body": "Only numbers missing from your phone are added. No existing contact is changed or deleted.",
+  "trust_1": "Everything runs on your phone. Nothing is sent to our servers.",
+  "trust_2": "You review and confirm the list before anything is added.",
+  "trust_3": "When finished, the Telegram session is closed automatically.",
+  "login_notice": "Telegram will announce a new login. This is expected, and we sign out automatically when done.",
+  "login_code_warning": "Never share your Telegram code with anyone else.",
+  "login_open_telegram": "Confirm in the Telegram app",
+  "login_qr": "Show QR code",
+  "login_phone": "Sign in with phone number and code",
+  "no_account": "This number has no Telegram account.",
+  "perm_rationale": "To spot duplicates we read your phone contacts, and we write new ones only after you confirm. This data never leaves your phone.",
+  "perm_denied": "We cannot continue without contacts access. Nothing has been changed.",
+  "perm_limited": "Current access is limited, so the list would be incomplete. Please allow full access in Settings.",
+  "analyzing": "Comparing numbers on your phone…",
+  "tab_new": "New",
+  "tab_related": "Related to existing",
+  "tab_review": "Needs review",
+  "tab_skipped": "Skipped",
+  "badge_related": "Another number of this contact is in your phone",
+  "related_help": "This number is saved as a new contact; your existing contact is not changed.",
+  "deleted_notice": "Contacts you deleted earlier may appear here again.",
+  "name_missing": "No name. Enter a name to add it.",
+  "destination": "Save to: {account}",
+  "@destination": {
+    "placeholders": {
+      "account": { "type": "String" }
+    }
+  },
+  "cloud_sync_note": "These contacts will sync with that account.",
+  "selected_count": "{n} selected",
+  "@selected_count": {
+    "placeholders": {
+      "n": { "type": "int" }
+    }
+  },
+  "confirm_title": "Add {n} new contacts?",
+  "@confirm_title": {
+    "placeholders": {
+      "n": { "type": "int" }
+    }
+  },
+  "confirm_body": "Your existing contacts stay unchanged.",
+  "writing": "Adding…",
+  "report_added": "{n} contacts added",
+  "@report_added": {
+    "placeholders": {
+      "n": { "type": "int" }
+    }
+  },
+  "report_failed": "{n} could not be added",
+  "@report_failed": {
+    "placeholders": {
+      "n": { "type": "int" }
+    }
+  },
+  "undo": "Undo what was added",
+  "done_disconnect": "Done and disconnect",
+  "logout_failed": "Your Telegram session may still be active. In Telegram: Settings → Devices, end the session “{device}”.",
+  "@logout_failed": {
+    "placeholders": {
+      "device": { "type": "String" }
+    }
+  },
+  "flood_wait": "Telegram is temporarily limiting requests. Try again in {s} seconds.",
+  "@flood_wait": {
+    "placeholders": {
+      "s": { "type": "int" }
+    }
+  },
+  "network_error": "Could not connect. Check your internet or VPN."
+}
