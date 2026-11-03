@@ -63,6 +63,32 @@ class ImportFlowController extends Notifier<FlowState> {
 
     if (mockContacts != null) {
       _telegramContacts = mockContacts;
+    } else if (_authSession != null) {
+      try {
+        _telegramContacts = await _authSession!.fetchContacts(
+          onProgress: (progress, count) {
+            dispatch(TelegramProgressEvent(progress: progress, count: count));
+          },
+        );
+      } catch (_) {
+        _telegramContacts = [];
+      }
+    } else {
+      // Default sample contacts for offline / demo mode
+      _telegramContacts = const [
+        SourceContact(
+          userId: 101,
+          firstName: 'سارا',
+          lastName: 'محمدی',
+          rawPhoneNumbers: ['+989123456789'],
+        ),
+        SourceContact(
+          userId: 102,
+          firstName: 'علی',
+          lastName: 'رضایی',
+          rawPhoneNumbers: ['09121111111', '09352222222'],
+        ),
+      ];
     }
 
     dispatch(TelegramProgressEvent(
