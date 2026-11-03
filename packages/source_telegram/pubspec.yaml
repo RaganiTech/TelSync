@@ -9,6 +9,7 @@ environment:
 dependencies:
   core_domain:
     path: ../core_domain
+  ffi: ^2.1.3
   meta: ^1.11.0
 
 dev_dependencies:

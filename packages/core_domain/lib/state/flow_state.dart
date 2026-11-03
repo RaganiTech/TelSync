@@ -81,7 +81,11 @@ class AnalyzingState extends FlowState {
 
 class SummaryState extends FlowState {
   final ReportCounters counters;
-  const SummaryState({required this.counters});
+  final List<ImportCandidate> candidates;
+  const SummaryState({
+    required this.counters,
+    this.candidates = const [],
+  });
 }
 
 class PreviewState extends FlowState {

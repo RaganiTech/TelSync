@@ -83,6 +83,10 @@ class AnalysisCompleteEvent extends FlowEvent {
   });
 }
 
+class ProceedToPreviewEvent extends FlowEvent {
+  const ProceedToPreviewEvent();
+}
+
 class ToggleCandidateEvent extends FlowEvent {
   final String candidateId;
   const ToggleCandidateEvent(this.candidateId);

@@ -7,4 +7,12 @@ environment:
   sdk: '>=3.0.0 <4.0.0'
 
 dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
   meta: ^1.11.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter

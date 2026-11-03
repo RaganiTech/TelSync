@@ -47,13 +47,13 @@ FlowState reduce(FlowState state, FlowEvent event) {
       }
 
     case AuthCodeState():
-      if (event is SubmitCodeEvent) {
+      if (event is SubmitCodeEvent || event is AuthSuccessEvent) {
         // Can transition to password (2FA) or fetching
         return const FetchingTelegramState();
       }
 
     case AuthPasswordState():
-      if (event is SubmitPasswordEvent) {
+      if (event is SubmitPasswordEvent || event is AuthSuccessEvent) {
         return const FetchingTelegramState();
       }
 
@@ -96,19 +96,26 @@ FlowState reduce(FlowState state, FlowEvent event) {
         );
       }
       if (event is AnalysisCompleteEvent) {
-        return SummaryState(counters: event.counters);
+        return SummaryState(
+          counters: event.counters,
+          candidates: event.candidates,
+        );
       }
 
     case AnalyzingState():
       if (event is AnalysisCompleteEvent) {
-        return SummaryState(counters: event.counters);
+        return SummaryState(
+          counters: event.counters,
+          candidates: event.candidates,
+        );
       }
 
     case SummaryState():
-      if (event is StartFlowEvent || event is TelegramContactsReadyEvent) {
-        // Transition to preview
+      if (event is ProceedToPreviewEvent ||
+          event is StartFlowEvent ||
+          event is TelegramContactsReadyEvent) {
         return PreviewState(
-          candidates: const [],
+          candidates: state.candidates,
           counters: state.counters,
         );
       }

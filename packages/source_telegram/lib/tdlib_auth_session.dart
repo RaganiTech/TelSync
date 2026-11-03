@@ -89,7 +89,7 @@ class TdlibAuthSession {
         _updateState(TgAuthState.waitingPassword);
 
       case 'authorizationStateWaitRegistration':
-        // FR-AUTH-040: Show unsupported, never call registerUser
+        // FR-AUTH-040: Show unsupported, registration is not allowed
         _updateState(TgAuthState.unsupportedRegistration);
 
       case 'authorizationStateReady':
