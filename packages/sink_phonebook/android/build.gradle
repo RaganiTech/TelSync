@@ -1,28 +1,15 @@
 group 'com.contactbridge.sink_phonebook'
 version '1.0-SNAPSHOT'
 
-buildscript {
-    ext.kotlin_version = '1.9.0'
-    repositories {
-        google()
-        mavenCentral()
-    }
-
-    dependencies {
-        classpath 'com.android.tools.build:gradle:8.2.1'
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-    }
-}
-
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 
 android {
     namespace 'com.contactbridge.sink_phonebook'
-    compileSdkVersion 35
+    compileSdk 35
 
     defaultConfig {
-        minSdkVersion 29
+        minSdk 29
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -37,6 +24,5 @@ android {
 }
 
 dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
     implementation 'androidx.core:core-ktx:1.12.0'
 }
