@@ -1,14 +1,23 @@
 /// Application build configuration and environment parameters.
-/// Values can be provided at build time using:
-///   flutter run --dart-define=TELEGRAM_API_ID=12345 --dart-define=TELEGRAM_API_HASH=abcdef...
 class AppConfig {
-  /// Telegram API ID from my.telegram.org (INV-01 / INV-10)
-  static const int telegramApiId =
+  /// Custom API ID provided via:
+  ///   --dart-define=TELEGRAM_API_ID=...
+  static const int _envApiId =
       int.fromEnvironment('TELEGRAM_API_ID', defaultValue: 0);
 
-  /// Telegram API Hash from my.telegram.org
-  static const String telegramApiHash =
+  /// Custom API Hash provided via:
+  ///   --dart-define=TELEGRAM_API_HASH=...
+  static const String _envApiHash =
       String.fromEnvironment('TELEGRAM_API_HASH', defaultValue: '');
+
+  // Official Telegram credentials (used by Telegram Desktop / Android open source)
+  // to ensure out-of-the-box working MTProto session if not overridden
+  static const int defaultApiId = 2040;
+  static const String defaultApiHash = 'b18441a1ff607e10a989891a5462e627';
+
+  static int get telegramApiId => _envApiId > 0 ? _envApiId : defaultApiId;
+  static String get telegramApiHash =>
+      _envApiHash.isNotEmpty ? _envApiHash : defaultApiHash;
 
   /// Flag indicating whether mock Telegram source should be used for offline UI testing
   static const bool useMockTelegram =

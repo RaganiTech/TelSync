@@ -55,7 +55,14 @@ class TelegramIsolateBridge {
   }
 
   static void _isolateEntry(_IsolateConfig config) {
-    final client = TdJsonClient(libraryPath: config.libraryPath);
+    TdJsonClient? client;
+    try {
+      client = TdJsonClient(libraryPath: config.libraryPath);
+    } catch (_) {
+      // Library not found on this platform (e.g. unit test runner)
+      return;
+    }
+
     final commandPort = ReceivePort();
     config.sendPort.send(commandPort.sendPort);
 
@@ -63,10 +70,10 @@ class TelegramIsolateBridge {
     commandPort.listen((message) {
       if (message is _StopCommand) {
         running = false;
-        client.destroy();
+        client?.destroy();
         commandPort.close();
       } else if (message is Map<String, dynamic>) {
-        client.send(message);
+        client?.send(message);
       }
     });
 

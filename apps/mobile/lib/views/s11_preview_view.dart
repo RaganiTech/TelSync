@@ -56,6 +56,7 @@ class _S11PreviewViewState extends ConsumerState<S11PreviewView> {
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
     final controller = ref.read(importFlowControllerProvider.notifier);
+    final theme = Theme.of(context);
 
     final newCandidates = widget.state.candidates
         .where((c) => c.kind == CandidateKind.newContact)
@@ -105,13 +106,13 @@ class _S11PreviewViewState extends ConsumerState<S11PreviewView> {
                 ),
                 const SizedBox(height: AppDimensions.space16),
                 Text(
-                  '$skippedCount شماره از قبل در مخاطبین گوشی شما وجود دارد و طبق اصل عدم تغییر (INV-02) بدون تغییر باقی می‌مانند.',
+                  '$skippedCount شماره از قبل در مخاطبین گوشی شما وجود دارد و طبق اصل عدم دست‌کاری (INV-02) بدون تغییر باقی می‌مانند.',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontFamily: AppTypography.fontFamily,
                     fontSize: AppTypography.bodySize,
                     height: AppTypography.bodyHeight,
-                    color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7),
+                    color: theme.colorScheme.onSurface.withValues(alpha: 0.7),
                   ),
                 ),
               ],
@@ -125,19 +126,28 @@ class _S11PreviewViewState extends ConsumerState<S11PreviewView> {
       title: 'پیش‌نمایش مخاطبین',
       body: Column(
         children: [
+          const SizedBox(height: AppDimensions.space8),
           SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             child: Row(
               children: List.generate(tabs.length, (index) {
                 final isSelected = _currentTabIndex == index;
                 return Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 4.0,
-                    vertical: AppDimensions.space8,
-                  ),
-                  child: ChoiceChip(
+                  padding: const EdgeInsets.symmetric(horizontal: 4.0),
+                  child: FilterChip(
                     label: Text(tabs[index]),
                     selected: isSelected,
+                    selectedColor: theme.colorScheme.primary.withValues(alpha: 0.15),
+                    checkmarkColor: theme.colorScheme.primary,
+                    labelStyle: TextStyle(
+                      fontFamily: AppTypography.fontFamily,
+                      fontSize: 12,
+                      fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
+                      color: isSelected ? theme.colorScheme.primary : theme.colorScheme.onSurface,
+                    ),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
                     onSelected: (selected) {
                       if (selected) {
                         setState(() {
@@ -159,14 +169,14 @@ class _S11PreviewViewState extends ConsumerState<S11PreviewView> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 TextButton.icon(
-                  icon: const Icon(Icons.select_all, size: 18),
+                  icon: const Icon(Icons.select_all_rounded, size: 18),
                   label: Text(l10n.selectAll),
                   onPressed: () {
                     controller.selectAll(null, true);
                   },
                 ),
                 TextButton.icon(
-                  icon: const Icon(Icons.deselect, size: 18),
+                  icon: const Icon(Icons.deselect_rounded, size: 18),
                   label: Text(l10n.deselectAll),
                   onPressed: () {
                     controller.selectAll(null, false);
@@ -175,6 +185,7 @@ class _S11PreviewViewState extends ConsumerState<S11PreviewView> {
               ],
             ),
           ),
+          const Divider(height: 1),
           Expanded(child: currentContent),
         ],
       ),
@@ -184,13 +195,15 @@ class _S11PreviewViewState extends ConsumerState<S11PreviewView> {
           vertical: AppDimensions.space12,
         ),
         decoration: BoxDecoration(
-          color: Theme.of(context).colorScheme.surface,
-          border: Border(
-            top: BorderSide(
-              color: Theme.of(context).colorScheme.outline,
-              width: AppDimensions.hairlineBorder,
+          color: theme.colorScheme.surface,
+          borderRadius: const BorderRadius.vertical(top: Radius.circular(20)),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withValues(alpha: 0.05),
+              blurRadius: 10,
+              offset: const Offset(0, -3),
             ),
-          ),
+          ],
         ),
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -204,21 +217,17 @@ class _S11PreviewViewState extends ConsumerState<S11PreviewView> {
                     fontFamily: AppTypography.fontFamily,
                     fontSize: AppTypography.bodySize,
                     fontWeight: FontWeight.bold,
-                    color: Theme.of(context).colorScheme.onSurface,
+                    color: theme.colorScheme.onSurface,
                   ),
                 ),
-                const SizedBox(width: AppDimensions.space8),
                 Flexible(
                   child: Text(
-                    l10n.confirmBody,
+                    'آماده برای ذخیره در گوشی',
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(
                       fontFamily: AppTypography.fontFamily,
                       fontSize: AppTypography.captionSize,
-                      color: Theme.of(context)
-                          .colorScheme
-                          .onSurface
-                          .withValues(alpha: 0.6),
+                      color: theme.colorScheme.onSurface.withValues(alpha: 0.6),
                     ),
                   ),
                 ),

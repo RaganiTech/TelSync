@@ -22,17 +22,19 @@ class AppTheme {
       fontFamily: AppTypography.fontFamily,
       cardTheme: CardThemeData(
         color: Color(AppColors.surfaceLight),
-        elevation: 0,
+        elevation: 2,
+        shadowColor: Colors.black.withValues(alpha: 0.06),
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(AppDimensions.radiusCard),
+          borderRadius: BorderRadius.circular(16),
           side: BorderSide(
-            color: Color(AppColors.borderLight),
-            width: AppDimensions.hairlineBorder,
+            color: Color(AppColors.borderLight).withValues(alpha: 0.8),
+            width: 1,
           ),
         ),
       ),
       appBarTheme: AppBarTheme(
         backgroundColor: Color(AppColors.bgLight),
+        surfaceTintColor: Colors.transparent,
         elevation: 0,
         centerTitle: true,
         iconTheme: IconThemeData(color: Color(AppColors.textLight)),
@@ -41,6 +43,23 @@ class AppTheme {
           fontSize: AppTypography.titleSize,
           fontWeight: FontWeight.w700,
           color: Color(AppColors.textLight),
+        ),
+      ),
+      inputDecorationTheme: InputDecorationTheme(
+        filled: true,
+        fillColor: Colors.white,
+        contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(14),
+          borderSide: BorderSide(color: Color(AppColors.borderLight)),
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(14),
+          borderSide: BorderSide(color: Color(AppColors.borderLight)),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(14),
+          borderSide: BorderSide(color: Color(AppColors.primaryLight), width: 1.5),
         ),
       ),
     );
@@ -64,17 +83,19 @@ class AppTheme {
       fontFamily: AppTypography.fontFamily,
       cardTheme: CardThemeData(
         color: Color(AppColors.surfaceDark),
-        elevation: 0,
+        elevation: 2,
+        shadowColor: Colors.black.withValues(alpha: 0.3),
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(AppDimensions.radiusCard),
+          borderRadius: BorderRadius.circular(16),
           side: BorderSide(
             color: Color(AppColors.borderDark),
-            width: AppDimensions.hairlineBorder,
+            width: 1,
           ),
         ),
       ),
       appBarTheme: AppBarTheme(
         backgroundColor: Color(AppColors.bgDark),
+        surfaceTintColor: Colors.transparent,
         elevation: 0,
         centerTitle: true,
         iconTheme: IconThemeData(color: Color(AppColors.textDark)),
@@ -83,6 +104,23 @@ class AppTheme {
           fontSize: AppTypography.titleSize,
           fontWeight: FontWeight.w700,
           color: Color(AppColors.textDark),
+        ),
+      ),
+      inputDecorationTheme: InputDecorationTheme(
+        filled: true,
+        fillColor: Color(AppColors.surfaceAltDark),
+        contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(14),
+          borderSide: BorderSide(color: Color(AppColors.borderDark)),
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(14),
+          borderSide: BorderSide(color: Color(AppColors.borderDark)),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(14),
+          borderSide: BorderSide(color: Color(AppColors.primaryDark), width: 1.5),
         ),
       ),
     );

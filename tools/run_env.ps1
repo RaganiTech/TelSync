@@ -22,6 +22,8 @@ $env:PATH = "$androidHome\platform-tools;$androidHome\cmdline-tools\latest\bin;$
 
 $env:HTTP_PROXY = "http://127.0.0.1:10809"
 $env:HTTPS_PROXY = "http://127.0.0.1:10809"
+$env:NO_PROXY = "localhost,127.0.0.1,::1"
+$env:no_proxy = "localhost,127.0.0.1,::1"
 $env:JAVA_TOOL_OPTIONS = "-Dhttp.proxyHost=127.0.0.1 -Dhttp.proxyPort=10809 -Dhttps.proxyHost=127.0.0.1 -Dhttps.proxyPort=10809"
 $env:GRADLE_OPTS = "-Dhttp.proxyHost=127.0.0.1 -Dhttp.proxyPort=10809 -Dhttps.proxyHost=127.0.0.1 -Dhttps.proxyPort=10809"
 

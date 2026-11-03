@@ -1,31 +1,36 @@
 class AppColors {
+  // Brand Colors
+  static const int telegramBlue = 0xFF2AABEE;
+  static const int telegramNavy = 0xFF17212B;
+  static const int telegramBlueDark = 0xFF229ED9;
+
   // Light Palette
-  static const int bgLight = 0xFFFAF8F5;
+  static const int bgLight = 0xFFF8FAFC;
   static const int surfaceLight = 0xFFFFFFFF;
-  static const int surfaceAltLight = 0xFFF2EEE8;
-  static const int borderLight = 0xFFE7E2DA;
-  static const int textLight = 0xFF1C1B1A;
-  static const int textMutedLight = 0xFF6B665F;
-  static const int primaryLight = 0xFF1F3A5F; // Classic Navy
+  static const int surfaceAltLight = 0xFFF1F5F9;
+  static const int borderLight = 0xFFE2E8F0;
+  static const int textLight = 0xFF0F172A;
+  static const int textMutedLight = 0xFF64748B;
+  static const int primaryLight = 0xFF1E3A8A; // Deep Royal Navy
   static const int onPrimaryLight = 0xFFFFFFFF;
-  static const int accentLight = 0xFFB8893B; // Muted Gold
-  static const int successLight = 0xFF2E7D5B;
-  static const int warningLight = 0xFFB7791F;
-  static const int dangerLight = 0xFFB3392F;
+  static const int accentLight = 0xFF2563EB; // Electric Blue
+  static const int successLight = 0xFF10B981; // Modern Emerald
+  static const int warningLight = 0xFFF59E0B; // Amber
+  static const int dangerLight = 0xFFEF4444; // Rose
 
   // Dark Palette
-  static const int bgDark = 0xFF121315;
-  static const int surfaceDark = 0xFF1B1D20;
-  static const int surfaceAltDark = 0xFF23262A;
-  static const int borderDark = 0xFF2E3238;
-  static const int textDark = 0xFFECE9E4;
-  static const int textMutedDark = 0xFFA39E96;
-  static const int primaryDark = 0xFF8FB1E0;
-  static const int onPrimaryDark = 0xFF0F1A2B;
-  static const int accentDark = 0xFFD3A956;
-  static const int successDark = 0xFF5DBB92;
-  static const int warningDark = 0xFFE0A94A;
-  static const int dangerDark = 0xFFE8776E;
+  static const int bgDark = 0xFF0F172A;
+  static const int surfaceDark = 0xFF1E293B;
+  static const int surfaceAltDark = 0xFF334155;
+  static const int borderDark = 0xFF334155;
+  static const int textDark = 0xFFF8FAFC;
+  static const int textMutedDark = 0xFF94A3B8;
+  static const int primaryDark = 0xFF3B82F6;
+  static const int onPrimaryDark = 0xFF0F172A;
+  static const int accentDark = 0xFF60A5FA;
+  static const int successDark = 0xFF34D399;
+  static const int warningDark = 0xFFFBBF24;
+  static const int dangerDark = 0xFFF87171;
 
   const AppColors._();
 }

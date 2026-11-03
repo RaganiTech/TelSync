@@ -14,7 +14,22 @@ class TrustCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
-    return Card(
+    return Container(
+      decoration: BoxDecoration(
+        color: theme.colorScheme.surface,
+        borderRadius: BorderRadius.circular(16),
+        border: Border.all(
+          color: theme.colorScheme.primary.withValues(alpha: 0.15),
+          width: 1.2,
+        ),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withValues(alpha: 0.04),
+            blurRadius: 10,
+            offset: const Offset(0, 4),
+          ),
+        ],
+      ),
       child: Padding(
         padding: const EdgeInsets.all(AppDimensions.space16),
         child: Column(
@@ -22,14 +37,21 @@ class TrustCard extends StatelessWidget {
           children: [
             Row(
               children: [
-                Icon(
-                  Icons.verified_user_outlined,
-                  color: theme.colorScheme.secondary,
-                  size: 20,
+                Container(
+                  padding: const EdgeInsets.all(6),
+                  decoration: BoxDecoration(
+                    color: theme.colorScheme.primary.withValues(alpha: 0.1),
+                    shape: BoxShape.circle,
+                  ),
+                  child: Icon(
+                    Icons.security_rounded,
+                    color: theme.colorScheme.primary,
+                    size: 20,
+                  ),
                 ),
-                const SizedBox(width: AppDimensions.space8),
+                const SizedBox(width: AppDimensions.space12),
                 Text(
-                  'امنیت و حریم خصوصی',
+                  'تضمین امنیت و حریم خصوصی',
                   style: TextStyle(
                     fontFamily: AppTypography.fontFamily,
                     fontSize: AppTypography.bodySize,
@@ -45,10 +67,13 @@ class TrustCard extends StatelessWidget {
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Icon(
-                        Icons.check_circle_outline,
-                        color: theme.colorScheme.primary,
-                        size: 18,
+                      Padding(
+                        padding: const EdgeInsets.only(top: 2),
+                        child: Icon(
+                          Icons.check_circle_rounded,
+                          color: Colors.green.shade600,
+                          size: 16,
+                        ),
                       ),
                       const SizedBox(width: AppDimensions.space8),
                       Expanded(
@@ -56,9 +81,9 @@ class TrustCard extends StatelessWidget {
                           point,
                           style: TextStyle(
                             fontFamily: AppTypography.fontFamily,
-                            fontSize: AppTypography.captionSize,
+                            fontSize: AppTypography.captionSize + 1,
                             height: AppTypography.bodyHeight,
-                            color: theme.colorScheme.onSurface.withOpacity(0.85),
+                            color: theme.colorScheme.onSurface.withValues(alpha: 0.85),
                           ),
                         ),
                       ),

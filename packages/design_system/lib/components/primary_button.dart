@@ -9,6 +9,7 @@ class PrimaryButton extends StatelessWidget {
   final Widget? icon;
   final Color? backgroundColor;
   final Color? foregroundColor;
+  final double height;
 
   const PrimaryButton({
     super.key,
@@ -18,6 +19,7 @@ class PrimaryButton extends StatelessWidget {
     this.icon,
     this.backgroundColor,
     this.foregroundColor,
+    this.height = 52.0,
   });
 
   @override
@@ -27,29 +29,30 @@ class PrimaryButton extends StatelessWidget {
     final fg = foregroundColor ?? theme.colorScheme.onPrimary;
 
     return SizedBox(
-      height: AppDimensions.minTouchTarget,
+      height: height,
       width: double.infinity,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
           backgroundColor: bg,
           foregroundColor: fg,
-          elevation: 0,
+          elevation: 2,
+          shadowColor: bg.withValues(alpha: 0.35),
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(AppDimensions.radiusCard),
+            borderRadius: BorderRadius.circular(14),
           ),
           textStyle: const TextStyle(
             fontFamily: AppTypography.fontFamily,
             fontSize: AppTypography.buttonSize,
-            fontWeight: FontWeight.w600,
+            fontWeight: FontWeight.w700,
           ),
         ),
         onPressed: isLoading ? null : onPressed,
         child: isLoading
             ? SizedBox(
-                width: 20,
-                height: 20,
+                width: 22,
+                height: 22,
                 child: CircularProgressIndicator(
-                  strokeWidth: 2,
+                  strokeWidth: 2.5,
                   valueColor: AlwaysStoppedAnimation<Color>(fg),
                 ),
               )
@@ -61,7 +64,17 @@ class PrimaryButton extends StatelessWidget {
                     icon!,
                     const SizedBox(width: AppDimensions.space8),
                   ],
-                  Text(text),
+                  Flexible(
+                    child: Text(
+                      text,
+                      overflow: TextOverflow.ellipsis,
+                      style: const TextStyle(
+                        fontFamily: AppTypography.fontFamily,
+                        fontSize: AppTypography.buttonSize,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                  ),
                 ],
               ),
       ),
