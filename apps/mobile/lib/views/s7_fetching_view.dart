@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:core_domain/core_domain.dart';
 import 'package:design_system/design_system.dart';
-import 'package:l10n/l10n.dart';
 import '../controllers/providers.dart';
 
 class S7FetchingView extends ConsumerStatefulWidget {
@@ -24,8 +23,6 @@ class _S7FetchingViewState extends ConsumerState<S7FetchingView> {
 
   @override
   Widget build(BuildContext context) {
-    final l10n = AppLocalizations.of(context);
-
     return AppScaffold(
       title: 'دریافت مخاطبین',
       body: Center(
@@ -49,7 +46,7 @@ class _S7FetchingViewState extends ConsumerState<S7FetchingView> {
               style: TextStyle(
                 fontFamily: AppTypography.fontFamily,
                 fontSize: AppTypography.captionSize,
-                color: Theme.of(context).colorScheme.onSurface.withOpacity(0.6),
+                color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.6),
               ),
             ),
           ],

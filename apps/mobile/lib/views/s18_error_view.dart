@@ -43,7 +43,7 @@ class S18ErrorView extends ConsumerWidget {
               width: 72,
               height: 72,
               decoration: BoxDecoration(
-                color: Theme.of(context).colorScheme.error.withOpacity(0.12),
+                color: Theme.of(context).colorScheme.error.withValues(alpha: 0.12),
                 shape: BoxShape.circle,
               ),
               child: Icon(

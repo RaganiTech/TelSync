@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:core_domain/core_domain.dart';
 import 'package:design_system/design_system.dart';
 import 'package:l10n/l10n.dart';
 import '../controllers/providers.dart';
@@ -35,8 +34,8 @@ class S8PermissionView extends ConsumerWidget {
                 height: 72,
                 decoration: BoxDecoration(
                   color: isDenied
-                      ? Theme.of(context).colorScheme.error.withOpacity(0.12)
-                      : Theme.of(context).colorScheme.primary.withOpacity(0.12),
+                      ? Theme.of(context).colorScheme.error.withValues(alpha: 0.12)
+                      : Theme.of(context).colorScheme.primary.withValues(alpha: 0.12),
                   shape: BoxShape.circle,
                 ),
                 child: Icon(

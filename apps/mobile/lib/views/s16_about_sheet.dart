@@ -62,7 +62,7 @@ class S16AboutSheet extends StatelessWidget {
                 fontFamily: AppTypography.fontFamily,
                 fontSize: AppTypography.captionSize,
                 height: AppTypography.bodyHeight,
-                color: Theme.of(context).colorScheme.onSurface.withOpacity(0.8),
+                color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.8),
               ),
             ),
             const SizedBox(height: AppDimensions.space24),
@@ -72,7 +72,7 @@ class S16AboutSheet extends StatelessWidget {
               style: TextStyle(
                 fontFamily: AppTypography.fontFamily,
                 fontSize: 11,
-                color: Theme.of(context).colorScheme.onSurface.withOpacity(0.5),
+                color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.5),
               ),
             ),
             const SizedBox(height: AppDimensions.space16),

@@ -6,6 +6,7 @@ import 'providers.dart';
 
 class ImportFlowController extends Notifier<FlowState> {
   TdlibAuthSession? _authSession;
+  TdlibAuthSession? get authSession => _authSession;
   List<SourceContact> _telegramContacts = [];
   List<PhoneBookContactInput> _phoneContacts = [];
   List<String> _insertedRecordIds = [];

@@ -56,7 +56,7 @@ class S1WelcomeView extends ConsumerWidget {
               width: 80,
               height: 80,
               decoration: BoxDecoration(
-                color: Theme.of(context).colorScheme.primary.withOpacity(0.1),
+                color: Theme.of(context).colorScheme.primary.withValues(alpha: 0.1),
                 shape: BoxShape.circle,
               ),
               child: Icon(
@@ -85,7 +85,7 @@ class S1WelcomeView extends ConsumerWidget {
                 fontFamily: AppTypography.fontFamily,
                 fontSize: AppTypography.bodySize,
                 height: AppTypography.bodyHeight,
-                color: Theme.of(context).colorScheme.onSurface.withOpacity(0.75),
+                color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.75),
               ),
             ),
             const SizedBox(height: AppDimensions.space24),

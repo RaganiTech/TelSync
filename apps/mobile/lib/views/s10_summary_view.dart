@@ -82,7 +82,7 @@ class S10SummaryView extends ConsumerWidget {
               style: TextStyle(
                 fontFamily: AppTypography.fontFamily,
                 fontSize: AppTypography.captionSize,
-                color: Theme.of(context).colorScheme.onSurface.withOpacity(0.7),
+                color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7),
               ),
             ),
             const SizedBox(height: AppDimensions.space32),

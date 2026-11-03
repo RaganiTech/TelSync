@@ -111,7 +111,7 @@ class _S11PreviewViewState extends ConsumerState<S11PreviewView> {
                     fontFamily: AppTypography.fontFamily,
                     fontSize: AppTypography.bodySize,
                     height: AppTypography.bodyHeight,
-                    color: Theme.of(context).colorScheme.onSurface.withOpacity(0.7),
+                    color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7),
                   ),
                 ),
               ],
@@ -218,7 +218,7 @@ class _S11PreviewViewState extends ConsumerState<S11PreviewView> {
                       color: Theme.of(context)
                           .colorScheme
                           .onSurface
-                          .withOpacity(0.6),
+                          .withValues(alpha: 0.6),
                     ),
                   ),
                 ),
@@ -252,7 +252,7 @@ class _S11PreviewViewState extends ConsumerState<S11PreviewView> {
           style: TextStyle(
             fontFamily: AppTypography.fontFamily,
             fontSize: AppTypography.captionSize,
-            color: Theme.of(context).colorScheme.onSurface.withOpacity(0.5),
+            color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.5),
           ),
         ),
       );

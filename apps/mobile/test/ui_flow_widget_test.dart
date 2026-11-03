@@ -7,7 +7,6 @@ import 'package:design_system/design_system.dart';
 import 'package:l10n/l10n.dart';
 import 'package:mobile/controllers/providers.dart';
 import 'package:mobile/views/flow_screen_host.dart';
-import 'package:mobile/views/s11_preview_view.dart';
 import 'package:sink_phonebook/sink_phonebook.dart';
 
 class TestMockPhoneBookAdapter extends Fake implements PhoneBookAdapter {

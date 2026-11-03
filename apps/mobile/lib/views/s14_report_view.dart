@@ -29,7 +29,7 @@ class S14ReportView extends ConsumerWidget {
                 width: 72,
                 height: 72,
                 decoration: BoxDecoration(
-                  color: Colors.green.withOpacity(0.12),
+                  color: Colors.green.withValues(alpha: 0.12),
                   shape: BoxShape.circle,
                 ),
                 child: const Icon(
@@ -67,7 +67,7 @@ class S14ReportView extends ConsumerWidget {
               Container(
                 padding: const EdgeInsets.all(AppDimensions.space16),
                 decoration: BoxDecoration(
-                  color: Colors.amber.withOpacity(0.1),
+                  color: Colors.amber.withValues(alpha: 0.1),
                   borderRadius: BorderRadius.circular(AppDimensions.radiusCard),
                   border: Border.all(
                     color: Colors.amber.shade700,

@@ -29,7 +29,7 @@ class S12ConfirmSheet extends ConsumerWidget {
                 width: 64,
                 height: 64,
                 decoration: BoxDecoration(
-                  color: Colors.green.withOpacity(0.12),
+                  color: Colors.green.withValues(alpha: 0.12),
                   shape: BoxShape.circle,
                 ),
                 child: const Icon(
@@ -57,7 +57,7 @@ class S12ConfirmSheet extends ConsumerWidget {
               style: TextStyle(
                 fontFamily: AppTypography.fontFamily,
                 fontSize: AppTypography.bodySize,
-                color: Theme.of(context).colorScheme.onSurface.withOpacity(0.7),
+                color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7),
               ),
             ),
             const SizedBox(height: AppDimensions.space24),

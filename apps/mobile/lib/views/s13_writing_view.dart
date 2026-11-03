@@ -42,7 +42,7 @@ class S13WritingView extends StatelessWidget {
               style: TextStyle(
                 fontFamily: AppTypography.fontFamily,
                 fontSize: AppTypography.bodySize,
-                color: Theme.of(context).colorScheme.onSurface.withOpacity(0.7),
+                color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7),
               ),
             ),
             const SizedBox(height: AppDimensions.space16),
@@ -52,7 +52,7 @@ class S13WritingView extends StatelessWidget {
               style: TextStyle(
                 fontFamily: AppTypography.fontFamily,
                 fontSize: AppTypography.captionSize,
-                color: Theme.of(context).colorScheme.onSurface.withOpacity(0.5),
+                color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.5),
               ),
             ),
           ],

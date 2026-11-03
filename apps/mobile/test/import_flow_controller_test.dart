@@ -2,7 +2,6 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:core_domain/core_domain.dart';
 import 'package:mobile/controllers/providers.dart';
-import 'package:mobile/controllers/import_flow_controller.dart';
 import 'package:sink_phonebook/sink_phonebook.dart';
 
 class MockPhoneBookAdapter extends Fake implements PhoneBookAdapter {

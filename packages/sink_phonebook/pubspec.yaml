@@ -17,3 +17,12 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   pigeon: ^29.1.0
+
+flutter:
+  plugin:
+    platforms:
+      android:
+        package: com.contactbridge.sink_phonebook
+        pluginClass: SinkPhonebookPlugin
+      ios:
+        pluginClass: SinkPhonebookPlugin
