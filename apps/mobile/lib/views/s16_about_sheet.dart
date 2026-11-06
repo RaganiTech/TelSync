@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:design_system/design_system.dart';
 import 'package:l10n/l10n.dart';
 
@@ -163,78 +162,6 @@ class S16AboutSheet extends StatelessWidget {
                     subtitle: l10n.isPersian
                         ? 'قبل از ذخیره، فهرست کامل را می‌بینی و تأیید می‌کنی'
                         : 'You review and confirm the complete list before saving',
-                  ),
-                ],
-              ),
-            ),
-            const SizedBox(height: AppDimensions.space16),
-            // Open Source / License
-            Container(
-              padding: const EdgeInsets.all(AppDimensions.space16),
-              decoration: BoxDecoration(
-                color: isDark ? const Color(0xFF1E293B) : const Color(0xFFF8FAFC),
-                borderRadius: BorderRadius.circular(AppDimensions.radiusCard),
-                border: Border.all(
-                  color: isDark ? const Color(0xFF334155) : const Color(0xFFE2E8F0),
-                  width: 1,
-                ),
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    children: [
-                      Icon(
-                        Icons.code_rounded,
-                        color: theme.colorScheme.primary,
-                        size: 20,
-                      ),
-                      const SizedBox(width: AppDimensions.space8),
-                      Text(
-                        l10n.isPersian ? 'مجوز و متن‌باز' : 'License & Open Source',
-                        style: TextStyle(
-                          fontFamily: AppTypography.fontFamily,
-                          fontSize: AppTypography.bodySize,
-                          fontWeight: FontWeight.bold,
-                          color: theme.colorScheme.onSurface,
-                        ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: AppDimensions.space12),
-                  Text(
-                    l10n.isPersian
-                        ? 'این برنامه تحت مجوز MIT منتشر شده است. کد منبع در گیت‌هاب در دسترس است.'
-                        : 'This app is released under the MIT License. Source code is available on GitHub.',
-                    style: TextStyle(
-                      fontFamily: AppTypography.fontFamily,
-                      fontSize: AppTypography.captionSize,
-                      color: theme.colorScheme.onSurface.withValues(alpha: 0.8),
-                    ),
-                  ),
-                  const SizedBox(height: AppDimensions.space8),
-                  TextButton.icon(
-                    onPressed: () {
-                      Clipboard.setData(const ClipboardData(
-                        text: 'https://github.com/RaganiTech/telSync',
-                      ));
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                          content: Text(l10n.isPersian
-                              ? 'لینک گیت‌هاب کپی شد'
-                              : 'GitHub link copied'),
-                          backgroundColor: theme.colorScheme.primary,
-                        ),
-                      );
-                    },
-                    icon: const Icon(Icons.link_rounded, size: 16),
-                    label: Text(
-                      l10n.isPersian ? 'مشاهده در گیت‌هاب' : 'View on GitHub',
-                      style: TextStyle(
-                        fontFamily: AppTypography.fontFamily,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
                   ),
                 ],
               ),
