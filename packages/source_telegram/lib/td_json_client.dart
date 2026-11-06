@@ -85,7 +85,11 @@ class TdJsonClient {
       return DynamicLibrary.open(customPath);
     }
     if (Platform.isAndroid) {
-      return DynamicLibrary.open('libtdjson.so');
+      try {
+        return DynamicLibrary.open('libtdjson.so');
+      } catch (_) {
+        return DynamicLibrary.process();
+      }
     } else if (Platform.isIOS) {
       return DynamicLibrary.process();
     } else if (Platform.isWindows) {

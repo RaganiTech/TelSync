@@ -12,9 +12,10 @@ class TdRequestFactory {
     required String apiHash,
     required String databaseDirectory,
     required String filesDirectory,
-    required String databaseEncryptionKey,
-    String deviceModel = 'Contacts import (temporary)',
-    String applicationVersion = '1.0.0',
+    String? databaseEncryptionKey,
+    String deviceModel = 'PC 64bit',
+    String systemVersion = 'Windows 10',
+    String applicationVersion = '5.0.0',
     String systemLanguageCode = 'fa',
   }) {
     return {
@@ -22,7 +23,6 @@ class TdRequestFactory {
       'use_test_dc': false,
       'database_directory': databaseDirectory,
       'files_directory': filesDirectory,
-      'database_encryption_key': databaseEncryptionKey,
       'use_file_database': false,
       'use_chat_info_database': false,
       'use_message_database': false,
@@ -31,7 +31,17 @@ class TdRequestFactory {
       'api_hash': apiHash,
       'system_language_code': systemLanguageCode,
       'device_model': deviceModel,
+      'system_version': systemVersion,
       'application_version': applicationVersion,
+      'enable_storage_optimizer': true,
+    };
+  }
+
+  /// checkDatabaseEncryptionKey
+  Map<String, dynamic> checkDatabaseEncryptionKey([String key = '']) {
+    return {
+      '@type': 'checkDatabaseEncryptionKey',
+      'encryption_key': key,
     };
   }
 
@@ -105,6 +115,7 @@ class TdRequestFactory {
   /// Set of all allowable method names
   static const Set<String> allowableMethods = {
     'setTdlibParameters',
+    'checkDatabaseEncryptionKey',
     'setAuthenticationPhoneNumber',
     'checkAuthenticationCode',
     'checkAuthenticationPassword',

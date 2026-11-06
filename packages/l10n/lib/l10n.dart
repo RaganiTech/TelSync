@@ -79,6 +79,8 @@ class AppLocalizations {
       ? 'در حال مقایسه شماره‌ها روی گوشی…'
       : 'Comparing numbers on your phone…';
 
+  String get tabAll => isPersian ? 'همه مخاطبین' : 'All Contacts';
+
   String get tabNew => isPersian ? 'جدید' : 'New';
 
   String get tabRelated => isPersian ? 'مرتبط با مخاطب موجود' : 'Related to existing';
@@ -149,6 +151,43 @@ class AppLocalizations {
       ? 'اتصال برقرار نشد. اینترنت یا VPN را بررسی کن.'
       : 'Could not connect. Check your internet or VPN.';
 
+  // VPN Location Detection & Warning
+  String get vpnModalTitle => isPersian
+      ? 'لطفاً VPN خود را روشن کنید'
+      : 'Please turn on your VPN';
+
+  String get vpnModalSubtitle => isPersian
+      ? 'لوکیشن شما ایران تشخیص داده شد. از آنجا که تلگرام در ایران فیلتر است، برنامه برای اتصال پایدار منتظر تغییر آی‌پی و فعال‌سازی فیلترشکن شماست.'
+      : 'Your location is detected as Iran. Since Telegram is filtered in Iran, the app is waiting for your VPN to connect.';
+
+  String get vpnWaitingText => isPersian
+      ? 'در حال بررسی خودکار اتصال (هر ۲۰ ثانیه)...'
+      : 'Auto-checking connection (every 20s)...';
+
+  String get vpnConnectedSuccess => isPersian
+      ? 'ارتباط آزاد با موفقیت برقرار شد! در حال ادامه...'
+      : 'VPN connected successfully! Resuming...';
+
+  String get vpnCheckNow => isPersian ? 'بررسی مجدد' : 'Check Now';
+  String get vpnBypass => isPersian ? 'ادامه در هر صورت' : 'Proceed anyway';
+  String get vpnCurrentIpLabel => isPersian ? 'آی‌پی فعلی:' : 'Current IP:';
+  String get vpnCurrentCountryLabel => isPersian ? 'کشور:' : 'Country:';
+  String get vpnIranDetected => isPersian ? 'ایران (فیلترشده)' : 'Iran (Filtered)';
+
+  // 2FA Password
+  String get password2faTitle => isPersian
+      ? 'تأیید دو مرحله‌ای تلگرام'
+      : 'Telegram 2-Step Verification';
+
+  String get password2faSubtitle => isPersian
+      ? 'این حساب تلگرام دارای تأیید هویت دو مرحله‌ای (گذرواژه ابری) است. لطفاً رمز عبور خود را وارد کنید.'
+      : 'This account has Two-Step Verification (Cloud Password) enabled. Please enter your password.';
+
+  String get password2faHintPrefix => isPersian ? 'راهنمای رمز: ' : 'Password hint: ';
+  String get password2faErrorInvalid => isPersian
+      ? 'رمز عبور وارد شده اشتباه است. لطفاً دوباره تلاش کنید.'
+      : 'Incorrect 2FA password. Please try again.';
+
   // Extra common actions & UI labels
   String get retry => isPersian ? 'تلاش مجدد' : 'Retry';
   String get cancel => isPersian ? 'انصراف' : 'Cancel';
@@ -165,6 +204,132 @@ class AppLocalizations {
   String get openSettings => isPersian ? 'باز کردن تنظیمات' : 'Open Settings';
   String get grantPermission => isPersian ? 'دادن دسترسی' : 'Grant permission';
   String get clearSession => isPersian ? 'پاکسازی و خروج اضطراری' : 'Emergency wipe & exit';
+
+  // Welcome Screen Guide
+  String get welcomeSubtitle => isPersian
+      ? 'مخاطبینی که در تلگرام دارید اما در گوشی ذخیره نشده‌اند را به سادگی به دفترچه تلفن خود اضافه کنید.'
+      : 'Easily export and save Telegram contacts that are missing from your phone contacts.';
+  String get localProcessingBadge => isPersian
+      ? 'پردازش ۱۰۰٪ محلی و امن روی همین گوشی'
+      : '100% local and secure processing on this device';
+  String get howItWorks => isPersian
+      ? 'این برنامه چگونه کار می‌کند؟'
+      : 'How does this app work?';
+  String get step1Title => isPersian
+      ? 'ورود مستقیم و امن به تلگرام'
+      : 'Direct & Secure Telegram Sign-in';
+  String get step1Desc => isPersian
+      ? 'با وارد کردن شماره تلفن خود، کد ورود رسمی از سمت تلگرام برای شما فرستاده می‌شود.'
+      : 'Enter your phone number to receive an official sign-in code directly from Telegram.';
+  String get step2Title => isPersian
+      ? 'اسکن و مقایسه هوشمند'
+      : 'Smart Scan & Comparison';
+  String get step2Desc => isPersian
+      ? 'برنامه مخاطبین تلگرام را با مخاطبین فعلی گوشی مقایسه کرده و شماره‌های جدید را جدا می‌کند.'
+      : 'The app compares your Telegram contacts with your phonebook to find missing numbers.';
+  String get step3Title => isPersian
+      ? 'پیش‌نمایش و انتخاب دستی'
+      : 'Preview & Custom Selection';
+  String get step3Desc => isPersian
+      ? 'قبل از ذخیره، نام و شماره هر مخاطب را بررسی کرده و موارد دلخواه را به گوشی انتقال دهید.'
+      : 'Review names and numbers before importing, choosing exactly who to add to your phone.';
+
+  String get appName => 'telSync';
+  String get appFullName => 'telSync';
+
+  // Security & Privacy Title
+  String get securityPrivacyTitle => isPersian
+      ? 'تضمین امنیت و حریم خصوصی'
+      : 'Security & Privacy Guaranteed';
+
+  // Auth Methods Screen
+  String get authChooseTitle => isPersian ? 'روش ورود به تلگرام' : 'Sign in to Telegram';
+  String get phoneMethodSubtitle => isPersian
+      ? 'بهترین روش برای همین گوشی؛ کد ورود ۵ رقمی به تلگرام شما ارسال می‌شود.'
+      : 'Best for this device. A 5-digit sign-in code is sent to your Telegram.';
+  String get phoneMethodBadge => isPersian ? 'توصیه شده برای این گوشی' : 'Recommended for this phone';
+  String get qrMethodSubtitle => isPersian
+      ? 'مناسب زمانی که تلگرام روی کامپیوتر یا گوشی دوم شما باز است و با دوربین اسکن می‌کنید.'
+      : 'Best when Telegram is open on your computer or second device to scan with camera.';
+
+  // Phone Auth Screen
+  String get phoneAuthTitle => isPersian ? 'ورود با شماره موبایل' : 'Sign in with Phone Number';
+  String get phoneInputLabel => isPersian
+      ? 'شماره موبایل حساب تلگرام خود را وارد کنید:'
+      : 'Enter your Telegram account phone number:';
+  String get phoneInputHelper => isPersian
+      ? 'شماره را با یا بدون صفر اولیه وارد کنید (مثال: 09121234567 یا 9121234567)'
+      : 'Enter number with or without leading zero (e.g. 9121234567 or +1...)';
+  String get getTelegramCode => isPersian ? 'دریافت کد تایید تلگرام' : 'Get Telegram Verification Code';
+  String get phoneAuthNote => isPersian
+      ? 'کد ورود به صورت پیامک یا در اپلیکیشن تلگرام برای همین شماره فرستاده می‌شود.'
+      : 'The sign-in code will be sent via SMS or inside Telegram for this number.';
+  String get phoneInvalidError => isPersian
+      ? 'شماره موبایل وارد شده معتبر نیست. لطفاً شماره را بررسی کنید.'
+      : 'The entered phone number is invalid. Please check the number.';
+  String get phoneUnoccupiedError => isPersian
+      ? 'این شماره در تلگرام حسابی ندارد.'
+      : 'No Telegram account found with this phone number.';
+  String get phoneBannedError => isPersian
+      ? 'این شماره توسط تلگرام مسدود شده است.'
+      : 'This phone number has been banned by Telegram.';
+  String get floodWaitError => isPersian
+      ? 'تعداد تلاش بیش از حد مجاز تلگرام؛ لطفاً چند دقیقه صبر کنید.'
+      : 'Too many attempts. Please wait a few minutes before trying again.';
+  String get requestTimeoutError => isPersian
+      ? 'عدم پاسخ از سرورهای تلگرام. لطفاً اتصال اینترنت یا فیلترشکن را بررسی کنید.'
+      : 'No response from Telegram servers. Please check your internet or VPN.';
+
+  // OTP Screen
+  String get telegramCodeLabel => isPersian ? 'کد ۵ رقمی تلگرام را وارد کنید:' : 'Enter the 5-digit Telegram code:';
+  String get codeSentTo => isPersian ? 'کد ارسال شد به:' : 'Code sent to:';
+  String get edit => isPersian ? 'ویرایش' : 'Edit';
+  String get confirmCode => isPersian ? 'تأیید کد تلگرام' : 'Confirm Code';
+
+  // Summary & All Synced
+  String get contactsComparisonResult => isPersian ? 'نتیجه بررسی مخاطبین' : 'Contacts Comparison Result';
+  String get contactsComparisonSuccess => isPersian
+      ? 'فهرست مخاطبین با موفقیت با گوشی مقایسه شد.'
+      : 'Contacts list successfully compared with your phone.';
+  String get viewAndSelectContacts => isPersian ? 'مشاهده و انتخاب مخاطبین' : 'View & Select Contacts';
+  String get allContactsSyncedTitle => isPersian ? 'همگام‌سازی کامل است' : 'Contacts Already Synced';
+  String get allContactsSyncedBody => isPersian
+      ? 'تمام مخاطبین تلگرام از قبل در گوشی شما موجود هستند و مخاطب جدیدی برای ذخیره یافت نشد.'
+      : 'All Telegram contacts are already in your phone contacts. There are no new contacts to import.';
+  String get exitApp => isPersian ? 'خروج از برنامه' : 'Exit App';
+  String get startNewProcess => isPersian ? 'شروع فرایند جدید' : 'Start New Process';
+
+  // Language Dialog
+  String get switchLanguageTitle => isPersian ? 'تغییر زبان به فارسی؟' : 'Switch to Persian?';
+  String get switchLanguageBody => isPersian
+      ? 'زبان پیش‌فرض برنامه انگلیسی است. آیا مایلید برنامه به زبان فارسی نمایش داده شود؟'
+      : 'The default language is English. Would you like to switch to Persian?';
+  String get yesPersian => isPersian ? 'بله، فارسی' : 'Yes, Persian';
+  String get noEnglish => isPersian ? 'خیر، English' : 'No, English';
+
+  // Report
+  String get reportDataWipedNotice => isPersian
+      ? 'هیچ ردپایی از داده‌های تلگرام روی حافظه گوشی یا سرور باقی نمی‌ماند.'
+      : 'No trace of Telegram data remains on the device or servers.';
+
+  // About Sheet
+  String get aboutAppTitle => isPersian
+      ? 'تلسینک (TelSync) - نسخه ۱.۰.۰'
+      : 'TelSync (v1.0.0)';
+  String get aboutDescription => isPersian
+      ? 'این برنامه برای انتقال امن و هوشمند مخاطبین تلگرام به دفترچه تلفن طراحی شده است و پایبند به اصول زیر است:\n\n'
+        '۱. پردازش ۱۰۰٪ محلی درون دستگاه بدون سرور واسط.\n'
+        '۲. دفترچه تلفن اصل حقیقت است؛ هیچ مخاطبی هرگز حذف یا ویرایش نمی‌شود.\n'
+        '۳. نشست تلگرام در پایان به‌صورت سروری Logout شده و تمام کلیدها و پایگاه داده محلی پاکسازی می‌شوند.\n'
+        '۴. محدودیت فراخوانی توابع TDLib بر اساس Allowlist سخت‌گیرانه برای عدم دسترسی به پیام‌ها، گروه‌ها و کانال‌ها.'
+      : 'This app is designed for secure, smart transfer of Telegram contacts into your phonebook while adhering to core principles:\n\n'
+        '1. 100% on-device local processing with zero external intermediary servers.\n'
+        '2. The phonebook is the single source of truth; no existing contact is ever modified or deleted.\n'
+        '3. The Telegram session is cleanly logged out on the server when finished, wiping all local keys and cache.\n'
+        '4. Strict TDLib method allowlisting ensures zero access to your private messages, groups, or channels.';
+  String get aboutFooter => isPersian
+      ? 'توسعه داده شده بر پایه استاندارد SRS v2.0'
+      : 'Engineered in accordance with SRS v2.0 specifications';
 }
 
 class _AppLocalizationsDelegate

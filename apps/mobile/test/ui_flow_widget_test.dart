@@ -119,8 +119,9 @@ void main() {
       await tester.pumpAndSettle();
 
       // In S3 Phone View
-      expect(find.text('ادامه'), findsOneWidget);
-      await tester.tap(find.text('ادامه'));
+      expect(find.text('دریافت کد تایید تلگرام'), findsOneWidget);
+      await tester.enterText(find.byType(TextField), '09121234567');
+      await tester.tap(find.text('دریافت کد تایید تلگرام'));
       await tester.pumpAndSettle();
 
       // In S4 OTP Code View
@@ -220,6 +221,121 @@ void main() {
 
       // Reverts back to Welcome View
       expect(find.text('مخاطبین تلگرامت را به گوشی بیاور'), findsOneWidget);
+    });
+
+    testWidgets(
+        'When all Telegram contacts already in phone, S10 shows synced popup with Exit and Start New Process buttons',
+        (tester) async {
+      tester.view.physicalSize = const Size(800, 1400);
+      tester.view.devicePixelRatio = 1.0;
+      addTearDown(tester.view.resetPhysicalSize);
+      addTearDown(tester.view.resetDevicePixelRatio);
+
+      await tester.pumpWidget(createTestApp(container: container));
+      await tester.pumpAndSettle();
+
+      final flowNotifier = container.read(importFlowControllerProvider.notifier);
+
+      flowNotifier.startImport();
+      flowNotifier.chooseAuthMethod(AuthMethod.phone);
+      flowNotifier.submitPhoneNumber('+989123456789');
+      flowNotifier.submitCode('12345');
+      flowNotifier.simulateAuthSuccess();
+
+      // Telegram contact has same number as device contact (+989121111111 from mockAdapter)
+      await flowNotifier.fetchTelegramContacts(mockContacts: [
+        const SourceContact(
+          userId: 200,
+          firstName: 'مخاطب تکراری',
+          lastName: '',
+          rawPhoneNumbers: ['+989121111111'],
+        ),
+      ]);
+      await tester.pump(const Duration(milliseconds: 100));
+
+      // Grant permission
+      await flowNotifier.requestPhonePermission(mockGranted: true);
+      await tester.pumpAndSettle();
+
+      // Dialog should be displayed with "همگام‌سازی کامل است"
+      expect(find.text('همگام‌سازی کامل است'), findsWidgets);
+      expect(find.text('خروج از برنامه'), findsWidgets);
+      expect(find.text('شروع فرایند جدید'), findsWidgets);
+
+      // Tap "شروع فرایند جدید" inside AlertDialog
+      final dialogBtn = find.descendant(
+        of: find.byType(AlertDialog),
+        matching: find.text('شروع فرایند جدید'),
+      );
+      await tester.tap(dialogBtn);
+      await tester.pumpAndSettle();
+
+      // Flow resets back to Welcome
+      expect(find.text('مخاطبین تلگرامت را به گوشی بیاور'), findsOneWidget);
+    });
+
+    testWidgets('Default language is English and TrustCard title is localized',
+        (tester) async {
+      final defaultContainer = ProviderContainer(
+        overrides: [
+          phoneBookAdapterProvider.overrideWithValue(mockAdapter),
+        ],
+      );
+      addTearDown(defaultContainer.dispose);
+
+      final currentLocale = defaultContainer.read(localeProvider);
+      expect(currentLocale.languageCode, equals('en'));
+
+      await tester.pumpWidget(UncontrolledProviderScope(
+        container: defaultContainer,
+        child: MaterialApp(
+          locale: currentLocale,
+          supportedLocales: AppLocalizations.supportedLocales,
+          localizationsDelegates: const [
+            AppLocalizations.delegate,
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+          ],
+          theme: AppTheme.lightTheme,
+          home: const FlowScreenHost(),
+        ),
+      ));
+      await tester.pumpAndSettle();
+
+      // Verify English strings are rendered
+      expect(find.text('Security & Privacy Guaranteed'), findsOneWidget);
+      expect(find.text('Bring your Telegram contacts to your phone'), findsOneWidget);
+      expect(find.text('Start'), findsOneWidget);
+    });
+
+    testWidgets('S3 phone input box renders with country code picker and anti-alias clipping',
+        (tester) async {
+      await tester.pumpWidget(createTestApp(container: container));
+      await tester.pumpAndSettle();
+
+      final flowNotifier = container.read(importFlowControllerProvider.notifier);
+      flowNotifier.startImport();
+      flowNotifier.chooseAuthMethod(AuthMethod.phone);
+      await tester.pumpAndSettle();
+
+      // Country code button is present
+      expect(find.text('+98'), findsOneWidget);
+      expect(find.text('🇮🇷'), findsOneWidget);
+
+      // Tap country code button to open bottom sheet
+      await tester.tap(find.text('+98'));
+      await tester.pumpAndSettle();
+
+      expect(find.text('انتخاب کشور'), findsOneWidget);
+      expect(find.text('ایالات متحده'), findsOneWidget);
+
+      // Select United States (+1)
+      await tester.tap(find.text('ایالات متحده'));
+      await tester.pumpAndSettle();
+
+      expect(find.text('+1'), findsOneWidget);
+      expect(find.text('🇺🇸'), findsOneWidget);
     });
   });
 }

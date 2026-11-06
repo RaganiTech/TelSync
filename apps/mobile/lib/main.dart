@@ -20,7 +20,7 @@ class ContactBridgeApp extends ConsumerWidget {
     final themeMode = ref.watch(themeModeProvider);
 
     return MaterialApp(
-      title: 'Contact Bridge',
+      title: 'telSync',
       debugShowCheckedModeBanner: false,
       locale: currentLocale,
       supportedLocales: AppLocalizations.supportedLocales,

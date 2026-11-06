@@ -29,7 +29,7 @@ final sessionCleanerProvider = Provider<SessionCleanerImpl>((ref) {
 
 class LocaleNotifier extends Notifier<Locale> {
   @override
-  Locale build() => const Locale('fa');
+  Locale build() => const Locale('en');
 
   void toggleLocale() {
     state = state.languageCode == 'fa' ? const Locale('en') : const Locale('fa');

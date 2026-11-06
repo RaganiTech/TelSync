@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:core_domain/core_domain.dart';
 import 'package:design_system/design_system.dart';
 import 'package:l10n/l10n.dart';
 import '../controllers/providers.dart';
+import '../services/ad_service.dart';
 
 class S14ReportView extends ConsumerWidget {
   final ReportState state;
@@ -106,11 +108,14 @@ class S14ReportView extends ConsumerWidget {
               const SizedBox(height: AppDimensions.space24),
             ],
             TrustCard(
+              title: l10n.securityPrivacyTitle,
               trustPoints: [
                 l10n.trust3,
-                'هیچ ردپایی از داده‌های تلگرام روی حافظه گوشی یا سرور باقی نمی‌ماند.',
+                l10n.reportDataWipedNotice,
               ],
             ),
+            const SizedBox(height: AppDimensions.space16),
+            const TapsellNativeBannerWidget(),
             const SizedBox(height: AppDimensions.space32),
           ],
         ),
@@ -118,8 +123,16 @@ class S14ReportView extends ConsumerWidget {
       bottomNavigationBar: PrimaryButton(
         text: l10n.doneDisconnect,
         icon: const Icon(Icons.logout_rounded, size: 20),
-        onPressed: () {
-          controller.finishFlow();
+        onPressed: () async {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+              content: Text('در حال خروج کامل از نشست تلگرام و بستن برنامه...'),
+              duration: Duration(seconds: 2),
+            ),
+          );
+          await AdService.instance.showInterstitialAfterCompletion();
+          await controller.finishFlow();
+          await SystemNavigator.pop();
         },
       ),
     );

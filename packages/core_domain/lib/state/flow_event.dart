@@ -11,6 +11,10 @@ class StartFlowEvent extends FlowEvent {
   const StartFlowEvent();
 }
 
+class StartDemoFlowEvent extends FlowEvent {
+  const StartDemoFlowEvent();
+}
+
 class ChooseAuthMethodEvent extends FlowEvent {
   final AuthMethod method;
   const ChooseAuthMethodEvent(this.method);
@@ -32,6 +36,11 @@ class SubmitPhoneEvent extends FlowEvent {
 class SubmitCodeEvent extends FlowEvent {
   final String code;
   const SubmitCodeEvent(this.code);
+}
+
+class RequirePasswordEvent extends FlowEvent {
+  final String? hint;
+  const RequirePasswordEvent({this.hint});
 }
 
 class SubmitPasswordEvent extends FlowEvent {

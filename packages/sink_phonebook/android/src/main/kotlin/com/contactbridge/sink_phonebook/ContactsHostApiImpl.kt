@@ -1,6 +1,7 @@
 package com.contactbridge.sink_phonebook
 
 import android.Manifest
+import android.app.Activity
 import android.content.ContentProviderOperation
 import android.content.ContentUris
 import android.content.Context
@@ -11,9 +12,12 @@ import android.provider.ContactsContract.CommonDataKinds.Phone
 import android.provider.ContactsContract.CommonDataKinds.StructuredName
 import android.provider.ContactsContract.Data
 import android.provider.ContactsContract.RawContacts
+import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 
 class ContactsHostApiImpl(private val context: Context) : ContactsHostApi {
+    var currentActivity: Activity? = null
+    var pendingPermissionCallback: ((Result<NativePermissionStatus>) -> Unit)? = null
 
     override fun getPermissionStatus(): NativePermissionStatus {
         val readGranted = ContextCompat.checkSelfPermission(
@@ -34,9 +38,32 @@ class ContactsHostApiImpl(private val context: Context) : ContactsHostApi {
     }
 
     override fun requestPermission(callback: (Result<NativePermissionStatus>) -> Unit) {
-        // Permission request is handled via ActivityResultLauncher in MainActivity / plugin binding.
-        // Returning current status as base:
-        callback(Result.success(getPermissionStatus()))
+        if (getPermissionStatus() == NativePermissionStatus.GRANTED) {
+            callback(Result.success(NativePermissionStatus.GRANTED))
+            return
+        }
+
+        val act = currentActivity
+        if (act != null) {
+            pendingPermissionCallback = callback
+            ActivityCompat.requestPermissions(
+                act,
+                arrayOf(Manifest.permission.READ_CONTACTS, Manifest.permission.WRITE_CONTACTS),
+                2001
+            )
+        } else {
+            callback(Result.success(getPermissionStatus()))
+        }
+    }
+
+    fun handlePermissionResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray): Boolean {
+        if (requestCode == 2001) {
+            val cb = pendingPermissionCallback
+            pendingPermissionCallback = null
+            cb?.invoke(Result.success(getPermissionStatus()))
+            return true
+        }
+        return false
     }
 
     override fun readAllContacts(callback: (Result<List<NativeContact>>) -> Unit) {

@@ -1,169 +1,78 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:core_domain/core_domain.dart';
 import 'package:design_system/design_system.dart';
+import 'package:l10n/l10n.dart';
 import 'package:qr_flutter/qr_flutter.dart';
-import 'package:url_launcher/url_launcher.dart';
 import '../controllers/providers.dart';
 
 class S6AuthQrView extends ConsumerWidget {
   final AuthQrState state;
   const S6AuthQrView({super.key, required this.state});
 
-  Future<void> _openTelegram(BuildContext context, String rawLink) async {
-    final uri = Uri.parse(rawLink);
-    try {
-      final launched = await launchUrl(
-        uri,
-        mode: LaunchMode.externalNonBrowserApplication,
-      );
-      if (!launched) {
-        await launchUrl(uri, mode: LaunchMode.externalApplication);
-      }
-    } catch (_) {
-      if (context.mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text(
-              'امکان باز کردن مستقیم تلگرام فراهم نشد. لطفاً از گزینه کپی پیوند یا اسکن استفاده کنید.',
-            ),
-          ),
-        );
-      }
-    }
-  }
-
-  void _copyLink(BuildContext context, String link) {
-    Clipboard.setData(ClipboardData(text: link));
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(
-        content: Text('پیوند تایید ورود کپی شد.'),
-        duration: Duration(seconds: 2),
-      ),
-    );
-  }
-
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final l10n = AppLocalizations.of(context);
     final controller = ref.read(importFlowControllerProvider.notifier);
     final theme = Theme.of(context);
     final link = state.link.isNotEmpty ? state.link : 'tg://login?token=simulated_token';
 
     return AppScaffold(
-      title: 'تایید ورود به تلگرام',
+      title: l10n.isPersian ? 'اسکن کد QR با دستگاه دیگر' : 'Scan QR with Another Device',
       showBackButton: true,
-      onBack: () => controller.dispatch(const CancelFlowEvent()),
+      onBack: () => controller.dispatch(const StartFlowEvent()),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             const SizedBox(height: AppDimensions.space16),
 
-            // Same Phone Primary Action Card
+            // Instruction Card
             Container(
-              padding: const EdgeInsets.all(18),
+              padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
-                color: const Color(AppColors.telegramBlue).withValues(alpha: 0.08),
-                borderRadius: BorderRadius.circular(20),
+                color: theme.colorScheme.surface,
+                borderRadius: BorderRadius.circular(16),
                 border: Border.all(
-                  color: const Color(AppColors.telegramBlue).withValues(alpha: 0.5),
-                  width: 1.5,
+                  color: theme.colorScheme.outline.withValues(alpha: 0.6),
                 ),
               ),
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Row(
                     children: [
-                      Container(
-                        padding: const EdgeInsets.all(8),
-                        decoration: const BoxDecoration(
-                          color: Color(AppColors.telegramBlue),
-                          shape: BoxShape.circle,
-                        ),
-                        child: const Icon(
-                          Icons.smartphone_rounded,
-                          color: Colors.white,
-                          size: 20,
-                        ),
-                      ),
-                      const SizedBox(width: 10),
-                      const Expanded(
-                        child: Text(
-                          'تلگرام روی همین گوشی نصب است؟',
-                          style: TextStyle(
-                            fontFamily: AppTypography.fontFamily,
-                            fontSize: 14,
-                            fontWeight: FontWeight.bold,
-                          ),
+                      Icon(Icons.camera_alt_outlined, color: theme.colorScheme.primary, size: 20),
+                      const SizedBox(width: 8),
+                      Text(
+                        l10n.isPersian
+                            ? 'مراحل اسکن با کامپیوتر یا گوشی دوم:'
+                            : 'Steps to scan with second device:',
+                        style: const TextStyle(
+                          fontFamily: AppTypography.fontFamily,
+                          fontSize: 13,
+                          fontWeight: FontWeight.bold,
                         ),
                       ),
                     ],
                   ),
                   const SizedBox(height: 10),
                   Text(
-                    'نیازی به دستگاه دوم یا اسکن با دوربین نیست! کافیست روی دکمه زیر بزنید تا تلگرام روی همین گوشی باز شود و با یک لمس ورود را تایید کنید:',
+                    l10n.isPersian
+                        ? '۱. در دستگاه دیگر، وارد برنامه تلگرام شوید.\n'
+                          '۲. به بخش Settings > Devices > Link Desktop Device بروید.\n'
+                          '۳. دوربین آن دستگاه را روی بارکد زیر بگیرید تا اتصال تایید شود.'
+                        : '1. Open Telegram on your second device or computer.\n'
+                          '2. Go to Settings > Devices > Link Desktop Device.\n'
+                          '3. Scan this QR code with the camera to link your session.',
                     style: TextStyle(
                       fontFamily: AppTypography.fontFamily,
                       fontSize: 12,
-                      height: 1.6,
-                      color: theme.colorScheme.onSurface.withValues(alpha: 0.8),
+                      height: 1.7,
+                      color: theme.colorScheme.onSurface.withValues(alpha: 0.85),
                     ),
-                  ),
-                  const SizedBox(height: 14),
-                  PrimaryButton(
-                    text: 'باز کردن تلگرام و تایید ورود',
-                    icon: const Icon(Icons.send_rounded, size: 20),
-                    backgroundColor: const Color(AppColors.telegramBlue),
-                    onPressed: () {
-                      _openTelegram(context, link);
-                    },
-                  ),
-                  const SizedBox(height: 8),
-                  OutlinedButton.icon(
-                    icon: const Icon(Icons.copy_rounded, size: 16),
-                    label: const Text(
-                      'کپی پیوند ورود برای باز کردن دستی در تلگرام',
-                      style: TextStyle(fontSize: 11, fontFamily: AppTypography.fontFamily),
-                    ),
-                    onPressed: () => _copyLink(context, link),
                   ),
                 ],
-              ),
-            ),
-
-            const SizedBox(height: AppDimensions.space24),
-
-            // Divider for 2nd device
-            Row(
-              children: [
-                Expanded(child: Divider(color: theme.colorScheme.outline)),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 12),
-                  child: Text(
-                    'یا اسکن بارکد با گوشی/تبلت دیگر',
-                    style: TextStyle(
-                      fontFamily: AppTypography.fontFamily,
-                      fontSize: 12,
-                      color: theme.colorScheme.onSurface.withValues(alpha: 0.6),
-                    ),
-                  ),
-                ),
-                Expanded(child: Divider(color: theme.colorScheme.outline)),
-              ],
-            ),
-
-            const SizedBox(height: AppDimensions.space16),
-
-            Text(
-              'در تلگرام دستگاه دیگر:\nتنظیمات ← دستگاه‌ها ← اتصال دستگاه (Scan QR)',
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontFamily: AppTypography.fontFamily,
-                fontSize: 12,
-                height: 1.5,
-                color: theme.colorScheme.onSurface.withValues(alpha: 0.75),
               ),
             ),
 
@@ -191,7 +100,7 @@ class S6AuthQrView extends ConsumerWidget {
                 child: QrImageView(
                   data: link,
                   version: QrVersions.auto,
-                  size: 200.0,
+                  size: 210.0,
                   eyeStyle: const QrEyeStyle(
                     eyeShape: QrEyeShape.square,
                     color: Color(0xFF1E3A8A),
@@ -206,33 +115,30 @@ class S6AuthQrView extends ConsumerWidget {
 
             const SizedBox(height: AppDimensions.space24),
 
-            // Alternative methods
-            Row(
-              children: [
-                Expanded(
-                  child: SecondaryButton(
-                    text: 'ورود با شماره',
-                    height: 44,
-                    icon: const Icon(Icons.phone_rounded, size: 16),
-                    onPressed: () {
-                      controller.chooseAuthMethod(AuthMethod.phone);
-                    },
-                  ),
-                ),
-                const SizedBox(width: 12),
-                Expanded(
-                  child: SecondaryButton(
-                    text: 'حالت دمو (تست)',
-                    height: 44,
-                    icon: const Icon(Icons.science_rounded, size: 16),
-                    borderColor: Colors.amber.shade700,
-                    foregroundColor: Colors.amber.shade900,
-                    onPressed: () {
-                      controller.startDemoMode();
-                    },
-                  ),
-                ),
-              ],
+            // If Telegram is on THIS phone button
+            PrimaryButton(
+              text: l10n.isPersian
+                  ? 'تلگرام روی همین گوشی است؟ (ورود با شماره)'
+                  : 'Telegram on this device? (Sign in with phone)',
+              icon: const Icon(Icons.phone_iphone_rounded, size: 20),
+              backgroundColor: const Color(AppColors.telegramBlue),
+              onPressed: () {
+                controller.chooseAuthMethod(AuthMethod.phone);
+              },
+            ),
+
+            const SizedBox(height: AppDimensions.space12),
+
+            SecondaryButton(
+              text: l10n.isPersian
+                  ? 'تست سریع با داده‌های نمونه (حالت دمو)'
+                  : 'Quick Test with Demo Data',
+              icon: const Icon(Icons.science_rounded, size: 18),
+              borderColor: Colors.amber.shade700,
+              foregroundColor: Colors.amber.shade900,
+              onPressed: () {
+                controller.startDemoMode();
+              },
             ),
 
             const SizedBox(height: AppDimensions.space24),

@@ -150,5 +150,24 @@ void main() {
       state = reduce(state, const ToggleCandidateEvent('c_missing'));
       expect((state as PreviewState).candidates.first.selected, isTrue);
     });
+
+    test('2FA Password flow: AuthCode -> AuthPassword -> FetchingTelegram', () {
+      FlowState state = const AuthCodeState(phoneNumber: '+989121234567');
+
+      // Receiving 2FA password requirement
+      state = reduce(state, const RequirePasswordEvent(hint: 'My hint'));
+      expect(state, isA<AuthPasswordState>());
+      expect((state as AuthPasswordState).hint, equals('My hint'));
+
+      // Submitting correct password proceeds to fetching
+      state = reduce(state, const AuthSuccessEvent());
+      expect(state, isA<FetchingTelegramState>());
+    });
+
+    test('2FA Password flow: back button transitions back to AuthPhoneState', () {
+      FlowState state = const AuthPasswordState(hint: 'Hint');
+      state = reduce(state, const ChooseAuthMethodEvent(AuthMethod.phone));
+      expect(state, isA<AuthPhoneState>());
+    });
   });
 }

@@ -12,10 +12,9 @@ class S2AuthChooseView extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final l10n = AppLocalizations.of(context);
     final controller = ref.read(importFlowControllerProvider.notifier);
-    final theme = Theme.of(context);
 
     return AppScaffold(
-      title: 'روش ورود به تلگرام',
+      title: l10n.authChooseTitle,
       showBackButton: true,
       onBack: () => controller.dispatch(const CancelFlowEvent()),
       body: SingleChildScrollView(
@@ -29,27 +28,14 @@ class S2AuthChooseView extends ConsumerWidget {
             ),
             const SizedBox(height: AppDimensions.space16),
 
-            // Method 1: Telegram on same phone (RECOMMENDED)
-            _AuthOptionCard(
-              title: 'ورود مستقیم با تلگرام همین گوشی',
-              subtitle: 'تلگرام روی همین دستگاه باز شده و ورود با یک لمس تایید می‌شود (بدون نیاز به گوشی دوم یا اسکن).',
-              badgeText: 'توصیه شده',
-              icon: Icons.send_rounded,
-              iconColor: const Color(AppColors.telegramBlue),
-              isRecommended: true,
-              onTap: () {
-                controller.chooseAuthMethod(AuthMethod.qr);
-              },
-            ),
-
-            const SizedBox(height: AppDimensions.space12),
-
-            // Method 2: Phone number & OTP
+            // Method 1: Phone number (RECOMMENDED FOR SAME PHONE)
             _AuthOptionCard(
               title: l10n.loginPhone,
-              subtitle: 'شماره خود را وارد کرده و کد ارسال‌شده به تلگرام یا پیامک را ثبت کنید.',
+              subtitle: l10n.phoneMethodSubtitle,
+              badgeText: l10n.phoneMethodBadge,
               icon: Icons.phone_android_rounded,
-              iconColor: theme.colorScheme.primary,
+              iconColor: const Color(AppColors.telegramBlue),
+              isRecommended: true,
               onTap: () {
                 controller.chooseAuthMethod(AuthMethod.phone);
               },
@@ -57,58 +43,18 @@ class S2AuthChooseView extends ConsumerWidget {
 
             const SizedBox(height: AppDimensions.space12),
 
-            // Method 3: QR scan with 2nd device
+            // Method 2: QR scan with 2nd device
             _AuthOptionCard(
               title: l10n.loginQr,
-              subtitle: 'اگر تلگرام روی دستگاه دیگری باز است، با دوربین آن دستگاه بارکد را اسکن کنید.',
+              subtitle: l10n.qrMethodSubtitle,
               icon: Icons.qr_code_scanner_rounded,
               iconColor: Colors.deepPurple,
-              onTap: () {
-                controller.chooseAuthMethod(AuthMethod.qr);
+              onTap: () async {
+                final ok = await controller.ensureVpnIfFiltered(context);
+                if (ok) {
+                  controller.chooseAuthMethod(AuthMethod.qr);
+                }
               },
-            ),
-
-            const SizedBox(height: AppDimensions.space24),
-
-            // Instant Test Mode Bypass
-            Container(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-              decoration: BoxDecoration(
-                color: theme.colorScheme.surface,
-                borderRadius: BorderRadius.circular(14),
-                border: Border.all(
-                  color: theme.colorScheme.outline.withValues(alpha: 0.5),
-                ),
-              ),
-              child: Row(
-                children: [
-                  Icon(Icons.science_outlined, color: Colors.amber.shade800, size: 22),
-                  const SizedBox(width: 12),
-                  Expanded(
-                    child: Text(
-                      'نمی‌خواهید وارد اکانت تلگرام شوید؟',
-                      style: TextStyle(
-                        fontFamily: AppTypography.fontFamily,
-                        fontSize: 12,
-                        color: theme.colorScheme.onSurface.withValues(alpha: 0.8),
-                      ),
-                    ),
-                  ),
-                  TextButton(
-                    onPressed: () {
-                      controller.startDemoMode();
-                    },
-                    child: Text(
-                      'حالت تست',
-                      style: TextStyle(
-                        fontFamily: AppTypography.fontFamily,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.amber.shade900,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
             ),
 
             const SizedBox(height: AppDimensions.space24),
@@ -142,9 +88,9 @@ class _AuthOptionCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
-    return InkWell(
+    return GestureDetector(
+      behavior: HitTestBehavior.opaque,
       onTap: onTap,
-      borderRadius: BorderRadius.circular(16),
       child: Container(
         padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
@@ -199,7 +145,9 @@ class _AuthOptionCard extends StatelessWidget {
                         Container(
                           padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
                           decoration: BoxDecoration(
-                            color: const Color(AppColors.telegramBlue),
+                            color: isRecommended
+                                ? const Color(AppColors.telegramBlue)
+                                : Colors.amber.shade800,
                             borderRadius: BorderRadius.circular(8),
                           ),
                           child: Text(

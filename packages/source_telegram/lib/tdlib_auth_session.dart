@@ -26,8 +26,10 @@ class TdlibAuthSession {
   String? _qrLink;
   DateTime? _qrExpiresAt;
   String? _currentPhoneNumber;
+  String? _passwordHint;
   int? _codeTimeoutSeconds;
 
+  String _encryptionKey = '';
   final StreamController<TgAuthState> _stateController = StreamController<TgAuthState>.broadcast();
   final Map<String, Completer<Map<String, dynamic>>> _pendingRequests = {};
   int _extraCounter = 0;
@@ -36,6 +38,8 @@ class TdlibAuthSession {
   TgAuthState get currentState => _state;
   String? get qrLink => _qrLink;
   DateTime? get qrExpiresAt => _qrExpiresAt;
+  String? get currentPhoneNumber => _currentPhoneNumber;
+  String? get passwordHint => _passwordHint;
 
   TdlibAuthSession({
     required TelegramIsolateBridge bridge,
@@ -71,6 +75,10 @@ class TdlibAuthSession {
       case 'authorizationStateWaitTdlibParameters':
         _updateState(TgAuthState.waitingParameters);
 
+      case 'authorizationStateWaitEncryptionKey':
+        // Unlock database encryption key to proceed to phone or QR authentication
+        _sendRequest(_factory.checkDatabaseEncryptionKey(_encryptionKey));
+
       case 'authorizationStateWaitPhoneNumber':
         _updateState(TgAuthState.waitingAuthMethod);
 
@@ -84,21 +92,36 @@ class TdlibAuthSession {
         final codeInfo = authState['code_info'] as Map<String, dynamic>?;
         _codeTimeoutSeconds = (codeInfo?['timeout'] as num?)?.toInt();
         _updateState(TgAuthState.waitingCode);
+        // Complete any pending phone submission requests
+        _completePendingRequests();
 
       case 'authorizationStateWaitPassword':
+        _passwordHint = authState['password_hint'] as String?;
         _updateState(TgAuthState.waitingPassword);
+        _completePendingRequests();
 
       case 'authorizationStateWaitRegistration':
         // FR-AUTH-040: Show unsupported, registration is not allowed
         _updateState(TgAuthState.unsupportedRegistration);
+        _completePendingRequests();
 
       case 'authorizationStateReady':
         _updateState(TgAuthState.ready);
+        _completePendingRequests();
 
       case 'authorizationStateClosing':
       case 'authorizationStateClosed':
         _updateState(TgAuthState.closed);
     }
+  }
+
+  void _completePendingRequests() {
+    for (final entry in _pendingRequests.entries) {
+      if (!entry.value.isCompleted) {
+        entry.value.complete({'@type': 'ok', '@extra': entry.key});
+      }
+    }
+    _pendingRequests.clear();
   }
 
   void _updateState(TgAuthState newState) {
@@ -114,6 +137,7 @@ class TdlibAuthSession {
     required String filesDirectory,
     required String databaseEncryptionKey,
   }) async {
+    _encryptionKey = databaseEncryptionKey;
     final req = _factory.setTdlibParameters(
       apiId: apiId,
       apiHash: apiHash,
@@ -129,28 +153,55 @@ class TdlibAuthSession {
     await _sendRequest(req);
   }
 
-  Future<void> submitPhoneNumber(String phoneNumber) async {
+  Future<Map<String, dynamic>> submitPhoneNumber(String phoneNumber) async {
     _currentPhoneNumber = phoneNumber;
     final req = _factory.setAuthenticationPhoneNumber(phoneNumber);
-    await _sendRequest(req);
+    final res = await _sendRequest(req);
+    if (res['@type'] == 'error') {
+      _logger?.log('submitPhoneNumber error: ${res['message']}');
+    }
+    return res;
   }
 
-  Future<void> submitCode(String code) async {
+  Future<Map<String, dynamic>> submitCode(String code) async {
     final req = _factory.checkAuthenticationCode(code);
-    await _sendRequest(req);
+    final res = await _sendRequest(req);
+    if (res['@type'] == 'error') {
+      _logger?.log('submitCode error: ${res['message']}');
+    }
+    return res;
   }
 
-  Future<void> submitPassword(String password) async {
+  Future<Map<String, dynamic>> submitPassword(String password) async {
     final req = _factory.checkAuthenticationPassword(password);
-    await _sendRequest(req);
+    final res = await _sendRequest(req);
+    if (res['@type'] == 'error') {
+      _logger?.log('submitPassword error: ${res['message']}');
+    }
+    return res;
   }
 
   Future<List<SourceContact>> fetchContacts({
     void Function(double progress, int count)? onProgress,
   }) async {
-    // 1. getContacts
-    final contactsRes = await _sendRequest(_factory.getContacts());
-    final userIds = (contactsRes['user_ids'] as List<dynamic>?)?.cast<int>() ?? [];
+    // 1. getContacts (with retries to give TDLib time to sync with Telegram cloud after login)
+    List<int> userIds = [];
+    for (int attempt = 0; attempt < 5; attempt++) {
+      final contactsRes = await _sendRequest(_factory.getContacts());
+      if (contactsRes['@type'] == 'users') {
+        userIds = (contactsRes['user_ids'] as List<dynamic>?)?.cast<int>() ?? [];
+        if (userIds.isNotEmpty) break;
+      }
+      if (attempt < 4) {
+        _logger?.log('Contacts list empty, waiting for TDLib cloud sync (attempt ${attempt + 1}/5)...');
+        await Future.delayed(const Duration(milliseconds: 1500));
+      }
+    }
+
+    if (userIds.isEmpty) {
+      _logger?.log('No contacts found in Telegram account after sync retries.');
+      return [];
+    }
 
     final result = <SourceContact>[];
     const concurrencyLimit = 20; // Bounded concurrency (FR-TG-001)
@@ -205,6 +256,16 @@ class TdlibAuthSession {
     _pendingRequests[extra] = completer;
 
     _bridge.send(payload);
-    return completer.future;
+    return completer.future.timeout(
+      const Duration(seconds: 25),
+      onTimeout: () {
+        _pendingRequests.remove(extra);
+        return {
+          '@type': 'error',
+          'code': 408,
+          'message': 'REQUEST_TIMEOUT',
+        };
+      },
+    );
   }
 }

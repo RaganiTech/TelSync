@@ -3,16 +3,23 @@ import '../tokens/app_dimensions.dart';
 import '../tokens/app_typography.dart';
 
 class TrustCard extends StatelessWidget {
+  final String? title;
   final List<String> trustPoints;
 
   const TrustCard({
     super.key,
+    this.title,
     required this.trustPoints,
   });
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final isPersian = Localizations.localeOf(context).languageCode == 'fa';
+    final resolvedTitle = title ??
+        (isPersian
+            ? 'تضمین امنیت و حریم خصوصی'
+            : 'Security & Privacy Guaranteed');
 
     return Container(
       decoration: BoxDecoration(
@@ -50,13 +57,15 @@ class TrustCard extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(width: AppDimensions.space12),
-                Text(
-                  'تضمین امنیت و حریم خصوصی',
-                  style: TextStyle(
-                    fontFamily: AppTypography.fontFamily,
-                    fontSize: AppTypography.bodySize,
-                    fontWeight: FontWeight.bold,
-                    color: theme.colorScheme.onSurface,
+                Expanded(
+                  child: Text(
+                    resolvedTitle,
+                    style: TextStyle(
+                      fontFamily: AppTypography.fontFamily,
+                      fontSize: AppTypography.bodySize,
+                      fontWeight: FontWeight.bold,
+                      color: theme.colorScheme.onSurface,
+                    ),
                   ),
                 ),
               ],

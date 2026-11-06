@@ -121,5 +121,22 @@ void main() {
       controller.dispatch(const StartFlowEvent());
       expect(container.read(importFlowControllerProvider), isA<WelcomeState>());
     });
+
+    test('Handles 2FA Password state transition and submit', () async {
+      final controller = container.read(importFlowControllerProvider.notifier);
+      controller.startImport();
+      controller.chooseAuthMethod(AuthMethod.phone);
+      controller.submitPhoneNumber('+989123456789');
+
+      // Emulate TDLib requiring 2FA password
+      controller.dispatch(const RequirePasswordEvent(hint: 'Hint'));
+      final passState = container.read(importFlowControllerProvider);
+      expect(passState, isA<AuthPasswordState>());
+      expect((passState as AuthPasswordState).hint, equals('Hint'));
+
+      controller.submitPassword('cloud_pass_123');
+      controller.simulateAuthSuccess();
+      expect(container.read(importFlowControllerProvider), isA<FetchingTelegramState>());
+    });
   });
 }

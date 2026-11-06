@@ -29,115 +29,151 @@ class ContactTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final initialChar = displayName.trim().isNotEmpty ? displayName.trim().characters.first : '؟';
+    final activeColor = badgeColor ?? theme.colorScheme.primary;
 
     return Card(
-      margin: const EdgeInsets.symmetric(vertical: AppDimensions.space4),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(
-          horizontal: AppDimensions.space12,
-          vertical: AppDimensions.space8,
+      elevation: isSelected ? 2 : 0.5,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(16),
+        side: BorderSide(
+          color: isSelected
+              ? activeColor.withValues(alpha: 0.8)
+              : theme.colorScheme.outline.withValues(alpha: 0.5),
+          width: isSelected ? 1.6 : 1.0,
         ),
-        child: Row(
-          children: [
-            if (onSelectedChanged != null)
-              Checkbox(
-                value: isSelected,
-                onChanged: onSelectedChanged,
-                activeColor: theme.colorScheme.primary,
+      ),
+      margin: const EdgeInsets.symmetric(vertical: 4, horizontal: 2),
+      clipBehavior: Clip.antiAlias,
+      child: InkWell(
+        onTap: onSelectedChanged != null ? () => onSelectedChanged!(!isSelected) : null,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
+          child: Row(
+            children: [
+              // Contact Avatar
+              CircleAvatar(
+                radius: 20,
+                backgroundColor: isSelected
+                    ? activeColor.withValues(alpha: 0.15)
+                    : theme.colorScheme.surfaceContainerHighest ?? Colors.grey.shade200,
+                child: Text(
+                  initialChar,
+                  style: TextStyle(
+                    fontFamily: AppTypography.fontFamily,
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                    color: isSelected ? activeColor : theme.colorScheme.onSurfaceVariant,
+                  ),
+                ),
               ),
-            const SizedBox(width: AppDimensions.space8),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    children: [
-                      Flexible(
-                        child: Text(
-                          isMissingName ? '(بدون نام)' : displayName,
-                          style: TextStyle(
-                            fontFamily: AppTypography.fontFamily,
-                            fontSize: AppTypography.bodySize,
-                            fontWeight: FontWeight.w600,
-                            color: isMissingName
-                                ? theme.colorScheme.error
-                                : theme.colorScheme.onSurface,
+              const SizedBox(width: 12),
+
+              // Contact Name & Phone
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        Flexible(
+                          child: Text(
+                            isMissingName ? '(بدون نام)' : displayName,
+                            style: TextStyle(
+                              fontFamily: AppTypography.fontFamily,
+                              fontSize: 14,
+                              fontWeight: FontWeight.bold,
+                              color: isMissingName
+                                  ? theme.colorScheme.error
+                                  : theme.colorScheme.onSurface,
+                            ),
+                            overflow: TextOverflow.ellipsis,
                           ),
-                          overflow: TextOverflow.ellipsis,
                         ),
-                      ),
-                      if (onEditName != null) ...[
-                        const SizedBox(width: AppDimensions.space4),
-                        InkWell(
-                          onTap: onEditName,
-                          borderRadius: BorderRadius.circular(16),
-                          child: Padding(
-                            padding: const EdgeInsets.all(4.0),
-                            child: Icon(
-                              Icons.edit_outlined,
-                              size: 16,
-                              color: theme.colorScheme.primary,
+                        if (onEditName != null) ...[
+                          const SizedBox(width: 4),
+                          InkWell(
+                            onTap: onEditName,
+                            borderRadius: BorderRadius.circular(16),
+                            child: Padding(
+                              padding: const EdgeInsets.all(4.0),
+                              child: Icon(
+                                Icons.edit_outlined,
+                                size: 16,
+                                color: theme.colorScheme.primary,
+                              ),
                             ),
                           ),
-                        ),
+                        ],
                       ],
-                    ],
-                  ),
-                  const SizedBox(height: 2),
-                  Text(
-                    phoneNumber,
-                    style: TextStyle(
-                      fontFamily: AppTypography.fontFamily,
-                      fontSize: AppTypography.captionSize,
-                      color: theme.colorScheme.onSurface.withOpacity(0.65),
-                      fontFeatures: const [],
                     ),
-                    textDirection: TextDirection.ltr,
-                  ),
-                  if (subtitle != null) ...[
-                    const SizedBox(height: 2),
+                    const SizedBox(height: 4),
                     Text(
-                      subtitle!,
+                      phoneNumber,
                       style: TextStyle(
                         fontFamily: AppTypography.fontFamily,
-                        fontSize: AppTypography.captionSize,
-                        color: theme.colorScheme.onSurface.withOpacity(0.55),
+                        fontSize: 13,
+                        fontWeight: FontWeight.w600,
+                        letterSpacing: 0.8,
+                        color: theme.colorScheme.onSurface.withValues(alpha: 0.75),
                       ),
+                      textDirection: TextDirection.ltr,
                     ),
-                  ],
-                  if (badgeText != null) ...[
-                    const SizedBox(height: 4),
-                    Container(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: AppDimensions.space8,
-                        vertical: 2,
-                      ),
-                      decoration: BoxDecoration(
-                        color: (badgeColor ?? theme.colorScheme.primary)
-                            .withOpacity(0.12),
-                        borderRadius:
-                            BorderRadius.circular(AppDimensions.radiusPill),
-                        border: Border.all(
-                          color: (badgeColor ?? theme.colorScheme.primary)
-                              .withOpacity(0.3),
-                          width: 1,
-                        ),
-                      ),
-                      child: Text(
-                        badgeText!,
+                    if (subtitle != null) ...[
+                      const SizedBox(height: 2),
+                      Text(
+                        subtitle!,
                         style: TextStyle(
                           fontFamily: AppTypography.fontFamily,
                           fontSize: 11,
-                          fontWeight: FontWeight.w600,
-                          color: badgeColor ?? theme.colorScheme.primary,
+                          color: theme.colorScheme.onSurface.withValues(alpha: 0.6),
                         ),
                       ),
-                    ),
+                    ],
+                    if (badgeText != null) ...[
+                      const SizedBox(height: 6),
+                      Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+                        decoration: BoxDecoration(
+                          color: activeColor.withValues(alpha: 0.12),
+                          borderRadius: BorderRadius.circular(8),
+                          border: Border.all(
+                            color: activeColor.withValues(alpha: 0.3),
+                            width: 1,
+                          ),
+                        ),
+                        child: Text(
+                          badgeText!,
+                          style: TextStyle(
+                            fontFamily: AppTypography.fontFamily,
+                            fontSize: 10,
+                            fontWeight: FontWeight.bold,
+                            color: activeColor,
+                          ),
+                        ),
+                      ),
+                    ],
                   ],
-                ],
+                ),
               ),
-            ),
-          ],
+
+              const SizedBox(width: 8),
+
+              // Selection Checkbox
+              if (onSelectedChanged != null)
+                Transform.scale(
+                  scale: 1.1,
+                  child: Checkbox(
+                    value: isSelected,
+                    onChanged: onSelectedChanged,
+                    activeColor: activeColor,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(6),
+                    ),
+                  ),
+                ),
+            ],
+          ),
         ),
       ),
     );

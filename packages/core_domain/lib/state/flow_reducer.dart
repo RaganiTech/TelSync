@@ -3,8 +3,11 @@ import 'flow_state.dart';
 import '../entities/candidate.dart';
 
 FlowState reduce(FlowState state, FlowEvent event) {
-  // Global cancel event always transitions to CleanupState
+  // Global cancel event always transitions to WelcomeState (or CleanupState if reason is given)
   if (event is CancelFlowEvent) {
+    if (event.reason == null) {
+      return const WelcomeState();
+    }
     return CleanupState(
       errorNotice: event.reason,
       nextState: const WelcomeState(),
@@ -13,6 +16,10 @@ FlowState reduce(FlowState state, FlowEvent event) {
 
   if (event is CleanupFinishedEvent && state is CleanupState) {
     return state.nextState ?? const WelcomeState();
+  }
+
+  if (event is StartDemoFlowEvent) {
+    return const PermissionRationaleState();
   }
 
   switch (state) {
@@ -34,25 +41,42 @@ FlowState reduce(FlowState state, FlowEvent event) {
       }
 
     case AuthQrState():
+      if (event is StartFlowEvent) {
+        return const AuthChooseState();
+      }
       if (event is QrLinkUpdatedEvent) {
         return AuthQrState(link: event.link, expiresAt: event.expiresAt);
+      }
+      if (event is RequirePasswordEvent) {
+        return AuthPasswordState(hint: event.hint);
       }
       if (event is AuthSuccessEvent) {
         return const FetchingTelegramState();
       }
 
     case AuthPhoneState():
+      if (event is StartFlowEvent) {
+        return const AuthChooseState();
+      }
       if (event is SubmitPhoneEvent) {
         return AuthCodeState(phoneNumber: event.phoneNumber);
       }
 
     case AuthCodeState():
+      if (event is ChooseAuthMethodEvent && event.method == AuthMethod.phone) {
+        return const AuthPhoneState();
+      }
+      if (event is RequirePasswordEvent) {
+        return AuthPasswordState(hint: event.hint);
+      }
       if (event is SubmitCodeEvent || event is AuthSuccessEvent) {
-        // Can transition to password (2FA) or fetching
         return const FetchingTelegramState();
       }
 
     case AuthPasswordState():
+      if (event is ChooseAuthMethodEvent && event.method == AuthMethod.phone) {
+        return const AuthPhoneState();
+      }
       if (event is SubmitPasswordEvent || event is AuthSuccessEvent) {
         return const FetchingTelegramState();
       }

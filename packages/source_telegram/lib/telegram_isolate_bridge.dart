@@ -28,7 +28,9 @@ class TelegramIsolateBridge {
     receivePort.listen((message) {
       if (message is SendPort) {
         _isolateSendPort = message;
-        completer.complete();
+        if (!completer.isCompleted) completer.complete();
+      } else if (message == null) {
+        if (!completer.isCompleted) completer.complete();
       } else if (message is Map<String, dynamic>) {
         _updateController.add(message);
       }
@@ -58,32 +60,38 @@ class TelegramIsolateBridge {
     TdJsonClient? client;
     try {
       client = TdJsonClient(libraryPath: config.libraryPath);
-    } catch (_) {
+    } catch (e) {
       // Library not found on this platform (e.g. unit test runner)
+      config.sendPort.send(null);
       return;
     }
 
     final commandPort = ReceivePort();
     config.sendPort.send(commandPort.sendPort);
 
-    bool running = true;
+    Timer? pollTimer;
     commandPort.listen((message) {
       if (message is _StopCommand) {
-        running = false;
+        pollTimer?.cancel();
         client?.destroy();
         commandPort.close();
       } else if (message is Map<String, dynamic>) {
-        client?.send(message);
+        try {
+          client?.send(message);
+        } catch (_) {}
       }
     });
 
-    // Receive loop
-    while (running) {
-      final res = client.receive(timeout: 0.5);
-      if (res != null) {
-        config.sendPort.send(res);
-      }
-    }
+    // Non-blocking polling loop that yields to the isolate event loop
+    pollTimer = Timer.periodic(const Duration(milliseconds: 20), (_) {
+      try {
+        while (true) {
+          final res = client?.receive(timeout: 0.0);
+          if (res == null) break;
+          config.sendPort.send(res);
+        }
+      } catch (_) {}
+    });
   }
 }
 

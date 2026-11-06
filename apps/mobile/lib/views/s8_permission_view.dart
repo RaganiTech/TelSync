@@ -67,6 +67,7 @@ class S8PermissionView extends ConsumerWidget {
             ),
             const SizedBox(height: AppDimensions.space24),
             TrustCard(
+              title: l10n.securityPrivacyTitle,
               trustPoints: [
                 l10n.trust1,
                 l10n.trust2,

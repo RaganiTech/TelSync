@@ -32,6 +32,7 @@ class AppScaffold extends StatelessWidget {
     }
 
     return Scaffold(
+      resizeToAvoidBottomInset: true,
       appBar: title != null || leadingWidget != null || actions != null
           ? AppBar(
               title: title != null ? Text(title!) : null,
@@ -58,15 +59,23 @@ class AppScaffold extends StatelessWidget {
         ),
       ),
       bottomNavigationBar: bottomNavigationBar != null
-          ? SafeArea(
-              child: Center(
-                child: ConstrainedBox(
-                  constraints: const BoxConstraints(
-                    maxWidth: AppDimensions.maxContentWidth,
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(AppDimensions.screenGutter),
-                    child: bottomNavigationBar,
+          ? Padding(
+              padding: EdgeInsets.only(
+                bottom: MediaQuery.of(context).viewInsets.bottom,
+              ),
+              child: SafeArea(
+                top: false,
+                child: Align(
+                  alignment: Alignment.bottomCenter,
+                  heightFactor: 1.0,
+                  child: ConstrainedBox(
+                    constraints: const BoxConstraints(
+                      maxWidth: AppDimensions.maxContentWidth,
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(AppDimensions.screenGutter),
+                      child: bottomNavigationBar,
+                    ),
                   ),
                 ),
               ),

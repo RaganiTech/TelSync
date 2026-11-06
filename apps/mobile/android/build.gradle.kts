@@ -15,6 +15,19 @@ subprojects {
     val newSubprojectBuildDir: Directory = newBuildDir.dir(project.name)
     project.layout.buildDirectory.value(newSubprojectBuildDir)
 }
+
+subprojects {
+    plugins.withId("com.android.library") {
+        if (project.name == "tapsell_mediation") {
+            try {
+                val androidExt = project.extensions.findByName("android")
+                val method = androidExt?.javaClass?.getMethod("setNamespace", String::class.java)
+                method?.invoke(androidExt, "ir.tapsell.mediation.flutter_plugin")
+            } catch (_: Exception) {}
+        }
+    }
+}
+
 subprojects {
     project.evaluationDependsOn(":app")
 }

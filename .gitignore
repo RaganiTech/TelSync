@@ -24,3 +24,7 @@ Thumbs.db
 *.log
 coverage/
 test-results/
+
+
+#....
+apps/mobile/android/upload-keystore.jks

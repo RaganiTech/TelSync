@@ -67,6 +67,7 @@ class S12ConfirmSheet extends ConsumerWidget {
             ),
             const SizedBox(height: AppDimensions.space24),
             TrustCard(
+              title: l10n.securityPrivacyTitle,
               trustPoints: [
                 l10n.trust2,
                 l10n.trust3,
@@ -80,7 +81,7 @@ class S12ConfirmSheet extends ConsumerWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           PrimaryButton(
-            text: 'افزودن قطعی $count مخاطب',
+            text: l10n.isPersian ? 'افزودن قطعی $count مخاطب' : 'Add $count Contacts',
             icon: const Icon(Icons.check, size: 20),
             onPressed: () {
               controller.confirmAndWrite();
