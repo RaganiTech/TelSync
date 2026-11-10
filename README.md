@@ -23,7 +23,8 @@
 [![Flutter Version](https://img.shields.io/badge/Flutter-3.24+-02569B.svg?style=flat-square&logo=flutter)](https://flutter.dev)
 [![Privacy](https://img.shields.io/badge/Privacy-100%25%20On--Device-success?style=flat-square)](#-security--privacy-principles)
 [![Platform](https://img.shields.io/badge/Platform-Android%20%7C%20iOS-orange?style=flat-square)](#-direct-downloads)
-[![Buy Me A Coffee](https://img.shields.io/badge/Donate-Buy%20Me%20A%20Coffee-FFDD00.svg?style=flat-square&logo=buy-me-a-coffee&logoColor=black)](https://buymeacoffee.com/alireza)
+[![Donate Reymit](https://img.shields.io/badge/Donate-Reymit-FF5722.svg?style=flat-square&logo=coffeescript&logoColor=white)](https://reymit.ir/raganitech)
+[![Donate USDT](https://img.shields.io/badge/Donate-USDT-26A17B.svg?style=flat-square&logo=tether&logoColor=white)](#-3-crypto-wallets-tether-usdt)
 
 </div>
 
@@ -137,22 +138,22 @@ Giving a **Star (⭐)** at the top right of this GitHub page helps other users f
 
 </div>
 
-### ☕ 2. Buy Me a Coffee
-You can buy a coffee for the developer:
+### ☕ 2. Rial Donation (Reymit / Coffee)
+You can support the developer directly using Iranian debit cards via **Reymit**:
 <p align="center">
-  <a href="https://buymeacoffee.com/alireza" target="_blank">
-    <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" height="50" style="border-radius: 8px;" />
+  <a href="https://reymit.ir/raganitech" target="_blank">
+    <img src="https://img.shields.io/badge/Donate-Reymit.ir%2Fraganitech-FF5722?style=for-the-badge&logo=coffeescript&logoColor=white" alt="Donate via Reymit" height="45" style="border-radius: 8px;" />
   </a>
 </p>
 
-### 🪙 3. Crypto Wallets
-You can also support development using cryptocurrency:
+### 🪙 3. Crypto Wallets (Tether USDT)
+You can support development internationally using **Tether (USDT)** via Trust Wallet:
 
-| Coin / Network | Address |
+| Cryptocurrency / Network | Address |
 | :--- | :--- |
-| **USDT (TRC-20)** | `TYsC1h8wN2dF9kQ4eXp7mVbZ3aL6jR5u1T` |
-| **TON / Telegram Wallet** | `EQBvW8Z5huBkMJYdnF64PT5qJyVcCFK5nE48VnMaD-88Tels` |
-| **Bitcoin (BTC)** | `bc1q9u8x2c4v7m0s6l4d5w3k1j8h6g2f9a7z0e5p` |
+| **USDT (BNB Smart Chain / BEP-20)** *(Recommended · Lowest Fees)* | `0x9529b9c712E306Eaed6c852e93239499CEA973db` |
+| **USDT (Ethereum / ERC-20)** | `0x9529b9c712E306Eaed6c852e93239499CEA973db` |
+| **USDT (Polygon / Arbitrum / Optimism)** | `0x9529b9c712E306Eaed6c852e93239499CEA973db` |
 
 ---
 

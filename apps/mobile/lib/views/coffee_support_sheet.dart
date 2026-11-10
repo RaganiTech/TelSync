@@ -4,7 +4,7 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:design_system/design_system.dart';
 import 'package:l10n/l10n.dart';
 
-/// Open-source developer support & Buy Me a Coffee widget
+/// Open-source developer support & Reymit / USDT widget
 class SupportCoffeeCard extends StatelessWidget {
   final VoidCallback? onOtherWaysPressed;
 
@@ -13,11 +13,12 @@ class SupportCoffeeCard extends StatelessWidget {
     this.onOtherWaysPressed,
   });
 
-  static const String buyMeACoffeeUrl = 'https://buymeacoffee.com/alireza';
+  static const String reymitUrl = 'https://reymit.ir/raganitech';
+  static const String tetherUsdtAddress = '0x9529b9c712E306Eaed6c852e93239499CEA973db';
   static const String githubRepoUrl = 'https://github.com/alireza00138300/TelSync';
 
-  static Future<void> launchCoffeeUrl() async {
-    final uri = Uri.parse(buyMeACoffeeUrl);
+  static Future<void> launchReymitUrl() async {
+    final uri = Uri.parse(reymitUrl);
     if (await canLaunchUrl(uri)) {
       await launchUrl(uri, mode: LaunchMode.externalApplication);
     }
@@ -91,7 +92,7 @@ class SupportCoffeeCard extends StatelessWidget {
                     ),
                     const SizedBox(height: 2),
                     Text(
-                      'Open-Source Support',
+                      'RaganiTech · Open Source',
                       style: TextStyle(
                         fontFamily: AppTypography.fontFamily,
                         fontSize: 11,
@@ -115,11 +116,11 @@ class SupportCoffeeCard extends StatelessWidget {
             ),
           ),
           const SizedBox(height: AppDimensions.space16),
-          // Main Buy Coffee Button
+          // Main Reymit Coffee Button
           ElevatedButton.icon(
             style: ElevatedButton.styleFrom(
-              backgroundColor: accentAmber,
-              foregroundColor: Colors.black,
+              backgroundColor: const Color(0xFFFF5722),
+              foregroundColor: Colors.white,
               elevation: 0,
               padding: const EdgeInsets.symmetric(
                 horizontal: AppDimensions.space16,
@@ -138,10 +139,10 @@ class SupportCoffeeCard extends StatelessWidget {
                 fontSize: AppTypography.captionSize + 1,
               ),
             ),
-            onPressed: launchCoffeeUrl,
+            onPressed: launchReymitUrl,
           ),
           const SizedBox(height: AppDimensions.space8),
-          // Secondary Options
+          // Secondary Options (USDT & GitHub)
           OutlinedButton.icon(
             style: OutlinedButton.styleFrom(
               foregroundColor: isDark ? Colors.amber.shade200 : darkAmber,
@@ -180,7 +181,7 @@ class SupportCoffeeCard extends StatelessWidget {
   }
 }
 
-/// Modal Bottom Sheet offering multiple support options (Buy Me a Coffee, Card, GitHub Star)
+/// Modal Bottom Sheet offering multiple support options (Reymit, USDT Tether, GitHub Star)
 class CoffeeSupportSheet extends StatelessWidget {
   final bool isExitPrompt;
 
@@ -198,7 +199,8 @@ class CoffeeSupportSheet extends StatelessWidget {
     );
   }
 
-  static const String cardPlaceholder = '6037-9979-0000-0000';
+  static const String reymitUrl = SupportCoffeeCard.reymitUrl;
+  static const String tetherAddress = SupportCoffeeCard.tetherUsdtAddress;
 
   @override
   Widget build(BuildContext context) {
@@ -267,7 +269,7 @@ class CoffeeSupportSheet extends StatelessWidget {
                         ),
                         const SizedBox(height: 2),
                         Text(
-                          'TelSync · Open Source',
+                          'TelSync · RaganiTech',
                           style: TextStyle(
                             fontFamily: AppTypography.fontFamily,
                             fontSize: 12,
@@ -290,20 +292,20 @@ class CoffeeSupportSheet extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: AppDimensions.space20),
-              // Option 1: Buy Me a Coffee
+              // Option 1: Rial Payment via Reymit
               _buildOptionTile(
                 context,
-                icon: Icons.coffee_rounded,
-                iconBg: const Color(0xFFF59E0B).withValues(alpha: 0.15),
-                iconColor: const Color(0xFFD97706),
-                title: 'Buy Me a Coffee (بین‌المللی / دلاری)',
-                subtitle: 'buymeacoffee.com/alireza',
+                icon: Icons.local_cafe_rounded,
+                iconBg: const Color(0xFFFF5722).withValues(alpha: 0.15),
+                iconColor: const Color(0xFFE64A19),
+                title: l10n.isPersian ? 'پرداخت ریالی آنلاین (ریمیت / شتاب)' : 'Rial Online Payment (Reymit)',
+                subtitle: 'reymit.ir/raganitech',
                 trailing: const Icon(Icons.open_in_new_rounded, size: 20),
-                onTap: SupportCoffeeCard.launchCoffeeUrl,
+                onTap: SupportCoffeeCard.launchReymitUrl,
               ),
               const SizedBox(height: AppDimensions.space12),
-              // Option 2: Iranian Card Transfer
-              _buildCardTransferTile(context),
+              // Option 2: Dollar / Crypto Payment (Tether USDT - Trust Wallet)
+              _buildCryptoTetherTile(context),
               const SizedBox(height: AppDimensions.space12),
               // Option 3: GitHub Star
               _buildOptionTile(
@@ -412,77 +414,110 @@ class CoffeeSupportSheet extends StatelessWidget {
     );
   }
 
-  Widget _buildCardTransferTile(BuildContext context) {
+  Widget _buildCryptoTetherTile(BuildContext context) {
     final theme = Theme.of(context);
     final isDark = theme.brightness == Brightness.dark;
     final l10n = AppLocalizations.of(context);
+    const tetherGreen = Color(0xFF26A17B);
 
     return Container(
-      padding: const EdgeInsets.symmetric(
-        horizontal: AppDimensions.space16,
-        vertical: AppDimensions.space12,
-      ),
+      padding: const EdgeInsets.all(AppDimensions.space16),
       decoration: BoxDecoration(
-        color: isDark ? const Color(0xFF0F172A) : const Color(0xFFF8FAFC),
+        color: isDark ? const Color(0xFF0C241F) : const Color(0xFFF0FDF4),
         borderRadius: BorderRadius.circular(AppDimensions.radiusCard),
         border: Border.all(
-          color: isDark ? const Color(0xFF334155) : const Color(0xFFE2E8F0),
-          width: 1,
+          color: tetherGreen.withValues(alpha: isDark ? 0.35 : 0.25),
+          width: 1.2,
         ),
       ),
-      child: Row(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Container(
-            padding: const EdgeInsets.all(8),
-            decoration: BoxDecoration(
-              color: Colors.blue.withValues(alpha: 0.15),
-              borderRadius: BorderRadius.circular(8),
-            ),
-            child: const Icon(
-              Icons.credit_card_rounded,
-              color: Colors.blue,
-              size: 20,
-            ),
+          Row(
+            children: [
+              Container(
+                padding: const EdgeInsets.all(8),
+                decoration: BoxDecoration(
+                  color: tetherGreen.withValues(alpha: 0.18),
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                child: const Icon(
+                  Icons.currency_exchange_rounded,
+                  color: tetherGreen,
+                  size: 20,
+                ),
+              ),
+              const SizedBox(width: AppDimensions.space12),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      l10n.coffeeCardPaymentTitle,
+                      style: TextStyle(
+                        fontFamily: AppTypography.fontFamily,
+                        fontSize: AppTypography.captionSize + 1,
+                        fontWeight: FontWeight.bold,
+                        color: theme.colorScheme.onSurface,
+                      ),
+                    ),
+                    const SizedBox(height: 2),
+                    Text(
+                      l10n.isPersian
+                          ? 'تراست ولت · شبکه‌های BSC (BEP-20) / ERC-20 / Polygon'
+                          : 'Trust Wallet · BSC (BEP-20) / ERC-20 / Polygon',
+                      style: TextStyle(
+                        fontFamily: AppTypography.fontFamily,
+                        fontSize: 11,
+                        color: isDark ? const Color(0xFF86EFAC) : const Color(0xFF166534),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
           ),
-          const SizedBox(width: AppDimensions.space12),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+          const SizedBox(height: AppDimensions.space12),
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
+            decoration: BoxDecoration(
+              color: isDark ? const Color(0xFF061411) : Colors.white,
+              borderRadius: BorderRadius.circular(8),
+              border: Border.all(
+                color: isDark ? const Color(0xFF134E48) : const Color(0xFFBBF7D0),
+                width: 1,
+              ),
+            ),
+            child: Row(
               children: [
-                Text(
-                  l10n.coffeeCardPaymentTitle,
-                  style: TextStyle(
-                    fontFamily: AppTypography.fontFamily,
-                    fontSize: AppTypography.captionSize + 1,
-                    fontWeight: FontWeight.bold,
-                    color: theme.colorScheme.onSurface,
+                Expanded(
+                  child: SelectableText(
+                    tetherAddress,
+                    style: const TextStyle(
+                      fontFamily: 'monospace',
+                      fontSize: 11,
+                      letterSpacing: 0.5,
+                      fontWeight: FontWeight.w600,
+                    ),
                   ),
                 ),
-                const SizedBox(height: 2),
-                Text(
-                  cardPlaceholder,
-                  style: const TextStyle(
-                    fontFamily: 'monospace',
-                    fontSize: 13,
-                    letterSpacing: 1.1,
-                    fontWeight: FontWeight.w600,
-                  ),
+                IconButton(
+                  tooltip: l10n.coffeeCopyCardNumber,
+                  icon: const Icon(Icons.copy_rounded, size: 18),
+                  padding: EdgeInsets.zero,
+                  constraints: const BoxConstraints(),
+                  onPressed: () {
+                    Clipboard.setData(const ClipboardData(text: tetherAddress));
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text(l10n.coffeeCardCopiedNotice),
+                        duration: const Duration(seconds: 2),
+                      ),
+                    );
+                  },
                 ),
               ],
             ),
-          ),
-          IconButton(
-            tooltip: l10n.coffeeCopyCardNumber,
-            icon: const Icon(Icons.copy_rounded, size: 20),
-            onPressed: () {
-              Clipboard.setData(const ClipboardData(text: cardPlaceholder));
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(
-                  content: Text(l10n.coffeeCardCopiedNotice),
-                  duration: const Duration(seconds: 2),
-                ),
-              );
-            },
           ),
         ],
       ),

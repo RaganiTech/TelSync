@@ -23,7 +23,8 @@
 [![Flutter Version](https://img.shields.io/badge/Flutter-3.24+-02569B.svg?style=flat-square&logo=flutter)](https://flutter.dev)
 [![حریم خصوصی](https://img.shields.io/badge/%D8%AD%D8%B1%DB%8C%D9%85%20%D8%AE%D8%B5%D9%88%D8%B5%DB%8C-%DB%B1%DB%B0%DB%B0%D9%AA%20%D9%85%D8%AD%D9%84%DB%8C-success?style=flat-square)](#-امنیت-و-حفظ-حریم-خصوصی)
 [![پلتفرم](https://img.shields.io/badge/%D9%BE%D9%84%D8%AA%D9%81%D8%B1%D9%85-%D8%A7%D9%86%D8%AF%D8%B1%D9%88%DB%8C%D8%AF%20%7C%20iOS-orange?style=flat-square)](#-دانلود-مستقیم)
-[![Buy Me A Coffee](https://img.shields.io/badge/Donate-Buy%20Me%20A%20Coffee-FFDD00.svg?style=flat-square&logo=buy-me-a-coffee&logoColor=black)](https://buymeacoffee.com/alireza)
+[![حمایت ریالی در ریمیت](https://img.shields.io/badge/%D8%AF%D9%88%D9%86%DB%8C%D8%AA-%D8%B1%DB%8C%D9%85%DB%8C%D8%AA-FF5722.svg?style=flat-square&logo=coffeescript&logoColor=white)](https://reymit.ir/raganitech)
+[![دونیت تتر](https://img.shields.io/badge/%D8%AF%D9%88%D9%86%DB%8C%D8%AA-%D8%AA%D8%AA%D8%B1%20USDT-26A17B.svg?style=flat-square&logo=tether&logoColor=white)](#-۳-کیف‌پول‌های-ارز-دیجیتال-تتر-دلاری)
 
 </div>
 
@@ -149,27 +150,27 @@ flutter build apk --release --split-per-abi
 
 <div dir="rtl">
 
-### ☕ ۲. خرید قهوه برای توسعه‌دهنده (Buy Me a Coffee)
-می‌توانید از طریق پلتفرم Buy Me a Coffee برای توسعه‌دهنده قهوه تهیه کنید:
+### ☕ ۲. حمایت ریالی آنلاین با ریمیت (خرید قهوه)
+می‌توانید به سادگی و از طریق کارت‌های بانکی عضو شتاب در درگاه **ریمیت** حامی توسعه‌دهنده تلسینک باشید:
 
 </div>
 
 <p align="center">
-  <a href="https://buymeacoffee.com/alireza" target="_blank">
-    <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="خرید قهوه برای توسعه دهنده" height="50" style="border-radius: 8px;" />
+  <a href="https://reymit.ir/raganitech" target="_blank">
+    <img src="https://img.shields.io/badge/حمایت_در_ریمیت-reymit.ir%2Fraganitech-FF5722?style=for-the-badge&logo=coffeescript&logoColor=white" alt="حمایت در ریمیت" height="45" style="border-radius: 8px;" />
   </a>
 </p>
 
 <div dir="rtl">
 
-### 🪙 ۳. کیف‌پول‌های ارز دیجیتال (Crypto Wallets)
-امکان دونیت از طریق رمزارزها نیز فراهم است:
+### 🪙 ۳. کیف‌پول‌های ارز دیجیتال (تتر دلاری)
+امکان دونیت دلاری از طریق کیف‌پول **Trust Wallet** با استیبل‌کوین تتر (USDT) فراهم است:
 
 | شبکه و رمزارز | آدرس کیف‌پول |
 | :--- | :--- |
-| **تتر بر بستر ترون (USDT - TRC20)** | `TYsC1h8wN2dF9kQ4eXp7mVbZ3aL6jR5u1T` |
-| **تون / ولت تلگرام (TON)** | `EQBvW8Z5huBkMJYdnF64PT5qJyVcCFK5nE48VnMaD-88Tels` |
-| **بیت‌کوین (BTC)** | `bc1q9u8x2c4v7m0s6l4d5w3k1j8h6g2f9a7z0e5p` |
+| **تتر بر بستر بایننس اسمارت چین (USDT - BEP20)** *(پیشنهادی · کمترین کارمزد)* | `0x9529b9c712E306Eaed6c852e93239499CEA973db` |
+| **تتر بر بستر اتریوم (USDT - ERC20)** | `0x9529b9c712E306Eaed6c852e93239499CEA973db` |
+| **تتر بر بستر پالیگان و آربیتروم (Polygon / Arbitrum)** | `0x9529b9c712E306Eaed6c852e93239499CEA973db` |
 
 ---
 

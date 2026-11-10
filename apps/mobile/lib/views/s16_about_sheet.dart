@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:design_system/design_system.dart';
 import 'package:l10n/l10n.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'coffee_support_sheet.dart';
 
 class S16AboutSheet extends StatelessWidget {
   const S16AboutSheet({super.key});
@@ -170,11 +170,8 @@ class S16AboutSheet extends StatelessWidget {
             ),
             const SizedBox(height: AppDimensions.space16),
             InkWell(
-              onTap: () async {
-                final uri = Uri.parse('https://buymeacoffee.com/alireza');
-                if (await canLaunchUrl(uri)) {
-                  await launchUrl(uri, mode: LaunchMode.externalApplication);
-                }
+              onTap: () {
+                CoffeeSupportSheet.show(context);
               },
               borderRadius: BorderRadius.circular(AppDimensions.radiusCard),
               child: Container(
