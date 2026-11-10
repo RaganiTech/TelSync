@@ -1,0 +1,78 @@
+name: Build iOS (Experimental)
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - 'apps/mobile/ios/**'
+      - 'packages/sink_phonebook/ios/**'
+      - '.github/workflows/build-ios.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  build-ios:
+    name: Build & Test iOS Package
+    runs-on: macos-14
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+          cache: true
+
+      - name: Install Dependencies
+        run: |
+          cd apps/mobile
+          flutter pub get
+
+      - name: Run Unit & Widget Tests
+        run: |
+          cd apps/mobile
+          flutter test
+
+      - name: Install CocoaPods Dependencies
+        run: |
+          cd apps/mobile/ios
+          pod install --repo-update
+
+      - name: Build iOS Release (Unsigned)
+        run: |
+          cd apps/mobile
+          flutter build ios --release --no-codesign
+
+      - name: Package IPA (For Sideloading / AltStore / TrollStore)
+        run: |
+          cd apps/mobile/build/ios/iphoneos
+          mkdir -p Payload
+          cp -R Runner.app Payload/
+          zip -r -9 telsync-v1.0.2-ios-unsigned.ipa Payload
+          ls -la telsync-v1.0.2-ios-unsigned.ipa
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: telsync-ios-unsigned-ipa
+          path: apps/mobile/build/ios/iphoneos/telsync-v1.0.2-ios-unsigned.ipa
+
+      - name: Attach to GitHub Release v1.0.2
+        uses: softprops/action-gh-release@v2
+        if: success()
+        with:
+          tag_name: v1.0.2
+          files: apps/mobile/build/ios/iphoneos/telsync-v1.0.2-ios-unsigned.ipa
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

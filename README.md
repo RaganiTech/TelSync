@@ -66,10 +66,15 @@ Download the pre-compiled production release for your device architecture:
 | **Android 32-bit** | [![Download ARMv7](https://img.shields.io/badge/Download-APK%20(armeabi--v7a)-45bf55?style=for-the-badge&logo=android)](https://github.com/alireza00138300/TelSync/releases/download/v1.0.2/telsync-v1.0.2-armeabi-v7a.apk) | Legacy or budget 32-bit Android phones |
 | **Intel / AMD 64-bit** | [![Download x86_64](https://img.shields.io/badge/Download-APK%20(x86__64)-2d7d9a?style=for-the-badge&logo=android)](https://github.com/alireza00138300/TelSync/releases/download/v1.0.2/telsync-v1.0.2-x86_64.apk) | Android Emulators (Android Studio, LDPlayer, Bluestacks) & Chromebooks |
 | **Universal (All-in-one)** | [![Download Universal](https://img.shields.io/badge/Download-Universal%20APK-044d29?style=for-the-badge&logo=android)](https://github.com/alireza00138300/TelSync/releases/download/v1.0.2/telsync-v1.0.2-universal.apk) | Universal package compatible with all Android devices (larger size) |
+| **iOS (Experimental)** | [![Download IPA](https://img.shields.io/badge/Download-IPA%20(Unsigned)-000000?style=for-the-badge&logo=apple)](https://github.com/alireza00138300/TelSync/releases/download/v1.0.2/telsync-v1.0.2-ios-unsigned.ipa) | iPhone / iPad (iOS 16.0+) via Sideloadly, AltStore, TrollStore, or personal certificate |
 
 </div>
 
 > 💡 **Quick Tip:** If you are unsure which version to pick, choose **`arm64-v8a`** for any modern phone purchased in the last 6 years, or **`universal`** for guaranteed compatibility on any phone.
+
+> [!WARNING]
+> **iOS Build Status (Experimental & Untested on Physical Hardware):**  
+> The iOS `.ipa` package is built via GitHub Actions CI/CD on macOS runners with native Swift Pigeon bindings and TDLib CocoaPods. Because the maintainer develops on Windows, the iOS build has not yet undergone comprehensive physical device testing. Community testing, bug reports, and PRs are warmly welcome!
 
 ### 🔐 Package Integrity (SHA-256 Checksums)
 

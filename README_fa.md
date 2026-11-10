@@ -70,12 +70,17 @@
 | **اندروید ۳۲ بیتی** | [![دانلود ARMv7](https://img.shields.io/badge/Download-APK%20(armeabi--v7a)-45bf55?style=for-the-badge&logo=android)](https://github.com/alireza00138300/TelSync/releases/download/v1.0.2/telsync-v1.0.2-armeabi-v7a.apk) | گوشی‌های قدیمی‌تر یا اقتصادی ۳۲ بیتی |
 | **اینتل و شبیه‌سازها** | [![دانلود x86_64](https://img.shields.io/badge/Download-APK%20(x86__64)-2d7d9a?style=for-the-badge&logo=android)](https://github.com/alireza00138300/TelSync/releases/download/v1.0.2/telsync-v1.0.2-x86_64.apk) | شبیه‌سازهای اندروید روی کامپیوتر (Bluestacks, LDPlayer, Android Studio) |
 | **بسته جامع (یونیورسال)** | [![دانلود Universal](https://img.shields.io/badge/Download-Universal%20APK-044d29?style=for-the-badge&logo=android)](https://github.com/alireza00138300/TelSync/releases/download/v1.0.2/telsync-v1.0.2-universal.apk) | شامل تمام معماری‌ها (سازگار با همه گوشی‌ها، اما با حجم بیشتر) |
+| **نسخه آیفون / iOS (آزمایشی)** | [![دانلود IPA](https://img.shields.io/badge/Download-IPA%20(Unsigned)-000000?style=for-the-badge&logo=apple)](https://github.com/alireza00138300/TelSync/releases/download/v1.0.2/telsync-v1.0.2-ios-unsigned.ipa) | آیفون و آیپد (iOS 16.0+) نصب از طریق TrollStore ،AltStore ،Sideloadly یا گواهی شخصی |
 
 </div>
 
 <div dir="rtl">
 
 > 💡 **راهنمای سریع:** اگر مدل پردازنده گوشی خود را نمی‌دانید، فایل **`arm64-v8a`** را دانلود کنید (برای تمام گوشی‌های جدید مناسب است) یا در صورت عدم اطمینان نسخه **`universal`** را نصب فرمایید.
+
+> [!WARNING]
+> **وضعیت نسخه iOS (آزمایشی و بدون تست روی دستگاه فیزیکی):**  
+> فایل نصبی iOS (`.ipa`) به شکل خودکار و از طریق پایپ‌لاین ابری GitHub Actions روی سرورهای macOS به همراه کدهای سوئیفت و TDLib کامپایل و آماده‌سازی شده است. با توجه به اینکه توسعه در محیط ویندوز انجام گرفته، این نسخه روی دستگاه فیزیکی آیفون توسط توسعه‌دهنده تست میدانی نشده است. گزارش باگ‌ها و بازخوردهای جامعه کاربران iOS با آغوش باز پذیرفته می‌شود!
 
 ### 🔐 اعتبارسنجی بسته‌ها (کدهای هش SHA-256)
 

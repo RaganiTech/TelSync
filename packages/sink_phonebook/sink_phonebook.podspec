@@ -1,11 +1,11 @@
 Pod::Spec.new do |s|
   s.name             = 'sink_phonebook'
   s.version          = '0.1.0'
-  s.summary          = 'Native phonebook Pigeon plugin for contact_bridge'
-  s.description      = 'Native phonebook Pigeon plugin for contact_bridge'
-  s.homepage         = 'https://github.com/example/contact_bridge'
+  s.summary          = 'Native iOS Phonebook Pigeon Plugin for TelSync'
+  s.description      = 'Fast and secure native iOS Contacts framework integration for TelSync.'
+  s.homepage         = 'https://github.com/alireza00138300/TelSync'
   s.license          = { :file => '../LICENSE' }
-  s.author           = { 'Contact Bridge Team' => 'team@example.com' }
+  s.author           = { 'TelSync Team' => 'https://github.com/alireza00138300/TelSync' }
   s.source           = { :path => '.' }
   s.source_files = 'Classes/**/*'
   s.dependency 'Flutter'
