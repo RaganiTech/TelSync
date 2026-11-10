@@ -25,6 +25,7 @@ tools/scratch_*.ps1
 **/scratch_*.ps1
 *.apk
 *.aab
+release_dist/
 
 # IDEs
 .idea/
