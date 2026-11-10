@@ -38,3 +38,11 @@
     @androidx.room.* *;
 }
 
+
+# Strip verbose/debug/info logging from release builds so no user data or
+# internal state can end up in logcat or a crash report.
+-assumenosideeffects class android.util.Log {
+    public static *** v(...);
+    public static *** d(...);
+    public static *** i(...);
+}

@@ -4,6 +4,7 @@ import 'package:core_domain/core_domain.dart';
 import 'package:design_system/design_system.dart';
 import 'package:l10n/l10n.dart';
 import '../controllers/providers.dart';
+import '../services/ad_service.dart';
 
 class S2AuthChooseView extends ConsumerWidget {
   const S2AuthChooseView({super.key});
@@ -56,6 +57,11 @@ class S2AuthChooseView extends ConsumerWidget {
                 }
               },
             ),
+
+            const SizedBox(height: AppDimensions.space16),
+
+            // Tapsell Native Banner Ad
+            const TapsellNativeBannerWidget(),
 
             const SizedBox(height: AppDimensions.space24),
           ],

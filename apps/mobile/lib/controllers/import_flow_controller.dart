@@ -211,19 +211,43 @@ class ImportFlowController extends Notifier<FlowState> {
     }
   }
 
-  void chooseAuthMethod(AuthMethod method) {
+  Future<void> chooseAuthMethod(AuthMethod method) async {
     dispatch(ChooseAuthMethodEvent(method));
     if (method == AuthMethod.qr) {
-      if (_authSession != null) {
-        _authSession?.requestQrCode();
-      } else {
-        final qrLink =
-            'tg://login?token=auth_token_${DateTime.now().millisecondsSinceEpoch}';
-        dispatch(QrLinkUpdatedEvent(
-          link: qrLink,
-          expiresAt: DateTime.now().add(const Duration(seconds: 60)),
-        ));
+      if (_authSession == null) {
+        await _tryInitTdlib();
       }
+      if (_authSession != null) {
+        if (_authSession!.currentState != TgAuthState.waitingAuthMethod) {
+          debugPrint(
+              '[TDLib] Waiting for TgAuthState.waitingAuthMethod before requesting QR (current: ${_authSession!.currentState})...');
+          try {
+            await _authSession!.authStateStream
+                .firstWhere((s) => s == TgAuthState.waitingAuthMethod)
+                .timeout(const Duration(seconds: 10));
+          } catch (_) {}
+        }
+        await _authSession!.requestQrCode();
+      }
+    }
+  }
+
+  Future<void> refreshQrCode() async {
+    if (_authSession == null) {
+      await _tryInitTdlib();
+    }
+    if (_authSession != null) {
+      if (_authSession!.currentState != TgAuthState.waitingAuthMethod &&
+          _authSession!.currentState != TgAuthState.waitingQrConfirmation) {
+        try {
+          await _authSession!.authStateStream
+              .firstWhere((s) =>
+                  s == TgAuthState.waitingAuthMethod ||
+                  s == TgAuthState.waitingQrConfirmation)
+              .timeout(const Duration(seconds: 10));
+        } catch (_) {}
+      }
+      await _authSession!.requestQrCode();
     }
   }
 

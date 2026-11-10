@@ -10,6 +10,10 @@ build/
 # Secrets & Environment
 env/*.json
 !env/*.example.json
+*.keystore
+*.jks
+**/key.properties
+**/local.properties
 
 # IDEs
 .idea/
@@ -26,5 +30,4 @@ coverage/
 test-results/
 
 
-#....
-apps/mobile/android/upload-keystore.jks
+

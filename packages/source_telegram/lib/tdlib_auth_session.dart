@@ -148,9 +148,13 @@ class TdlibAuthSession {
     await _sendRequest(req);
   }
 
-  Future<void> requestQrCode() async {
-    final req = _factory.requestQrCodeAuthentication();
-    await _sendRequest(req);
+  Future<Map<String, dynamic>> requestQrCode([List<int> otherUserIds = const []]) async {
+    final req = _factory.requestQrCodeAuthentication(otherUserIds);
+    final res = await _sendRequest(req);
+    if (res['@type'] == 'error') {
+      _logger?.log('requestQrCode error: ${res['message']}');
+    }
+    return res;
   }
 
   Future<Map<String, dynamic>> submitPhoneNumber(String phoneNumber) async {

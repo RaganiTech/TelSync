@@ -13,9 +13,9 @@ class TdRequestFactory {
     required String databaseDirectory,
     required String filesDirectory,
     String? databaseEncryptionKey,
-    String deviceModel = 'PC 64bit',
-    String systemVersion = 'Windows 10',
-    String applicationVersion = '5.0.0',
+    String deviceModel = 'Android',
+    String systemVersion = 'Android',
+    String applicationVersion = '1.0.2',
     String systemLanguageCode = 'fa',
   }) {
     return {
@@ -70,9 +70,10 @@ class TdRequestFactory {
   }
 
   /// 5. requestQrCodeAuthentication
-  Map<String, dynamic> requestQrCodeAuthentication() {
+  Map<String, dynamic> requestQrCodeAuthentication([List<int> otherUserIds = const []]) {
     return {
       '@type': 'requestQrCodeAuthentication',
+      'other_user_ids': otherUserIds,
     };
   }
 

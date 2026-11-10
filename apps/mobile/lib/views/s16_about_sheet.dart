@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:design_system/design_system.dart';
 import 'package:l10n/l10n.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class S16AboutSheet extends StatelessWidget {
   const S16AboutSheet({super.key});
@@ -86,14 +87,15 @@ class S16AboutSheet extends StatelessWidget {
                 color: theme.colorScheme.onSurface.withValues(alpha: 0.8),
               ),
             ),
-            const SizedBox(height: AppDimensions.space24),
+            const SizedBox(height: AppDimensions.space8),
             Text(
               l10n.aboutFooter,
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontFamily: AppTypography.fontFamily,
-                fontSize: 11,
-                color: theme.colorScheme.onSurface.withValues(alpha: 0.5),
+                fontSize: 13,
+                fontWeight: FontWeight.w500,
+                color: theme.colorScheme.onSurface.withValues(alpha: 0.7),
               ),
             ),
             const SizedBox(height: AppDimensions.space24),
@@ -164,6 +166,79 @@ class S16AboutSheet extends StatelessWidget {
                         : 'You review and confirm the complete list before saving',
                   ),
                 ],
+              ),
+            ),
+            const SizedBox(height: AppDimensions.space16),
+            InkWell(
+              onTap: () async {
+                final uri = Uri.parse('https://buymeacoffee.com/alireza');
+                if (await canLaunchUrl(uri)) {
+                  await launchUrl(uri, mode: LaunchMode.externalApplication);
+                }
+              },
+              borderRadius: BorderRadius.circular(AppDimensions.radiusCard),
+              child: Container(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: AppDimensions.space16,
+                  vertical: AppDimensions.space12,
+                ),
+                decoration: BoxDecoration(
+                  color: isDark ? const Color(0xFF2D2418) : const Color(0xFFFFFBEB),
+                  borderRadius: BorderRadius.circular(AppDimensions.radiusCard),
+                  border: Border.all(
+                    color: const Color(0xFFF59E0B).withValues(alpha: 0.4),
+                    width: 1,
+                  ),
+                ),
+                child: Row(
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.all(8),
+                      decoration: BoxDecoration(
+                        color: const Color(0xFFF59E0B).withValues(alpha: 0.15),
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      child: const Icon(
+                        Icons.coffee_rounded,
+                        color: Color(0xFFD97706),
+                        size: 20,
+                      ),
+                    ),
+                    const SizedBox(width: AppDimensions.space12),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            l10n.isPersian ? 'خرید قهوه برای توسعه‌دهنده ☕' : 'Buy developer a coffee ☕',
+                            style: TextStyle(
+                              fontFamily: AppTypography.fontFamily,
+                              fontSize: 13,
+                              fontWeight: FontWeight.bold,
+                              color: theme.colorScheme.onSurface,
+                            ),
+                          ),
+                          const SizedBox(height: 2),
+                          Text(
+                            l10n.isPersian
+                                ? 'حمایت اختیاری از توسعه و نگهداری رایگان برنامه'
+                                : 'Optional support for free development & maintenance',
+                            style: TextStyle(
+                              fontFamily: AppTypography.fontFamily,
+                              fontSize: 11,
+                              color: theme.colorScheme.onSurface.withValues(alpha: 0.7),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Icon(
+                      Icons.open_in_new_rounded,
+                      size: 16,
+                      color: theme.colorScheme.onSurface.withValues(alpha: 0.5),
+                    ),
+                  ],
+                ),
               ),
             ),
             const SizedBox(height: AppDimensions.space16),

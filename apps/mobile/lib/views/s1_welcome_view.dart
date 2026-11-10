@@ -5,6 +5,7 @@ import 'package:l10n/l10n.dart';
 import '../controllers/providers.dart';
 import 's15_settings_sheet.dart';
 import 's16_about_sheet.dart';
+import '../services/ad_service.dart';
 
 class S1WelcomeView extends ConsumerWidget {
   const S1WelcomeView({super.key});
@@ -241,6 +242,11 @@ class S1WelcomeView extends ConsumerWidget {
                 l10n.trust3,
               ],
             ),
+
+            const SizedBox(height: AppDimensions.space16),
+
+            // Tapsell Native Banner
+            const TapsellNativeBannerWidget(),
 
             const SizedBox(height: AppDimensions.space24),
           ],

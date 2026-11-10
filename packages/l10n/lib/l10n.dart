@@ -314,8 +314,8 @@ class AppLocalizations {
 
   // About Sheet
   String get aboutAppTitle => isPersian
-      ? 'تلسینک (TelSync) - نسخه ۱.۰.۰'
-      : 'TelSync (v1.0.0)';
+      ? 'تلسینک (TelSync) - نسخه ۱.۰.۲'
+      : 'TelSync (v1.0.2)';
   String get aboutDescription => isPersian
       ? 'این برنامه برای انتقال امن و هوشمند مخاطبین تلگرام به دفترچه تلفن طراحی شده است و پایبند به اصول زیر است:\n\n'
         '۱. پردازش ۱۰۰٪ محلی درون دستگاه بدون سرور واسط.\n'
@@ -328,8 +328,8 @@ class AppLocalizations {
         '3. The Telegram session is cleanly logged out on the server when finished, wiping all local keys and cache.\n'
         '4. Strict TDLib method allowlisting ensures zero access to your private messages, groups, or channels.';
   String get aboutFooter => isPersian
-      ? 'توسعه داده شده بر پایه استاندارد SRS v2.0'
-      : 'Engineered in accordance with SRS v2.0 specifications';
+      ? 'نسخه ۱.۰.۲ — ساخته شده با ❤️ در مجموعه RaganiTech'
+      : 'Version 1.0.2 — Made with ❤️ in RaganiTech collection';
 }
 
 class _AppLocalizationsDelegate

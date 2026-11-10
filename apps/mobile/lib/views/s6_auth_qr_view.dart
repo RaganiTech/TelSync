@@ -15,7 +15,12 @@ class S6AuthQrView extends ConsumerWidget {
     final l10n = AppLocalizations.of(context);
     final controller = ref.read(importFlowControllerProvider.notifier);
     final theme = Theme.of(context);
-    final link = state.link.isNotEmpty ? state.link : 'tg://login?token=simulated_token';
+
+    final isRealQr = state.link.isNotEmpty &&
+        state.link.startsWith('tg://login?token=') &&
+        !state.link.contains('simulated_token') &&
+        !state.link.contains('auth_token_');
+    final link = isRealQr ? state.link : '';
 
     return AppScaffold(
       title: l10n.isPersian ? 'اسکن کد QR با دستگاه دیگر' : 'Scan QR with Another Device',
@@ -78,42 +83,107 @@ class S6AuthQrView extends ConsumerWidget {
 
             const SizedBox(height: AppDimensions.space16),
 
-            // Real QR Code Widget
+            // QR Code Widget or Loading Container
             Center(
               child: Container(
+                width: 250,
+                height: 250,
                 padding: const EdgeInsets.all(16),
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(20),
                   border: Border.all(
-                    color: theme.colorScheme.outline,
-                    width: 1.5,
+                    color: isRealQr
+                        ? const Color(AppColors.telegramBlue)
+                        : theme.colorScheme.outline.withValues(alpha: 0.5),
+                    width: isRealQr ? 2.0 : 1.0,
                   ),
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.black.withValues(alpha: 0.08),
+                      color: isRealQr
+                          ? const Color(AppColors.telegramBlue).withValues(alpha: 0.15)
+                          : Colors.black.withValues(alpha: 0.05),
                       blurRadius: 16,
                       offset: const Offset(0, 4),
                     ),
                   ],
                 ),
-                child: QrImageView(
-                  data: link,
-                  version: QrVersions.auto,
-                  size: 210.0,
-                  eyeStyle: const QrEyeStyle(
-                    eyeShape: QrEyeShape.square,
-                    color: Color(0xFF1E3A8A),
-                  ),
-                  dataModuleStyle: const QrDataModuleStyle(
-                    dataModuleShape: QrDataModuleShape.square,
-                    color: Color(0xFF0F172A),
-                  ),
-                ),
+                child: isRealQr
+                    ? QrImageView(
+                        data: link,
+                        version: QrVersions.auto,
+                        size: 210.0,
+                        eyeStyle: const QrEyeStyle(
+                          eyeShape: QrEyeShape.square,
+                          color: Color(0xFF1E3A8A),
+                        ),
+                        dataModuleStyle: const QrDataModuleStyle(
+                          dataModuleShape: QrDataModuleShape.square,
+                          color: Color(0xFF0F172A),
+                        ),
+                      )
+                    : Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const SizedBox(
+                            width: 38,
+                            height: 38,
+                            child: CircularProgressIndicator(
+                              strokeWidth: 3,
+                              valueColor: AlwaysStoppedAnimation<Color>(Color(AppColors.telegramBlue)),
+                            ),
+                          ),
+                          const SizedBox(height: 14),
+                          Text(
+                            l10n.isPersian
+                                ? 'در حال دریافت کد QR معتبر از تلگرام…'
+                                : 'Fetching official QR code from Telegram…',
+                            textAlign: TextAlign.center,
+                            style: const TextStyle(
+                              fontFamily: AppTypography.fontFamily,
+                              fontSize: 12,
+                              fontWeight: FontWeight.bold,
+                              color: Color(0xFF1E293B),
+                            ),
+                          ),
+                          const SizedBox(height: 6),
+                          Text(
+                            l10n.isPersian
+                                ? '(فیلترشکن باید روشن باشد)'
+                                : '(VPN must be connected)',
+                            textAlign: TextAlign.center,
+                            style: const TextStyle(
+                              fontFamily: AppTypography.fontFamily,
+                              fontSize: 11,
+                              color: Colors.black54,
+                            ),
+                          ),
+                        ],
+                      ),
               ),
             ),
 
-            const SizedBox(height: AppDimensions.space24),
+            const SizedBox(height: AppDimensions.space12),
+
+            // Refresh QR Button
+            Center(
+              child: TextButton.icon(
+                icon: const Icon(Icons.refresh_rounded, size: 18),
+                label: Text(
+                  l10n.isPersian ? 'دریافت مجدد کد QR' : 'Refresh QR Code',
+                  style: const TextStyle(
+                    fontFamily: AppTypography.fontFamily,
+                    fontSize: 12.5,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                onPressed: () {
+                  controller.refreshQrCode();
+                },
+              ),
+            ),
+
+            const SizedBox(height: AppDimensions.space16),
 
             // If Telegram is on THIS phone button
             PrimaryButton(
