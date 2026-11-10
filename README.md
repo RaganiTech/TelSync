@@ -151,9 +151,9 @@ You can support development internationally using **Tether (USDT)** via Trust Wa
 
 | Cryptocurrency / Network | Address |
 | :--- | :--- |
-| **USDT (BNB Smart Chain / BEP-20)** *(Recommended · Lowest Fees)* | `0x9529b9c712E306Eaed6c852e93239499CEA973db` |
-| **USDT (Ethereum / ERC-20)** | `0x9529b9c712E306Eaed6c852e93239499CEA973db` |
-| **USDT (Polygon / Arbitrum / Optimism)** | `0x9529b9c712E306Eaed6c852e93239499CEA973db` |
+| **USDT (Tron / TRC-20)** *(Most Common · All Exchanges)* | `TVxmYBhxAwUrrg8WxqJH1CaMxuVG5c1Hgp` |
+| **USDT (BNB Smart Chain / BEP-20)** *(Lowest Fees)* | `0x9529b9c712E306Eaed6c852e93239499CEA973db` |
+| **USDT (Ethereum / ERC-20 & Polygon)** | `0x9529b9c712E306Eaed6c852e93239499CEA973db` |
 
 ---
 

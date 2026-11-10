@@ -14,7 +14,8 @@ class SupportCoffeeCard extends StatelessWidget {
   });
 
   static const String reymitUrl = 'https://reymit.ir/raganitech';
-  static const String tetherUsdtAddress = '0x9529b9c712E306Eaed6c852e93239499CEA973db';
+  static const String usdtTrc20Address = 'TVxmYBhxAwUrrg8WxqJH1CaMxuVG5c1Hgp';
+  static const String usdtBep20Address = '0x9529b9c712E306Eaed6c852e93239499CEA973db';
   static const String githubRepoUrl = 'https://github.com/RaganiTech/TelSync';
 
   static Future<void> launchReymitUrl() async {
@@ -200,7 +201,8 @@ class CoffeeSupportSheet extends StatelessWidget {
   }
 
   static const String reymitUrl = SupportCoffeeCard.reymitUrl;
-  static const String tetherAddress = SupportCoffeeCard.tetherUsdtAddress;
+  static const String usdtTrc20Address = SupportCoffeeCard.usdtTrc20Address;
+  static const String usdtBep20Address = SupportCoffeeCard.usdtBep20Address;
 
   @override
   Widget build(BuildContext context) {
@@ -304,7 +306,7 @@ class CoffeeSupportSheet extends StatelessWidget {
                 onTap: SupportCoffeeCard.launchReymitUrl,
               ),
               const SizedBox(height: AppDimensions.space12),
-              // Option 2: Dollar / Crypto Payment (Tether USDT - Trust Wallet)
+              // Option 2: Dollar / Crypto Payment (Tether USDT - TRC20 & BEP20)
               _buildCryptoTetherTile(context),
               const SizedBox(height: AppDimensions.space12),
               // Option 3: GitHub Star
@@ -464,8 +466,8 @@ class CoffeeSupportSheet extends StatelessWidget {
                     const SizedBox(height: 2),
                     Text(
                       l10n.isPersian
-                          ? 'تراست ولت · شبکه‌های BSC (BEP-20) / ERC-20 / Polygon'
-                          : 'Trust Wallet · BSC (BEP-20) / ERC-20 / Polygon',
+                          ? 'استیبل‌کوین تتر (USDT) · تراست ولت'
+                          : 'Tether Stablecoin (USDT) · Trust Wallet',
                       style: TextStyle(
                         fontFamily: AppTypography.fontFamily,
                         fontSize: 11,
@@ -478,50 +480,90 @@ class CoffeeSupportSheet extends StatelessWidget {
             ],
           ),
           const SizedBox(height: AppDimensions.space12),
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
-            decoration: BoxDecoration(
-              color: isDark ? const Color(0xFF061411) : Colors.white,
-              borderRadius: BorderRadius.circular(8),
-              border: Border.all(
-                color: isDark ? const Color(0xFF134E48) : const Color(0xFFBBF7D0),
-                width: 1,
-              ),
-            ),
-            child: Row(
-              children: [
-                Expanded(
-                  child: SelectableText(
-                    tetherAddress,
-                    style: const TextStyle(
-                      fontFamily: 'monospace',
-                      fontSize: 11,
-                      letterSpacing: 0.5,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                ),
-                IconButton(
-                  tooltip: l10n.coffeeCopyCardNumber,
-                  icon: const Icon(Icons.copy_rounded, size: 18),
-                  padding: EdgeInsets.zero,
-                  constraints: const BoxConstraints(),
-                  onPressed: () {
-                    Clipboard.setData(const ClipboardData(text: tetherAddress));
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(
-                        content: Text(l10n.coffeeCardCopiedNotice),
-                        duration: const Duration(seconds: 2),
-                      ),
-                    );
-                  },
-                ),
-              ],
-            ),
+          // Network 1: TRC20 (Tron)
+          _buildAddressRow(
+            context,
+            label: l10n.isPersian ? 'شبکه ترون (TRC-20) · عمومی و صرافی‌ها' : 'TRON Network (TRC-20) · Common',
+            address: usdtTrc20Address,
+            toastMessage: l10n.isPersian ? 'آدرس تتر TRC-20 کپی شد ✨' : 'TRC-20 USDT address copied ✨',
+            isDark: isDark,
+          ),
+          const SizedBox(height: AppDimensions.space8),
+          // Network 2: BEP20 (BNB Smart Chain)
+          _buildAddressRow(
+            context,
+            label: l10n.isPersian ? 'شبکه بایننس و اتریوم (BEP-20 / ERC-20) · کمترین کارمزد' : 'BSC & ETH Network (BEP-20 / ERC-20) · Low Fee',
+            address: usdtBep20Address,
+            toastMessage: l10n.isPersian ? 'آدرس تتر BEP-20 کپی شد ✨' : 'BEP-20 USDT address copied ✨',
+            isDark: isDark,
           ),
         ],
       ),
     );
   }
-}
 
+  Widget _buildAddressRow(
+    BuildContext context, {
+    required String label,
+    required String address,
+    required String toastMessage,
+    required bool isDark,
+  }) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          label,
+          style: TextStyle(
+            fontFamily: AppTypography.fontFamily,
+            fontSize: 11,
+            fontWeight: FontWeight.w600,
+            color: isDark ? const Color(0xFF86EFAC) : const Color(0xFF166534),
+          ),
+        ),
+        const SizedBox(height: 4),
+        Container(
+          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 7),
+          decoration: BoxDecoration(
+            color: isDark ? const Color(0xFF061411) : Colors.white,
+            borderRadius: BorderRadius.circular(8),
+            border: Border.all(
+              color: isDark ? const Color(0xFF134E48) : const Color(0xFFBBF7D0),
+              width: 1,
+            ),
+          ),
+          child: Row(
+            children: [
+              Expanded(
+                child: SelectableText(
+                  address,
+                  style: const TextStyle(
+                    fontFamily: 'monospace',
+                    fontSize: 10.5,
+                    letterSpacing: 0.3,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+              ),
+              IconButton(
+                tooltip: 'کپی آدرس',
+                icon: const Icon(Icons.copy_rounded, size: 18),
+                padding: EdgeInsets.zero,
+                constraints: const BoxConstraints(),
+                onPressed: () {
+                  Clipboard.setData(ClipboardData(text: address));
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text(toastMessage),
+                      duration: const Duration(seconds: 2),
+                    ),
+                  );
+                },
+              ),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+}
