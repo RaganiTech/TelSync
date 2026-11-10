@@ -1,0 +1,40 @@
+name: "Feature Request (پیشنهاد قابلیت جدید)"
+description: "Suggest an idea or enhancement for TelSync"
+title: "[Feature]: "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ### TelSync Feature Request / پیشنهاد ویژگی جدید
+        Have an idea to make TelSync better? We'd love to hear it!
+        ایده یا پیشنهادی برای بهبود تلسینک دارید؟ خوشحال می‌شویم مطرح کنید!
+  - type: textarea
+    id: problem
+    attributes:
+      label: Is your feature request related to a problem? / آیا این پیشنهاد مربوط به مشکلی است؟
+      description: A clear and concise description of the problem or limitation you encountered.
+      placeholder: "I'm always frustrated when..."
+    validations:
+      required: false
+  - type: textarea
+    id: solution
+    attributes:
+      label: Describe the solution you'd like / راه‌حل یا قابلیت پیشنهادی
+      description: A clear and concise description of what you want to happen.
+      placeholder: "Add an option to..."
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives you've considered / جایگزین‌های دیگر
+      description: Any alternative solutions or features you've considered.
+    validations:
+      required: false
+  - type: checkboxes
+    id: contribution
+    attributes:
+      label: Willing to help? / تمایل به مشارکت در پیاده‌سازی
+      options:
+        - label: I can help implement this feature and submit a Pull Request!

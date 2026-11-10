@@ -1,0 +1,84 @@
+name: "Bug Report (گزارش باگ)"
+description: "Report a bug or problem in TelSync"
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ### TelSync Bug Report / گزارش باگ تلسینک
+        Thank you for reporting an issue! Please search [existing issues](https://github.com/alireza00138300/TelSync/issues) before opening a new one.
+        
+        لطفاً قبل از ثبت، ایشوهای قبلی را جستجو کنید تا از ثبت گزارش تکراری جلوگیری شود.
+  - type: checkboxes
+    id: confirm-search
+    attributes:
+      label: Search before submitting / جستجوی قبلی
+      description: Have you checked if this issue has already been reported?
+      options:
+        - label: I searched existing issues and found no duplicate. (ایشوهای قبلی را بررسی کردم و تکراری نبود)
+          required: true
+  - type: dropdown
+    id: platform
+    attributes:
+      label: Platform / سیستم عامل
+      description: On which platform/device did the bug happen?
+      options:
+        - Android (arm64-v8a)
+        - Android (armeabi-v7a)
+        - Android (x86_64)
+        - Android (Universal APK)
+        - iOS
+      default: 0
+    validations:
+      required: true
+  - type: input
+    id: app_version
+    attributes:
+      label: TelSync Version / نسخه برنامه
+      description: "Example: v1.0.2"
+      placeholder: "v1.0.2"
+    validations:
+      required: true
+  - type: input
+    id: device_model
+    attributes:
+      label: Device Model & OS / مدل گوشی و نسخه سیستم‌عامل
+      description: "Example: Samsung Galaxy S23 (Android 14) or iPhone 15 (iOS 17)"
+      placeholder: "Samsung Galaxy A54 - Android 14"
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: Problem Description / شرح مشکل
+      description: A clear and concise description of what happened.
+      placeholder: "When clicking 'Start Sync', ..."
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction_steps
+    attributes:
+      label: Steps to Reproduce / مراحل بازتولید خطا
+      description: How can we reproduce this problem step by step?
+      value: |
+        1. Open TelSync
+        2. Log in with Telegram
+        3. Proceed to contacts sync
+        4. See error...
+    validations:
+      required: true
+  - type: textarea
+    id: expected_behavior
+    attributes:
+      label: Expected Behavior / رفتار مورد انتظار
+      description: What did you expect to happen instead?
+    validations:
+      required: false
+  - type: textarea
+    id: logs_or_screenshots
+    attributes:
+      label: Logs or Screenshots / لاگ یا اسکرین‌شات
+      description: "Please do NOT include private phone numbers or OTP codes in screenshots or logs."
+    validations:
+      required: false

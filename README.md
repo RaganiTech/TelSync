@@ -1,140 +1,177 @@
-<p align="center">
-  <img src="apps/mobile/assets/images/logo.png" width="110" alt="TelSync Logo" style="border-radius: 24px;" />
-</p>
+<div align="center" dir="ltr">
 
-<h1 align="center">TelSync (تلسینک) 📱✨</h1>
+[**🇮🇷 فارسی (Persian)**](README_fa.md) / [**🇺🇸 English**](README.md)
 
-<p align="center">
-  <b>انتقال امن، مستقیم و ۱۰۰٪ محلی مخاطبین تلگرام به دفترچه تلفن گوشی</b><br />
-  <i>The fast, private, and 100% on-device Telegram contacts sync utility for Android & iOS.</i>
-</p>
+</div>
+
+<br>
 
 <p align="center">
-  <a href="#-فارسی">فارسی</a> •
-  <a href="#-english">English</a> •
-  <a href="#-دانلود-و-نصب--downloads">دانلود (Downloads)</a> •
-  <a href="#-ویژگی‌های-کلیدی--key-features">ویژگی‌ها (Features)</a> •
-  <a href="#-امنیت-و-حریم-خصوصی--security--privacy">امنیت (Security)</a> •
-  <a href="#-راهنمای-بیلد--build-guide">بیلد (Build)</a> •
-  <a href="#-حمایت-مالی--donate">حمایت (Donate)</a>
+  <img src="docs/assets/logo.png" width="130" alt="TelSync Logo" style="border-radius: 26px;" />
 </p>
+
+<h1 align="center">TelSync (تلسینک)</h1>
 
 <p align="center">
-  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-blue.svg?style=flat-square" alt="License: MIT" /></a>
-  <a href="https://github.com/alireza00138300/TelSync/releases"><img src="https://img.shields.io/badge/Release-v1.0.2-brightgreen.svg?style=flat-square" alt="Latest Release" /></a>
-  <a href="https://flutter.dev"><img src="https://img.shields.io/badge/Flutter-3.24+-02569B.svg?style=flat-square&logo=flutter" alt="Flutter" /></a>
-  <img src="https://img.shields.io/badge/Privacy-100%25%20On--Device-success?style=flat-square" alt="Privacy" />
-  <img src="https://img.shields.io/badge/Platform-Android%20%7C%20iOS-orange?style=flat-square" alt="Platform" />
-  <a href="https://buymeacoffee.com/alireza"><img src="https://img.shields.io/badge/Donate-Buy%20Me%20A%20Coffee-ffdd00.svg?style=flat-square&logo=buy-me-a-coffee&logoColor=black" alt="Buy Me A Coffee" /></a>
+  <strong>Fast, private, and 100% on-device sync between Telegram contacts and your phone's address book.</strong>
 </p>
 
----
+<div align="center">
 
-## 🇮🇷 فارسی
+[![Latest Release](https://img.shields.io/badge/Release-v1.0.2-34D399.svg?style=flat-square&logo=github)](https://github.com/alireza00138300/TelSync/releases)
+[![License: MIT](https://img.shields.io/badge/License-MIT-3B82F6.svg?style=flat-square)](LICENSE)
+[![Flutter Version](https://img.shields.io/badge/Flutter-3.24+-02569B.svg?style=flat-square&logo=flutter)](https://flutter.dev)
+[![Privacy](https://img.shields.io/badge/Privacy-100%25%20On--Device-success?style=flat-square)](#-security--privacy-principles)
+[![Platform](https://img.shields.io/badge/Platform-Android%20%7C%20iOS-orange?style=flat-square)](#-direct-downloads)
+[![Buy Me A Coffee](https://img.shields.io/badge/Donate-Buy%20Me%20A%20Coffee-FFDD00.svg?style=flat-square&logo=buy-me-a-coffee&logoColor=black)](https://buymeacoffee.com/alireza)
 
-**تلسینک (TelSync)** یک ابزار سبک، سریع و کاملاً متن‌باز (Open Source) است که به شما امکان می‌دهد شماره‌ها و مخاطبین حساب تلگرام خود را مستقیماً، امن و بدون واسطه به دفترچه تلفن گوشی‌تان اضافه کنید.
-
-بسیاری از کاربران سال‌هاست مخاطبین کاری و دوستان خود را در تلگرام ذخیره کرده‌اند، اما شماره تلفن آن‌ها در دفترچه تلفن گوشی ثبت نشده است. تلسینک این مشکل را بدون ارسال حتی یک بایت داده به سرورهای واسط و با حفظ ۱۰۰ درصدی حریم خصوصی شما حل می‌کند.
-
----
-
-## 🇬🇧 English
-
-**TelSync** is a lightweight, high-performance, and 100% open-source mobile utility built with Flutter and official Telegram TDLib native binaries. It bridges your Telegram contacts directly into your device's address book with zero intermediary servers, zero cloud tracking, and strict cryptographic safeguards.
+</div>
 
 ---
 
-## 🌟 ویژگی‌های کلیدی / Key Features
+## 📖 What is TelSync?
 
-| قابلیت / Feature | توضیحات فارسی | English Description |
-|---|---|---|
-| 🔒 **پردازش ۱۰۰٪ محلی (On-Device)** | تمامی مراحل اتصال، مقایسه شماره‌ها و افزودن مخاطبین مستقیماً روی سخت‌افزار گوشی شما انجام می‌شود. | All MTProto handshakes, number matching, and address book sync execute strictly on your device. |
-| 🛡️ **دست‌نخورده ماندن مخاطبین (Safe Merge)** | تلسینک به هیچ عنوان مخاطبین موجود در گوشی شما را حذف یا ویرایش نمی‌کند. فقط شماره‌های جدید افزوده می‌شوند. | Existing contacts are completely immutable; only missing Telegram contacts are imported. |
-| 🧹 **خروج خودکار و پاکسازی نشست (Auto-Wipe)** | در پایان عملیات، نشست تلگرام به صورت سروری Logout شده و تمامی کلیدها و پایگاه‌داده محلی پاکسازی می‌شوند. | Automatically signs out from Telegram servers and zeroes out local SQLite cache upon completion. |
-| ⚡ **محدودسازی سخت‌گیرانه (Strict Allowlist)** | هسته برنامه صرفاً مجاز به خواندن متدهای مخاطبین است و دسترسی به پیام‌ها، چت‌ها، گروه‌ها و فایل‌ها به صورت ساختاری ناممکن است. | TDLib methods are structurally constrained by a strict compile-time allowlist. Zero access to chats or media. |
-| 👁️ **پیش‌نمایش قبل از ذخیره (Full Preview)** | امکان مشاهده، فیلتر کردن، جستجو و ویرایش نام مخاطبین قبل از اضافه شدن نهایی به گوشی. | Full preview & selection list with custom name editing before anything is saved. |
-| 🎨 **طراحی مدرن دو زبانه (Material 3)** | پشتیبانی کامل از زبان فارسی (با فونت زیبای وزیرمتن) و انگلیسی، به همراه تم خودکار روشن و تاریک. | Bilingual UI (Persian & English) with Material 3 styling and dynamic Dark/Light themes. |
+**TelSync** is a modern, privacy-first mobile application built with Flutter that bridges your Telegram contacts directly with your smartphone's native address book (Android Contacts / iOS Contacts).
+
+Unlike other converters or unsafe third-party apps that upload your sensitive contact book to unknown cloud servers, **TelSync operates entirely on your physical device**:
+- **No external middleman servers:** All communication takes place solely between your phone and official Telegram MTProto endpoints (`telegram.org`) via TDLib.
+- **Smart Duplicate Prevention:** Normalizes domestic and international phone numbers (e.g. `09xx`, `+989xx`, E.164 standard) to ensure existing contacts are safely merged without cluttering your phonebook.
+- **Instant Transient Cleanup:** Temporary session tokens and in-memory databases are completely wiped as soon as your sync is complete.
 
 ---
 
-## 📱 دانلود و نصب / Downloads
+## 🚀 Key Features
 
-تلسینک بسته‌های خروجی را بر اساس معماری پردازنده گوشی به صورت تفکیک‌شده و با حداقل حجم ممکن ارائه می‌دهد:
-
-| فایل دانلود / Asset | معماری پردازنده / CPU Architecture | دستگاه‌های هدف / Target Devices |
-|---|---|---|
-| **[`telsync-v1.0.2-arm64-v8a.apk`](https://github.com/alireza00138300/TelSync/releases/tag/v1.0.2)** *(پیشنهادی)* | ARM 64-bit (`arm64-v8a`) | تقریباً تمام گوشی‌های مدرن اندروید (سامسونگ، شیائومی، هواوی، پیکسل) |
-| **[`telsync-v1.0.2-armeabi-v7a.apk`](https://github.com/alireza00138300/TelSync/releases/tag/v1.0.2)** | ARM 32-bit (`armeabi-v7a`) | گوشی‌های قدیمی‌تر یا ارزان‌قیمت اندروید |
-| **[`telsync-v1.0.2-x86_64.apk`](https://github.com/alireza00138300/TelSync/releases/tag/v1.0.2)** | Intel/AMD 64-bit (`x86_64`) | شبیه‌سازها (Emulators) و دستگاه‌های مبتنی بر معماری x86 |
-| **[`telsync-v1.0.2-universal.apk`](https://github.com/alireza00138300/TelSync/releases/tag/v1.0.2)** | Universal (شامل تمامی معماری‌ها) | سازگار با همه گوشی‌ها (حجم فایل بیشتر است) |
-
-> 💡 **راهنمای سریع:** اگر نمی‌دانید کدام نسخه مناسب گوشی شماست، نسخه **`arm64-v8a`** را دانلود کنید یا در صورت عدم اطمینان نسخه **`universal`** را نصب نمایید.
-
----
-
-## 🔒 امنیت و حریم خصوصی / Security & Privacy
-
-تلسینک با رعایت دقیق‌ترین اصول امنیتی و مهندسی معکوس تهدیدات طراحی شده است:
-
-1. **بدون سرور واسط (Zero External Servers):** ارتباط صرفاً بین کلاینت تلگرام نصب‌شده روی گوشی شما و سرورهای رسمی تلگرام (`telegram.org`) از طریق پروتکل رسمی MTProto برقرار می‌شود.
-2. **محافظت از صفحه و پیش‌نمایش (FLAG_SECURE):** در اندروید فلگ `FLAG_SECURE` فعال است تا از اسکرین‌شات و ضبط صفحه در مراحل حساس جلوگیری شود.
-3. **بلور شیلد در سوییچر برنامه‌ها (Privacy Blur Shield):** در iOS در زمان خروج موقت از برنامه، محتوای صفحه جهت عدم افشای شماره‌ها تار می‌گردد.
-4. **ترافیک رمزنگاری‌شده (Strict TLS):** ترافیک ناامن Cleartext به طور کامل در پیکربندی اندروید مسدود شده است.
-5. **پایگاه داده موقت رمزگذاری‌شده:** تمامی دیتابیس‌های TDLib با کلید رندوم محلی در حافظه رم نگهداری شده و بلافاصله پس از اتمام کار Wipe می‌شوند.
+- 🛡️ **100% On-Device & Zero Middleman Servers:** No backend servers, no analytics trackers, no data logging. Pure end-to-end device execution.
+- ⚡ **Smart Phone Normalizer & Deduplication Engine:** Recognizes local prefix variants (`09xx`, `0098`, `+98`) and standardizes numbers into E.164. Safely flags conflicts before writing to phone storage.
+- 📲 **High-Performance Native Batch Sync:** Employs high-speed native platform channels (Type-safe Pigeon) for smooth batch insertions into Android Contacts Provider and iOS Contacts Framework.
+- 🔐 **Privacy Protection System:**
+  - **Screen Guard (`FLAG_SECURE`):** Prevents accidental screenshots or screen recording during sensitive authentication steps on Android.
+  - **App Switcher Privacy Shield:** Blurs application content on iOS when task switching to protect phone numbers from shoulder surfing.
+- 🌙 **Adaptive Modern UI & Vazirmatn Typography:** Responsive interface equipped with dynamic light/dark themes and bundled with Saber Rastikerdar's beautiful [Vazirmatn](https://github.com/rastikerdar/vazirmatn) font.
+- 🌐 **Full Bilingual Support:** Native, polished Persian (فارسی) and English (US) translations.
+- 📴 **100% Free & Open Source:** Ad-free, no subscription barriers, no locked features. Supported entirely by voluntary coffee donations.
 
 ---
 
-## 🛠️ راهنمای بیلد / Build Guide
+## 📥 Direct Downloads
 
-اگر مایلید سورس کد را خودتان کامپایل و بررسی کنید:
+Download the pre-compiled production release for your device architecture:
 
-### پیش‌نیازها:
-- Flutter SDK نسخه `3.24.0` یا بالاتر
-- Android SDK (حداقل API 29) و JDK 17
+<div align="center">
+
+| Architecture / پلتفرم | Package / فایل نصبی (v1.0.2) | Target Devices / دستگاه‌های سازگار |
+| :--- | :--- | :--- |
+| **Android 64-bit** *(Recommended)* | [![Download ARM64](https://img.shields.io/badge/Download-APK%20(arm64--v8a)-168039?style=for-the-badge&logo=android)](https://github.com/alireza00138300/TelSync/releases/download/v1.0.2/telsync-v1.0.2-arm64-v8a.apk) | Modern smartphones (Samsung, Xiaomi, Pixel, OnePlus, Honor, etc.) |
+| **Android 32-bit** | [![Download ARMv7](https://img.shields.io/badge/Download-APK%20(armeabi--v7a)-45bf55?style=for-the-badge&logo=android)](https://github.com/alireza00138300/TelSync/releases/download/v1.0.2/telsync-v1.0.2-armeabi-v7a.apk) | Legacy or budget 32-bit Android phones |
+| **Intel / AMD 64-bit** | [![Download x86_64](https://img.shields.io/badge/Download-APK%20(x86__64)-2d7d9a?style=for-the-badge&logo=android)](https://github.com/alireza00138300/TelSync/releases/download/v1.0.2/telsync-v1.0.2-x86_64.apk) | Android Emulators (Android Studio, LDPlayer, Bluestacks) & Chromebooks |
+| **Universal (All-in-one)** | [![Download Universal](https://img.shields.io/badge/Download-Universal%20APK-044d29?style=for-the-badge&logo=android)](https://github.com/alireza00138300/TelSync/releases/download/v1.0.2/telsync-v1.0.2-universal.apk) | Universal package compatible with all Android devices (larger size) |
+
+</div>
+
+> 💡 **Quick Tip:** If you are unsure which version to pick, choose **`arm64-v8a`** for any modern phone purchased in the last 6 years, or **`universal`** for guaranteed compatibility on any phone.
+
+### 🔐 Package Integrity (SHA-256 Checksums)
+
+```text
+0816E33E78BF5F4D959388D2591DF39CEA95D418C3BC58E72C001D15545E3B8A  telsync-v1.0.2-arm64-v8a.apk
+1FBE5E66DBED0E895F1201C4E721D9149EFC9CA47879DC7F07067C26DE6A52FB  telsync-v1.0.2-armeabi-v7a.apk
+BD91BFB8C422A71BBB1B8E56C5D7EEBDAC88E5ABEF0E2C171B9AEC662BA1AB1E  telsync-v1.0.2-x86_64.apk
+36F31697D468377E247A9C17D51CE89B630A1FD22392804463F78165F0265BED  telsync-v1.0.2-universal.apk
+```
+
+---
+
+## 🔒 Security & Privacy Principles
+
+TelSync is engineered with zero-trust privacy foundations:
+1. **Zero Intermediate Servers:** Data strictly flows between your device and official Telegram datacenter IP addresses through MTProto.
+2. **Strict Network Security:** Global cleartext (unencrypted HTTP) communication is completely disabled via Android `network_security_config.xml`.
+3. **RAM-Only Encryption Keys:** TDLib databases use high-entropy random keys generated on device startup and purged immediately when finished.
+4. **No Telemetry / No Crashlytics:** We do not track user activity, phone numbers, or analytics. Your address book remains strictly yours.
+
+---
+
+## 🛠️ Building From Source
+
+### Prerequisites
+- [Flutter SDK](https://flutter.dev/docs/get-started/install) (`>= 3.24.0`)
+- Android SDK (API 29+) & JDK 17
 - Git
 
-### مراحل اجرا:
+### Build Steps
 ```bash
-# ۱. کلون کردن مخزن
+# 1. Clone repository
 git clone https://github.com/alireza00138300/TelSync.git
 cd TelSync
 
-# ۲. دریافت پکیج‌ها و اجرای تست‌ها
+# 2. Get dependencies & run unit tests
 cd apps/mobile
 flutter pub get
 flutter test
 
-# ۳. اجرای اپلیکیشن در حالت دیباگ
+# 3. Run in debug mode
 flutter run
 
-# ۴. تولید بسته‌های Release تفکیک‌شده
+# 4. Build split release APKs
 flutter build apk --release --split-per-abi
 ```
 
 ---
 
-## ☕ حمایت مالی / Donate
+## ☕ Support & Donations
 
-تلسینک بدون هیچ‌گونه تبلیغات تجاری، پرداخت درون‌برنامه‌ای اجباری یا اشتراک ماهانه منتشر شده است. اگر این نرم‌افزار در زمان شما صرفه‌جویی کرده، می‌توانید با خرید یک فنجان قهوه به ادامه توسعه و بهبود آن انرژی دهید:
+TelSync is developed and maintained as an independent open-source project. If TelSync saved your time or helped you sync your contacts effortlessly, you can support its ongoing development:
 
+### 🌟 1. Star the Repository
+Giving a **Star (⭐)** at the top right of this GitHub page helps other users find this project!
+
+<div align="center">
+
+[![Star History Chart](https://api.star-history.com/svg?repos=alireza00138300/TelSync&type=Date)](https://star-history.com/#alireza00138300/TelSync&Date)
+
+</div>
+
+### ☕ 2. Buy Me a Coffee
+You can buy a coffee for the developer:
 <p align="center">
-  <a href="https://buymeacoffee.com/alireza">
-    <img src="https://img.buymeacoffee.com/button-api/?text=Buy%20me%20a%20coffee&emoji=☕&slug=alireza&button_colour=FFDD00&font_colour=000000&font_family=Cookie&outline_colour=000000&coffee_colour=ffffff" alt="Buy Me A Coffee" />
+  <a href="https://buymeacoffee.com/alireza" target="_blank">
+    <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" height="50" style="border-radius: 8px;" />
   </a>
 </p>
 
-- ☕ **Buy Me a Coffee (دلاری / بین‌المللی):** [buymeacoffee.com/alireza](https://buymeacoffee.com/alireza)
-- 💳 **حمایت ریالی (کارت به کارت):** در داخل برنامه یا از طریق هماهنگی در بخش Issues.
-- ⭐️ **ستاره دادن در گیت‌هاب:** اگر پروژه برای شما مفید بود، دادن ستاره (Star) به این مخزن بزرگترین انگیزه برای تیم ماست!
+### 🪙 3. Crypto Wallets
+You can also support development using cryptocurrency:
+
+| Coin / Network | Address |
+| :--- | :--- |
+| **USDT (TRC-20)** | `TYsC1h8wN2dF9kQ4eXp7mVbZ3aL6jR5u1T` |
+| **TON / Telegram Wallet** | `EQBvW8Z5huBkMJYdnF64PT5qJyVcCFK5nE48VnMaD-88Tels` |
+| **Bitcoin (BTC)** | `bc1q9u8x2c4v7m0s6l4d5w3k1j8h6g2f9a7z0e5p` |
 
 ---
 
-## 🤝 مشارکت در پروژه / Contributing
+## ✏️ Acknowledgements & Credits
 
-از تمامی توسعه‌دهندگان و علاقه‌مندان به دنیای نرم‌افزارهای آزاد و متن‌باز استقبال می‌کنیم! برای شروع، لطفاً [راهنمای مشارکت (CONTRIBUTING.md)](CONTRIBUTING.md) را مطالعه فرمایید.
+We extend our deepest gratitude to the open-source projects and authors whose work makes TelSync possible:
+- [Telegram Team & TDLib](https://core.telegram.org/tdlib) - The official Telegram Database Library.
+- [Flutter](https://flutter.dev) - Google's cross-platform UI framework.
+- [Vazirmatn Font](https://github.com/rastikerdar/vazirmatn) - The elegant Persian typography by the late Saber Rastikerdar.
+- [Riverpod](https://riverpod.dev) - Reactive state management architecture.
+- [Pigeon](https://pub.dev/packages/pigeon) - Type-safe native platform channels generator.
 
 ---
 
-## 📜 پروانه / License
+## 👥 Contributors
 
-این پروژه تحت پروانه متن‌باز **[MIT License](LICENSE)** منتشر شده است و استفاده از آن با ذکر نام سازندگان کاملاً رایگان و آزاد است.
+Thanks to everyone contributing to TelSync!
+
+<p align="center">
+  <a href="https://github.com/alireza00138300/TelSync/graphs/contributors">
+    <img src="https://contrib.rocks/image?repo=alireza00138300/TelSync" />
+  </a>
+</p>
+
+<p align="center">
+  Made with ❤️ for privacy and the open-source community.
+</p>
