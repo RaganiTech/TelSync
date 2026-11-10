@@ -15,6 +15,17 @@ env/*.json
 **/key.properties
 **/local.properties
 
+# Ephemeral Flutter & build artifacts
+**/Flutter/ephemeral/
+**/Flutter/Generated.xcconfig
+**/Flutter/flutter_export_environment.sh
+**/Runner/GeneratedPluginRegistrant.*
+**/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java
+tools/scratch_*.ps1
+**/scratch_*.ps1
+*.apk
+*.aab
+
 # IDEs
 .idea/
 .vscode/

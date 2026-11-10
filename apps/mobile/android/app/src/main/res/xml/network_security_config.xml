@@ -7,8 +7,8 @@
         <domain includeSubdomains="true">127.0.0.1</domain>
     </domain-config>
 
-    <!-- Production config: Allow HTTPS and cleartext for ad CDN/sponsors -->
-    <base-config cleartextTrafficPermitted="true">
+    <!-- Production config: Strictly enforce TLS/HTTPS for all external communication -->
+    <base-config cleartextTrafficPermitted="false">
         <trust-anchors>
             <certificates src="system" />
         </trust-anchors>

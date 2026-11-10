@@ -330,6 +330,41 @@ class AppLocalizations {
   String get aboutFooter => isPersian
       ? 'نسخه ۱.۰.۲ — ساخته شده با ❤️ در مجموعه RaganiTech'
       : 'Version 1.0.2 — Made with ❤️ in RaganiTech collection';
+
+  // Coffee & Open-Source Donation
+  String get coffeeCardTitle => isPersian
+      ? 'یک فنجان قهوه برای سازنده ☕'
+      : 'Buy me a coffee ☕';
+  String get coffeeCardSubtitle => isPersian
+      ? 'تلسینک کاملاً متن‌باز، رایگان و بدون تبلیغات است. اگر در وقت شما صرفه‌جویی شد، با خرید یک قهوه حامی توسعه‌دهنده باشید!'
+      : 'TelSync is 100% open-source, free, and ad-free. If this tool saved your time, consider buying the dev a coffee!';
+  String get coffeeBuyAction => isPersian
+      ? 'خرید قهوه در Buy Me a Coffee ☕'
+      : 'Buy a Coffee via BuyMeACoffee ☕';
+  String get coffeeOtherWays => isPersian
+      ? 'سایر روش‌های حمایت (کارت، گیت‌هاب) 💛'
+      : 'Other ways to support (Card, GitHub) 💛';
+  String get coffeeExitPromptTitle => isPersian
+      ? 'پایان موفقیت‌آمیز عملیات 🎉'
+      : 'Sync Completed Successfully 🎉';
+  String get coffeeExitPromptBody => isPersian
+      ? 'مخاطبین به گوشی اضافه شدند و نشست تلگرام پاکسازی شد.\nاگر از برنامه راضی بودید، خوشحال می‌شویم با یک فنجان قهوه گرم یا ستاره دادن در گیت‌هاب خستگی را از تن ما به در کنید.'
+      : 'Contacts were synced and Telegram session was securely wiped.\nIf you enjoyed using TelSync, consider buying the developer a coffee or starring the repo on GitHub.';
+  String get coffeeExitDismiss => isPersian
+      ? 'متشکرم، خروج از برنامه'
+      : 'Thanks, Exit App';
+  String get coffeeGitHubStar => isPersian
+      ? 'ستاره دادن در گیت‌هاب ⭐'
+      : 'Star on GitHub ⭐';
+  String get coffeeCardPaymentTitle => isPersian
+      ? 'حمایت ریالی (کارت به کارت)'
+      : 'Direct Card Transfer (Iran)';
+  String get coffeeCopyCardNumber => isPersian
+      ? 'کپی شماره کارت'
+      : 'Copy Card Number';
+  String get coffeeCardCopiedNotice => isPersian
+      ? 'شماره کارت در حافظه کپی شد ✨'
+      : 'Card number copied to clipboard ✨';
 }
 
 class _AppLocalizationsDelegate
