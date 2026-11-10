@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:design_system/design_system.dart';
@@ -15,7 +15,7 @@ class SupportCoffeeCard extends StatelessWidget {
 
   static const String reymitUrl = 'https://reymit.ir/raganitech';
   static const String tetherUsdtAddress = '0x9529b9c712E306Eaed6c852e93239499CEA973db';
-  static const String githubRepoUrl = 'https://github.com/alireza00138300/TelSync';
+  static const String githubRepoUrl = 'https://github.com/RaganiTech/TelSync';
 
   static Future<void> launchReymitUrl() async {
     final uri = Uri.parse(reymitUrl);
@@ -314,7 +314,7 @@ class CoffeeSupportSheet extends StatelessWidget {
                 iconBg: Colors.amber.withValues(alpha: 0.15),
                 iconColor: Colors.amber.shade700,
                 title: l10n.coffeeGitHubStar,
-                subtitle: 'github.com/alireza00138300/TelSync',
+                subtitle: 'github.com/RaganiTech/TelSync',
                 trailing: const Icon(Icons.open_in_new_rounded, size: 20),
                 onTap: SupportCoffeeCard.launchGithubUrl,
               ),
@@ -524,3 +524,4 @@ class CoffeeSupportSheet extends StatelessWidget {
     );
   }
 }
+

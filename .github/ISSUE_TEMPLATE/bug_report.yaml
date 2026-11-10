@@ -1,4 +1,4 @@
-name: "Bug Report (گزارش باگ)"
+﻿name: "Bug Report (گزارش باگ)"
 description: "Report a bug or problem in TelSync"
 title: "[Bug]: "
 labels: ["bug"]
@@ -7,7 +7,7 @@ body:
     attributes:
       value: |
         ### TelSync Bug Report / گزارش باگ تلسینک
-        Thank you for reporting an issue! Please search [existing issues](https://github.com/alireza00138300/TelSync/issues) before opening a new one.
+        Thank you for reporting an issue! Please search [existing issues](https://github.com/RaganiTech/TelSync/issues) before opening a new one.
         
         لطفاً قبل از ثبت، ایشوهای قبلی را جستجو کنید تا از ثبت گزارش تکراری جلوگیری شود.
   - type: checkboxes
@@ -82,3 +82,4 @@ body:
       description: "Please do NOT include private phone numbers or OTP codes in screenshots or logs."
     validations:
       required: false
+

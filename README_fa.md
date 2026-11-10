@@ -1,4 +1,4 @@
-<div align="center" dir="ltr">
+﻿<div align="center" dir="ltr">
 
 [**🇺🇸 English**](README.md) / [**🇮🇷 فارسی**](README_fa.md)
 
@@ -18,7 +18,7 @@
 
 <div align="center">
 
-[![Latest Release](https://img.shields.io/badge/Release-v1.0.2-34D399.svg?style=flat-square&logo=github)](https://github.com/alireza00138300/TelSync/releases)
+[![Latest Release](https://img.shields.io/badge/Release-v1.0.2-34D399.svg?style=flat-square&logo=github)](https://github.com/RaganiTech/TelSync/releases)
 [![License: MIT](https://img.shields.io/badge/License-MIT-3B82F6.svg?style=flat-square)](LICENSE)
 [![Flutter Version](https://img.shields.io/badge/Flutter-3.24+-02569B.svg?style=flat-square&logo=flutter)](https://flutter.dev)
 [![حریم خصوصی](https://img.shields.io/badge/%D8%AD%D8%B1%DB%8C%D9%85%20%D8%AE%D8%B5%D9%88%D8%B5%DB%8C-%DB%B1%DB%B0%DB%B0%D9%AA%20%D9%85%D8%AD%D9%84%DB%8C-success?style=flat-square)](#-امنیت-و-حفظ-حریم-خصوصی)
@@ -67,11 +67,11 @@
 
 | معماری پردازنده / پلتفرم | فایل نصبی / Package (v1.0.2) | گوشی‌ها و دستگاه‌های سازگار |
 | :--- | :--- | :--- |
-| **اندروید ۶۴ بیتی** *(پیشنهادی)* | [![دانلود ARM64](https://img.shields.io/badge/Download-APK%20(arm64--v8a)-168039?style=for-the-badge&logo=android)](https://github.com/alireza00138300/TelSync/releases/download/v1.0.2/telsync-v1.0.2-arm64-v8a.apk) | تمام گوشی‌های مدرن چند سال اخیر (سامسونگ، شیائومی، پیکسل، هواوی و...) |
-| **اندروید ۳۲ بیتی** | [![دانلود ARMv7](https://img.shields.io/badge/Download-APK%20(armeabi--v7a)-45bf55?style=for-the-badge&logo=android)](https://github.com/alireza00138300/TelSync/releases/download/v1.0.2/telsync-v1.0.2-armeabi-v7a.apk) | گوشی‌های قدیمی‌تر یا اقتصادی ۳۲ بیتی |
-| **اینتل و شبیه‌سازها** | [![دانلود x86_64](https://img.shields.io/badge/Download-APK%20(x86__64)-2d7d9a?style=for-the-badge&logo=android)](https://github.com/alireza00138300/TelSync/releases/download/v1.0.2/telsync-v1.0.2-x86_64.apk) | شبیه‌سازهای اندروید روی کامپیوتر (Bluestacks, LDPlayer, Android Studio) |
-| **بسته جامع (یونیورسال)** | [![دانلود Universal](https://img.shields.io/badge/Download-Universal%20APK-044d29?style=for-the-badge&logo=android)](https://github.com/alireza00138300/TelSync/releases/download/v1.0.2/telsync-v1.0.2-universal.apk) | شامل تمام معماری‌ها (سازگار با همه گوشی‌ها، اما با حجم بیشتر) |
-| **نسخه آیفون / iOS (آزمایشی)** | [![دانلود IPA](https://img.shields.io/badge/Download-IPA%20(Unsigned)-000000?style=for-the-badge&logo=apple)](https://github.com/alireza00138300/TelSync/releases/download/v1.0.2/telsync-v1.0.2-ios-unsigned.ipa) | آیفون و آیپد (iOS 16.0+) نصب از طریق TrollStore ،AltStore ،Sideloadly یا گواهی شخصی |
+| **اندروید ۶۴ بیتی** *(پیشنهادی)* | [![دانلود ARM64](https://img.shields.io/badge/Download-APK%20(arm64--v8a)-168039?style=for-the-badge&logo=android)](https://github.com/RaganiTech/TelSync/releases/download/v1.0.2/telsync-v1.0.2-arm64-v8a.apk) | تمام گوشی‌های مدرن چند سال اخیر (سامسونگ، شیائومی، پیکسل، هواوی و...) |
+| **اندروید ۳۲ بیتی** | [![دانلود ARMv7](https://img.shields.io/badge/Download-APK%20(armeabi--v7a)-45bf55?style=for-the-badge&logo=android)](https://github.com/RaganiTech/TelSync/releases/download/v1.0.2/telsync-v1.0.2-armeabi-v7a.apk) | گوشی‌های قدیمی‌تر یا اقتصادی ۳۲ بیتی |
+| **اینتل و شبیه‌سازها** | [![دانلود x86_64](https://img.shields.io/badge/Download-APK%20(x86__64)-2d7d9a?style=for-the-badge&logo=android)](https://github.com/RaganiTech/TelSync/releases/download/v1.0.2/telsync-v1.0.2-x86_64.apk) | شبیه‌سازهای اندروید روی کامپیوتر (Bluestacks, LDPlayer, Android Studio) |
+| **بسته جامع (یونیورسال)** | [![دانلود Universal](https://img.shields.io/badge/Download-Universal%20APK-044d29?style=for-the-badge&logo=android)](https://github.com/RaganiTech/TelSync/releases/download/v1.0.2/telsync-v1.0.2-universal.apk) | شامل تمام معماری‌ها (سازگار با همه گوشی‌ها، اما با حجم بیشتر) |
+| **نسخه آیفون / iOS (آزمایشی)** | [![دانلود IPA](https://img.shields.io/badge/Download-IPA%20(Unsigned)-000000?style=for-the-badge&logo=apple)](https://github.com/RaganiTech/TelSync/releases/download/v1.0.2/telsync-v1.0.2-ios-unsigned.ipa) | آیفون و آیپد (iOS 16.0+) نصب از طریق TrollStore ،AltStore ،Sideloadly یا گواهی شخصی |
 
 </div>
 
@@ -116,7 +116,7 @@ BD91BFB8C422A71BBB1B8E56C5D7EEBDAC88E5ABEF0E2C171B9AEC662BA1AB1E  telsync-v1.0.2
 ### مراحل اجرا:
 ```bash
 # ۱. کلون کردن مخزن
-git clone https://github.com/alireza00138300/TelSync.git
+git clone https://github.com/RaganiTech/TelSync.git
 cd TelSync
 
 # ۲. دریافت پکیج‌ها و اجرای تست‌ها
@@ -144,7 +144,7 @@ flutter build apk --release --split-per-abi
 
 <div align="center">
 
-[![Star History Chart](https://api.star-history.com/svg?repos=alireza00138300/TelSync&type=Date)](https://star-history.com/#alireza00138300/TelSync&Date)
+[![Star History Chart](https://api.star-history.com/svg?repos=RaganiTech/TelSync&type=Date)](https://star-history.com/#RaganiTech/TelSync&Date)
 
 </div>
 
@@ -192,11 +192,12 @@ flutter build apk --release --split-per-abi
 </div>
 
 <p align="center">
-  <a href="https://github.com/alireza00138300/TelSync/graphs/contributors">
-    <img src="https://contrib.rocks/image?repo=alireza00138300/TelSync" />
+  <a href="https://github.com/RaganiTech/TelSync/graphs/contributors">
+    <img src="https://contrib.rocks/image?repo=RaganiTech/TelSync" />
   </a>
 </p>
 
 <p align="center">
   ساخته‌شده با ❤️ برای ارتقای امنیت، حریم خصوصی و جامعه متن‌باز
 </p>
+

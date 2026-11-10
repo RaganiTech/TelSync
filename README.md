@@ -1,4 +1,4 @@
-<div align="center" dir="ltr">
+﻿<div align="center" dir="ltr">
 
 [**🇮🇷 فارسی (Persian)**](README_fa.md) / [**🇺🇸 English**](README.md)
 
@@ -18,7 +18,7 @@
 
 <div align="center">
 
-[![Latest Release](https://img.shields.io/badge/Release-v1.0.2-34D399.svg?style=flat-square&logo=github)](https://github.com/alireza00138300/TelSync/releases)
+[![Latest Release](https://img.shields.io/badge/Release-v1.0.2-34D399.svg?style=flat-square&logo=github)](https://github.com/RaganiTech/TelSync/releases)
 [![License: MIT](https://img.shields.io/badge/License-MIT-3B82F6.svg?style=flat-square)](LICENSE)
 [![Flutter Version](https://img.shields.io/badge/Flutter-3.24+-02569B.svg?style=flat-square&logo=flutter)](https://flutter.dev)
 [![Privacy](https://img.shields.io/badge/Privacy-100%25%20On--Device-success?style=flat-square)](#-security--privacy-principles)
@@ -63,11 +63,11 @@ Download the pre-compiled production release for your device architecture:
 
 | Architecture / پلتفرم | Package / فایل نصبی (v1.0.2) | Target Devices / دستگاه‌های سازگار |
 | :--- | :--- | :--- |
-| **Android 64-bit** *(Recommended)* | [![Download ARM64](https://img.shields.io/badge/Download-APK%20(arm64--v8a)-168039?style=for-the-badge&logo=android)](https://github.com/alireza00138300/TelSync/releases/download/v1.0.2/telsync-v1.0.2-arm64-v8a.apk) | Modern smartphones (Samsung, Xiaomi, Pixel, OnePlus, Honor, etc.) |
-| **Android 32-bit** | [![Download ARMv7](https://img.shields.io/badge/Download-APK%20(armeabi--v7a)-45bf55?style=for-the-badge&logo=android)](https://github.com/alireza00138300/TelSync/releases/download/v1.0.2/telsync-v1.0.2-armeabi-v7a.apk) | Legacy or budget 32-bit Android phones |
-| **Intel / AMD 64-bit** | [![Download x86_64](https://img.shields.io/badge/Download-APK%20(x86__64)-2d7d9a?style=for-the-badge&logo=android)](https://github.com/alireza00138300/TelSync/releases/download/v1.0.2/telsync-v1.0.2-x86_64.apk) | Android Emulators (Android Studio, LDPlayer, Bluestacks) & Chromebooks |
-| **Universal (All-in-one)** | [![Download Universal](https://img.shields.io/badge/Download-Universal%20APK-044d29?style=for-the-badge&logo=android)](https://github.com/alireza00138300/TelSync/releases/download/v1.0.2/telsync-v1.0.2-universal.apk) | Universal package compatible with all Android devices (larger size) |
-| **iOS (Experimental)** | [![Download IPA](https://img.shields.io/badge/Download-IPA%20(Unsigned)-000000?style=for-the-badge&logo=apple)](https://github.com/alireza00138300/TelSync/releases/download/v1.0.2/telsync-v1.0.2-ios-unsigned.ipa) | iPhone / iPad (iOS 16.0+) via Sideloadly, AltStore, TrollStore, or personal certificate |
+| **Android 64-bit** *(Recommended)* | [![Download ARM64](https://img.shields.io/badge/Download-APK%20(arm64--v8a)-168039?style=for-the-badge&logo=android)](https://github.com/RaganiTech/TelSync/releases/download/v1.0.2/telsync-v1.0.2-arm64-v8a.apk) | Modern smartphones (Samsung, Xiaomi, Pixel, OnePlus, Honor, etc.) |
+| **Android 32-bit** | [![Download ARMv7](https://img.shields.io/badge/Download-APK%20(armeabi--v7a)-45bf55?style=for-the-badge&logo=android)](https://github.com/RaganiTech/TelSync/releases/download/v1.0.2/telsync-v1.0.2-armeabi-v7a.apk) | Legacy or budget 32-bit Android phones |
+| **Intel / AMD 64-bit** | [![Download x86_64](https://img.shields.io/badge/Download-APK%20(x86__64)-2d7d9a?style=for-the-badge&logo=android)](https://github.com/RaganiTech/TelSync/releases/download/v1.0.2/telsync-v1.0.2-x86_64.apk) | Android Emulators (Android Studio, LDPlayer, Bluestacks) & Chromebooks |
+| **Universal (All-in-one)** | [![Download Universal](https://img.shields.io/badge/Download-Universal%20APK-044d29?style=for-the-badge&logo=android)](https://github.com/RaganiTech/TelSync/releases/download/v1.0.2/telsync-v1.0.2-universal.apk) | Universal package compatible with all Android devices (larger size) |
+| **iOS (Experimental)** | [![Download IPA](https://img.shields.io/badge/Download-IPA%20(Unsigned)-000000?style=for-the-badge&logo=apple)](https://github.com/RaganiTech/TelSync/releases/download/v1.0.2/telsync-v1.0.2-ios-unsigned.ipa) | iPhone / iPad (iOS 16.0+) via Sideloadly, AltStore, TrollStore, or personal certificate |
 
 </div>
 
@@ -108,7 +108,7 @@ TelSync is engineered with zero-trust privacy foundations:
 ### Build Steps
 ```bash
 # 1. Clone repository
-git clone https://github.com/alireza00138300/TelSync.git
+git clone https://github.com/RaganiTech/TelSync.git
 cd TelSync
 
 # 2. Get dependencies & run unit tests
@@ -134,7 +134,7 @@ Giving a **Star (⭐)** at the top right of this GitHub page helps other users f
 
 <div align="center">
 
-[![Star History Chart](https://api.star-history.com/svg?repos=alireza00138300/TelSync&type=Date)](https://star-history.com/#alireza00138300/TelSync&Date)
+[![Star History Chart](https://api.star-history.com/svg?repos=RaganiTech/TelSync&type=Date)](https://star-history.com/#RaganiTech/TelSync&Date)
 
 </div>
 
@@ -173,11 +173,12 @@ We extend our deepest gratitude to the open-source projects and authors whose wo
 Thanks to everyone contributing to TelSync!
 
 <p align="center">
-  <a href="https://github.com/alireza00138300/TelSync/graphs/contributors">
-    <img src="https://contrib.rocks/image?repo=alireza00138300/TelSync" />
+  <a href="https://github.com/RaganiTech/TelSync/graphs/contributors">
+    <img src="https://contrib.rocks/image?repo=RaganiTech/TelSync" />
   </a>
 </p>
 
 <p align="center">
   Made with ❤️ for privacy and the open-source community.
 </p>
+

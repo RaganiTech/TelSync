@@ -1,4 +1,4 @@
-# Contributing to TelSync (راهنمای مشارکت در پروژه تلسینک) 🤝
+﻿# Contributing to TelSync (راهنمای مشارکت در پروژه تلسینک) 🤝
 
 We love open-source contributions! Whether you are reporting a bug, proposing new features, improving documentation, fixing typos, or optimizing code, your support is warmly welcome.
 
@@ -9,13 +9,13 @@ Please review this guide before opening issues or submitting Pull Requests.
 ## 🇮🇷 راهنمای فارسی مشارکت
 
 ### ۱. گزارش باگ‌ها و مشکلات (Bug Reports)
-- قبل از ثبت ایشو جدید، لطفاً در [لیست ایشوهای باز و بسته](https://github.com/alireza00138300/TelSync/issues) جستجو کنید.
-- از فرم هوشمند [ثبت باگ](https://github.com/alireza00138300/TelSync/issues/new?template=bug_report.yaml) استفاده کنید.
+- قبل از ثبت ایشو جدید، لطفاً در [لیست ایشوهای باز و بسته](https://github.com/RaganiTech/TelSync/issues) جستجو کنید.
+- از فرم هوشمند [ثبت باگ](https://github.com/RaganiTech/TelSync/issues/new?template=bug_report.yaml) استفاده کنید.
 - نسخه سیستم‌عامل، مدل گوشی و مراحل دقیق بازتولید مشکل را درج فرمایید.
 - **مهم:** از قرار دادن شماره تلفن‌های واقعی یا کدهای تایید در لاگ‌ها و اسکرین‌شات‌ها اکیداً خودداری نمایید.
 
 ### ۲. پیشنهاد ویژگی و قابلیت تازه (Feature Requests)
-- ایده‌ها و طرح‌های جدید خود برای رابط کاربری، منطق تطبیق مخاطبین یا امکانات تکمیلی را در [فرم پیشنهاد ویژگی](https://github.com/alireza00138300/TelSync/issues/new?template=feature_request.yaml) مطرح کنید.
+- ایده‌ها و طرح‌های جدید خود برای رابط کاربری، منطق تطبیق مخاطبین یا امکانات تکمیلی را در [فرم پیشنهاد ویژگی](https://github.com/RaganiTech/TelSync/issues/new?template=feature_request.yaml) مطرح کنید.
 
 ### ۳. ارسال پول ریکوئست (Pull Request Flow)
 1. ابتدا مخزن را Fork کنید.
@@ -49,12 +49,12 @@ Please review this guide before opening issues or submitting Pull Requests.
 ## 🇬🇧 English Contribution Guide
 
 ### 1. Reporting Bugs
-- Search [existing issues](https://github.com/alireza00138300/TelSync/issues) first.
-- Use our [Bug Report Form](https://github.com/alireza00138300/TelSync/issues/new?template=bug_report.yaml).
+- Search [existing issues](https://github.com/RaganiTech/TelSync/issues) first.
+- Use our [Bug Report Form](https://github.com/RaganiTech/TelSync/issues/new?template=bug_report.yaml).
 - Never attach private contact numbers, phone numbers, or Telegram session tokens in public reports.
 
 ### 2. Suggesting Features
-- Propose feature ideas via our [Feature Request Form](https://github.com/alireza00138300/TelSync/issues/new?template=feature_request.yaml).
+- Propose feature ideas via our [Feature Request Form](https://github.com/RaganiTech/TelSync/issues/new?template=feature_request.yaml).
 
 ### 3. Development Setup
 ```bash
@@ -76,3 +76,4 @@ flutter analyze
 - Maintain strict zero-network transmission for user data.
 - Ensure all tests pass with 100% green status before submitting PRs.
 - Adhere to effective Dart formatting (`dart format .`).
+
