@@ -23,6 +23,9 @@ env/*.json
 **/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java
 tools/scratch_*.ps1
 **/scratch_*.ps1
+tools/create_github_release.ps1
+tools/upload_assets.ps1
+release_notes_*.md
 *.apk
 *.aab
 release_dist/
