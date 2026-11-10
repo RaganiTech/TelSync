@@ -22,6 +22,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-3B82F6.svg?style=flat-square)](LICENSE)
 [![Flutter Version](https://img.shields.io/badge/Flutter-3.24+-02569B.svg?style=flat-square&logo=flutter)](https://flutter.dev)
 [![حریم خصوصی](https://img.shields.io/badge/%D8%AD%D8%B1%DB%8C%D9%85%20%D8%AE%D8%B5%D9%88%D8%B5%DB%8C-%DB%B1%DB%B0%DB%B0%D9%AA%20%D9%85%D8%AD%D9%84%DB%8C-success?style=flat-square)](#-امنیت-و-حفظ-حریم-خصوصی)
+[![توسعه با هوش مصنوعی](https://img.shields.io/badge/%D8%AA%D9%88%D8%B3%D8%B9%D9%87%20%D8%A8%D8%A7-%D9%87%D9%88%D8%B4%20%D9%85%D8%B5%D9%86%D9%88%D8%B9%DB%8C%20(AI)-8A2BE2.svg?style=flat-square&logo=openai&logoColor=white)](#-تقدیر-و-تشکر-از-پروژه‌های-مادر)
 [![پلتفرم](https://img.shields.io/badge/%D9%BE%D9%84%D8%AA%D9%81%D8%B1%D9%85-%D8%A7%D9%86%D8%AF%D8%B1%D9%88%DB%8C%D8%AF%20%7C%20iOS-orange?style=flat-square)](#-دانلود-مستقیم)
 [![حمایت ریالی در ریمیت](https://img.shields.io/badge/%D8%AF%D9%88%D9%86%DB%8C%D8%AA-%D8%B1%DB%8C%D9%85%DB%8C%D8%AA-FF5722.svg?style=flat-square&logo=coffeescript&logoColor=white)](https://reymit.ir/raganitech)
 [![دونیت تتر](https://img.shields.io/badge/%D8%AF%D9%88%D9%86%DB%8C%D8%AA-%D8%AA%D8%AA%D8%B1%20USDT-26A17B.svg?style=flat-square&logo=tether&logoColor=white)](#-۳-کیف‌پول‌های-ارز-دیجیتال-تتر-دلاری)
@@ -53,6 +54,7 @@
   - **بلور شیلد در سوییچر اپ‌ها:** مات شدن صفحه اپلیکیشن در سوییچر iOS جهت پنهان‌سازی شماره‌های خصوصی از دید اطرافیان.
 - 🌙 **طراحی مدرن با فونت چشم‌نواز وزیرمتن:** پشتیبانی کامل از حالت تاریک (Dark Mode) و روشن (Light Mode) با تایپوگرافی زیبای فونت وزیرمتن زنده‌یاد صابر راستی‌کردار.
 - 🌐 **پشتیبانی کامل دوزبانه:** ترجمه روان و بی‌نقص فارسی و انگلیسی.
+- 🤖 **کدنویسی و مهندسی با کمک هوش مصنوعی (AI-Assisted):** معماری، توسعه ماژولار و تست‌های خودکار با همراهی و جفت‌برنامه‌نویسی پیشرفته هوش مصنوعی (AI) با رعایت اصول Clean Architecture.
 - 📴 **کاملاً رایگان، بدون تبلیغات و اپن سورس:** بدون هیچ‌گونه تبلیغات مزاحم یا پلن‌های پولی، با مدل حمایتی داوطلبانه خرید قهوه.
 
 ---
@@ -182,6 +184,7 @@ flutter build apk --release --split-per-abi
 - [فونت وزیرمتن اثر صابر راستی‌کردار](https://github.com/rastikerdar/vazirmatn) - تایپوگرافی اصیل و زیبای فارسی.
 - [ریورپاد (Riverpod)](https://riverpod.dev) - مدیریت واکنش‌گرای وضعیت.
 - [پیجن (Pigeon)](https://pub.dev/packages/pigeon) - سازنده کانال‌های نیتیو پلتفرم.
+- [همراهی هوش مصنوعی (AI)](https://deepmind.google) - کدنویسی، بررسی‌های امنیتی و طراحی معماری با کمک هوش مصنوعی.
 
 ---
 

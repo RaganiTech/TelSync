@@ -22,6 +22,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-3B82F6.svg?style=flat-square)](LICENSE)
 [![Flutter Version](https://img.shields.io/badge/Flutter-3.24+-02569B.svg?style=flat-square&logo=flutter)](https://flutter.dev)
 [![Privacy](https://img.shields.io/badge/Privacy-100%25%20On--Device-success?style=flat-square)](#-security--privacy-principles)
+[![Crafted with AI](https://img.shields.io/badge/Crafted%20with-AI%20Assisted-8A2BE2.svg?style=flat-square&logo=openai&logoColor=white)](#-acknowledgements--credits)
 [![Platform](https://img.shields.io/badge/Platform-Android%20%7C%20iOS-orange?style=flat-square)](#-direct-downloads)
 [![Donate Reymit](https://img.shields.io/badge/Donate-Reymit-FF5722.svg?style=flat-square&logo=coffeescript&logoColor=white)](https://reymit.ir/raganitech)
 [![Donate USDT](https://img.shields.io/badge/Donate-USDT-26A17B.svg?style=flat-square&logo=tether&logoColor=white)](#-3-crypto-wallets-tether-usdt)
@@ -51,6 +52,7 @@ Unlike other converters or unsafe third-party apps that upload your sensitive co
   - **App Switcher Privacy Shield:** Blurs application content on iOS when task switching to protect phone numbers from shoulder surfing.
 - 🌙 **Adaptive Modern UI & Vazirmatn Typography:** Responsive interface equipped with dynamic light/dark themes and bundled with Saber Rastikerdar's beautiful [Vazirmatn](https://github.com/rastikerdar/vazirmatn) font.
 - 🌐 **Full Bilingual Support:** Native, polished Persian (فارسی) and English (US) translations.
+- 🤖 **AI-Assisted Craftsmanship:** Architected, coded, and rigorously tested with advanced AI pair programming, applying Clean Architecture and zero-trust security standards.
 - 📴 **100% Free & Open Source:** Ad-free, no subscription barriers, no locked features. Supported entirely by voluntary coffee donations.
 
 ---
@@ -165,6 +167,7 @@ We extend our deepest gratitude to the open-source projects and authors whose wo
 - [Vazirmatn Font](https://github.com/rastikerdar/vazirmatn) - The elegant Persian typography by the late Saber Rastikerdar.
 - [Riverpod](https://riverpod.dev) - Reactive state management architecture.
 - [Pigeon](https://pub.dev/packages/pigeon) - Type-safe native platform channels generator.
+- [AI Coding Assistance](https://deepmind.google) - Architected and pair-programmed with AI assistance.
 
 ---
 

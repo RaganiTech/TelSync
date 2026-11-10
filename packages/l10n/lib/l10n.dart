@@ -328,8 +328,8 @@ class AppLocalizations {
         '3. The Telegram session is cleanly logged out on the server when finished, wiping all local keys and cache.\n'
         '4. Strict TDLib method allowlisting ensures zero access to your private messages, groups, or channels.';
   String get aboutFooter => isPersian
-      ? 'نسخه ۱.۰.۲ — ساخته شده با ❤️ در مجموعه RaganiTech'
-      : 'Version 1.0.2 — Made with ❤️ in RaganiTech collection';
+      ? 'نسخه ۱.۰.۲ — توسعه‌یافته در RaganiTech با همراهی هوش مصنوعی (AI) ❤️'
+      : 'Version 1.0.2 — Built by RaganiTech with AI assistance ❤️';
 
   // Coffee & Open-Source Donation
   String get coffeeCardTitle => isPersian
