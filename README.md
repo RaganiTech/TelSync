@@ -21,7 +21,7 @@
 
 <p align="center">
   <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-blue.svg?style=flat-square" alt="License: MIT" /></a>
-  <a href="https://github.com/alireza00138300/contact-bridge/releases"><img src="https://img.shields.io/badge/Release-v1.0.2-brightgreen.svg?style=flat-square" alt="Latest Release" /></a>
+  <a href="https://github.com/alireza00138300/TelSync/releases"><img src="https://img.shields.io/badge/Release-v1.0.2-brightgreen.svg?style=flat-square" alt="Latest Release" /></a>
   <a href="https://flutter.dev"><img src="https://img.shields.io/badge/Flutter-3.24+-02569B.svg?style=flat-square&logo=flutter" alt="Flutter" /></a>
   <img src="https://img.shields.io/badge/Privacy-100%25%20On--Device-success?style=flat-square" alt="Privacy" />
   <img src="https://img.shields.io/badge/Platform-Android%20%7C%20iOS-orange?style=flat-square" alt="Platform" />
@@ -63,10 +63,10 @@
 
 | فایل دانلود / Asset | معماری پردازنده / CPU Architecture | دستگاه‌های هدف / Target Devices |
 |---|---|---|
-| **[`telsync-v1.0.2-arm64-v8a.apk`](https://github.com/alireza00138300/contact-bridge/releases/tag/v1.0.2)** *(پیشنهادی)* | ARM 64-bit (`arm64-v8a`) | تقریباً تمام گوشی‌های مدرن اندروید (سامسونگ، شیائومی، هواوی، پیکسل) |
-| **[`telsync-v1.0.2-armeabi-v7a.apk`](https://github.com/alireza00138300/contact-bridge/releases/tag/v1.0.2)** | ARM 32-bit (`armeabi-v7a`) | گوشی‌های قدیمی‌تر یا ارزان‌قیمت اندروید |
-| **[`telsync-v1.0.2-x86_64.apk`](https://github.com/alireza00138300/contact-bridge/releases/tag/v1.0.2)** | Intel/AMD 64-bit (`x86_64`) | شبیه‌سازها (Emulators) و دستگاه‌های مبتنی بر معماری x86 |
-| **[`telsync-v1.0.2-universal.apk`](https://github.com/alireza00138300/contact-bridge/releases/tag/v1.0.2)** | Universal (شامل تمامی معماری‌ها) | سازگار با همه گوشی‌ها (حجم فایل بیشتر است) |
+| **[`telsync-v1.0.2-arm64-v8a.apk`](https://github.com/alireza00138300/TelSync/releases/tag/v1.0.2)** *(پیشنهادی)* | ARM 64-bit (`arm64-v8a`) | تقریباً تمام گوشی‌های مدرن اندروید (سامسونگ، شیائومی، هواوی، پیکسل) |
+| **[`telsync-v1.0.2-armeabi-v7a.apk`](https://github.com/alireza00138300/TelSync/releases/tag/v1.0.2)** | ARM 32-bit (`armeabi-v7a`) | گوشی‌های قدیمی‌تر یا ارزان‌قیمت اندروید |
+| **[`telsync-v1.0.2-x86_64.apk`](https://github.com/alireza00138300/TelSync/releases/tag/v1.0.2)** | Intel/AMD 64-bit (`x86_64`) | شبیه‌سازها (Emulators) و دستگاه‌های مبتنی بر معماری x86 |
+| **[`telsync-v1.0.2-universal.apk`](https://github.com/alireza00138300/TelSync/releases/tag/v1.0.2)** | Universal (شامل تمامی معماری‌ها) | سازگار با همه گوشی‌ها (حجم فایل بیشتر است) |
 
 > 💡 **راهنمای سریع:** اگر نمی‌دانید کدام نسخه مناسب گوشی شماست، نسخه **`arm64-v8a`** را دانلود کنید یا در صورت عدم اطمینان نسخه **`universal`** را نصب نمایید.
 
@@ -96,8 +96,8 @@
 ### مراحل اجرا:
 ```bash
 # ۱. کلون کردن مخزن
-git clone https://github.com/alireza00138300/contact-bridge.git
-cd contact-bridge
+git clone https://github.com/alireza00138300/TelSync.git
+cd TelSync
 
 # ۲. دریافت پکیج‌ها و اجرای تست‌ها
 cd apps/mobile

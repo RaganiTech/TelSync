@@ -7,7 +7,7 @@ We love open-source contributions! Whether you are fixing bugs, improving docume
 ## 🇮🇷 راهنمای فارسی
 
 ### چگونه مشارکت کنیم؟
-1. **گزارش باگ‌ها (Bug Reports):** اگر مشکلی در عملکرد برنامه مشاهده کردید، لطفاً در بخش [Issues](https://github.com/alireza00138300/contact-bridge/issues) با ذکر نسخه سیستم‌عامل و لاگ خطا گزارش دهید.
+1. **گزارش باگ‌ها (Bug Reports):** اگر مشکلی در عملکرد برنامه مشاهده کردید، لطفاً در بخش [Issues](https://github.com/alireza00138300/TelSync/issues) با ذکر نسخه سیستم‌عامل و لاگ خطا گزارش دهید.
 2. **پیشنهاد قابلیت جدید (Feature Requests):** ایده‌های خود برای بهبود رابط کاربری یا افزودن قابلیت‌های تازه را مطرح کنید.
 3. **ارسال پول ریکوئست (Pull Request):**
    - مخزن را Fork کنید.

@@ -14,7 +14,7 @@ class SupportCoffeeCard extends StatelessWidget {
   });
 
   static const String buyMeACoffeeUrl = 'https://buymeacoffee.com/alireza';
-  static const String githubRepoUrl = 'https://github.com/alireza00138300/contact-bridge';
+  static const String githubRepoUrl = 'https://github.com/alireza00138300/TelSync';
 
   static Future<void> launchCoffeeUrl() async {
     final uri = Uri.parse(buyMeACoffeeUrl);
@@ -267,7 +267,7 @@ class CoffeeSupportSheet extends StatelessWidget {
                         ),
                         const SizedBox(height: 2),
                         Text(
-                          'Contact Bridge · Open Source',
+                          'TelSync · Open Source',
                           style: TextStyle(
                             fontFamily: AppTypography.fontFamily,
                             fontSize: 12,
@@ -312,7 +312,7 @@ class CoffeeSupportSheet extends StatelessWidget {
                 iconBg: Colors.amber.withValues(alpha: 0.15),
                 iconColor: Colors.amber.shade700,
                 title: l10n.coffeeGitHubStar,
-                subtitle: 'github.com/alireza00138300/contact-bridge',
+                subtitle: 'github.com/alireza00138300/TelSync',
                 trailing: const Icon(Icons.open_in_new_rounded, size: 20),
                 onTap: SupportCoffeeCard.launchGithubUrl,
               ),
