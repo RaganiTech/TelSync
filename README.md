@@ -100,6 +100,51 @@ TelSync is engineered with zero-trust privacy foundations:
 
 ---
 
+## 💡 How to Sync Telegram Contacts to Phone (3 Simple Steps)
+
+1. **Install TelSync:**  
+   Download the APK matching your device from the [Direct Downloads](#-direct-downloads) section above.
+2. **Connect Securely to Telegram:**  
+   Sign in with your phone number or scan the QR code via your official Telegram app (direct peer connection to Telegram servers).
+3. **Review & Import to Phonebook:**  
+   TelSync compares Telegram contacts with your phone's address book and highlights new numbers. Tap **Import** to add them to your phonebook, after which your session is automatically logged out.
+
+---
+
+## ❓ Frequently Asked Questions (FAQ)
+
+<details>
+<summary><strong>1. How do I transfer or export Telegram contacts to Android or iPhone?</strong></summary>
+
+Telegram does not have an official native button to bulk-export contacts into your phone's address book. **TelSync** solves this by connecting directly to Telegram via TDLib, matching contacts on-device, and safely saving them straight into your phone's native address book without needing a computer or third-party web services.
+</details>
+
+<details>
+<summary><strong>2. Will TelSync modify or delete any existing contacts on my phone?</strong></summary>
+
+**Never.** In TelSync, your phonebook is the absolute source of truth. The application never alters or deletes existing contacts; it only adds new, missing contacts that you choose to import.
+</details>
+
+<details>
+<summary><strong>3. How does it prevent duplicate contacts?</strong></summary>
+
+TelSync features an intelligent phone normalizer that standardizes international prefixes (such as `09xx`, `+98`, `+1`) into uniform E.164 formats. If a person is already in your phone contacts, it detects the match and prevents duplicate entries.
+</details>
+
+<details>
+<summary><strong>4. Does TelSync have access to my private chats, messages, or channels?</strong></summary>
+
+**No.** TelSync is 100% open source. The client operates under a strict TDLib method allowlist that is restricted exclusively to contact queries (`getContacts`). It has zero access to private messages, chat logs, media, or channels.
+</details>
+
+<details>
+<summary><strong>5. Are phone numbers uploaded to any external server?</strong></summary>
+
+**No.** TelSync does not operate any backend server, cloud database, or tracking service. All processing happens locally in device RAM and all temporary session keys are immediately wiped upon exit.
+</details>
+
+---
+
 ## 🛠️ Building From Source
 
 ### Prerequisites
