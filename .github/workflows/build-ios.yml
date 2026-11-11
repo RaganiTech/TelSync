@@ -34,6 +34,9 @@ jobs:
           channel: 'stable'
           cache: true
 
+      - name: Precache Flutter iOS Artifacts
+        run: flutter precache --ios
+
       - name: Install Dependencies
         run: |
           cd apps/mobile
@@ -43,6 +46,11 @@ jobs:
         run: |
           cd apps/mobile
           flutter test
+
+      - name: Prepare iOS Config & Plugins
+        run: |
+          cd apps/mobile
+          flutter build ios --config-only
 
       - name: Install CocoaPods Dependencies
         run: |
