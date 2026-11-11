@@ -1,15 +1,15 @@
 import Foundation
 import Contacts
 
-public class ContactsHostApiImpl: NSObject, ContactsHostApi {
+class ContactsHostApiImpl: NSObject, ContactsHostApi {
     private let contactStore = CNContactStore()
 
-    public func getPermissionStatus() throws -> NativePermissionStatus {
+    func getPermissionStatus() throws -> NativePermissionStatus {
         let status = CNContactStore.authorizationStatus(for: .contacts)
         return mapStatus(status)
     }
 
-    public func requestPermission(completion: @escaping (Result<NativePermissionStatus, Error>) -> Void) {
+    func requestPermission(completion: @escaping (Result<NativePermissionStatus, Error>) -> Void) {
         contactStore.requestAccess(for: .contacts) { [weak self] granted, error in
             if let error = error {
                 completion(.failure(error))
@@ -24,7 +24,7 @@ public class ContactsHostApiImpl: NSObject, ContactsHostApi {
         }
     }
 
-    public func readAllContacts(completion: @escaping (Result<[NativeContact], Error>) -> Void) {
+    func readAllContacts(completion: @escaping (Result<[NativeContact], Error>) -> Void) {
         DispatchQueue.global(qos: .userInitiated).async { [weak self] in
             guard let self = self else { return }
             do {
@@ -64,7 +64,7 @@ public class ContactsHostApiImpl: NSObject, ContactsHostApi {
         }
     }
 
-    public func getAvailableAccounts(completion: @escaping (Result<[NativeAccount], Error>) -> Void) {
+    func getAvailableAccounts(completion: @escaping (Result<[NativeAccount], Error>) -> Void) {
         DispatchQueue.global(qos: .userInitiated).async { [weak self] in
             guard let self = self else { return }
             do {
@@ -103,7 +103,7 @@ public class ContactsHostApiImpl: NSObject, ContactsHostApi {
         }
     }
 
-    public func writeContactsBatch(
+    func writeContactsBatch(
         candidates: [NativeCandidate],
         accountName: String?,
         accountType: String?,
@@ -152,7 +152,7 @@ public class ContactsHostApiImpl: NSObject, ContactsHostApi {
         }
     }
 
-    public func undoCreatedContacts(
+    func undoCreatedContacts(
         recordIds: [String],
         completion: @escaping (Result<Int64, Error>) -> Void
     ) {
