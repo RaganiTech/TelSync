@@ -16,7 +16,7 @@ permissions:
 jobs:
   build-ios:
     name: Build & Test iOS Package
-    runs-on: macos-14
+    runs-on: macos-latest
 
     steps:
       - name: Checkout Code
