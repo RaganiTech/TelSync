@@ -47,16 +47,6 @@ jobs:
           cd apps/mobile
           flutter test
 
-      - name: Prepare iOS Config & Plugins
-        run: |
-          cd apps/mobile
-          flutter build ios --config-only
-
-      - name: Install CocoaPods Dependencies
-        run: |
-          cd apps/mobile/ios
-          pod install --repo-update
-
       - name: Build iOS Release (Unsigned)
         run: |
           cd apps/mobile
